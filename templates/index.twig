@@ -1,10 +1,11 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<p>{{ qux }}</p>
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
-
-{#	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}#}
+    <div id="frontPagePicture"></div>
+    <div id="frontPageText">
+        <h3 id="frontPageTitle">Fatalny związek stwórz już dziś!</h3>
+        <div id="frontPageDesc">Życie Ci się nie układa? Za kasą czeka na Ciebie lada? W nocy kolega w Ciebie kutasa wkłada?
+            A na telefonie masz system bada? Skończ już dziś życie razem ze stroną fatalny związek pe el!</div>
+        <div id="frontPageArticleButton"><a id="frontPageArticleAnchor">Zacznij tutaj</a></div>
+    </div>
 {% endblock %}

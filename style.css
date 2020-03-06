@@ -11,7 +11,7 @@ html, body, div, header, section, footer, h1, h2, h3, h4, h5, h6, ul, li, nav {
     padding: 0;
 }
 
-div, #hdrNavbarList, a {
+div, #hdrNavbarList, a, section, article {
     width: 100%;
     height: 100%;
 }
@@ -81,6 +81,48 @@ ul {
 
 
 
+/** SITE BUTTONS**/
+.gradientButtonAnchor::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    content: '';
+    background: linear-gradient(to top, #282828 , #191919 50%, #282828);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gradientButtonAnchor:hover::before {
+    opacity: 1;
+}
+
+
+.gradientButton {
+    color: silver;
+    background: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
+    box-shadow: 0 0 10px 1px silver;
+    z-index: 2;
+}
+
+.gradientButtonAnchor {
+    color: silver;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.5s ease;
+    background: transparent;
+    position: relative;
+    z-index: 4;
+}
+
+
+
+
+
+
+
 
 /** SITE CONTAINER**/
 #siteContainer {
@@ -90,9 +132,19 @@ ul {
     grid-template-columns: 1fr;
 }
 
+#siteContainerFrontPage {
+    display: grid;
+    grid-template-areas: "header" "content" "footer";
+    grid-template-rows: 19vh 81vh auto;
+    grid-template-columns: 1fr;
+}
+
 @media only screen and (max-width: 1000px) {
     #siteContainer {
         grid-template-rows: 23vh 77vh 1fr auto;
+    }
+    #siteContainerFrontPage {
+        grid-template-rows: 23vh 77vh auto;
     }
 }
 
@@ -108,8 +160,11 @@ header {
     background-color: #1f1f1f;
     display: grid;
     grid-template-areas: "hdrLogo" "hdrNewsletter" "hdrNavbar";
+    /*grid-template-areas: "hdrNewsletter hdrNewsletter" "hdrLogo hdrNavbar";*/
     grid-template-rows: 7vh 4vh 8vh;
+    /*grid-template-rows: 4vh 12vh;*/
     grid-template-columns: 1fr;
+    /*grid-template-columns: 20vw 80vw;*/
     background-image: linear-gradient(to right, #191919, #282828 50%, #191919 100%);
 }
 
@@ -130,6 +185,7 @@ header {
     grid-area: hdrLogo;
     box-sizing: border-box;
     background-image: linear-gradient(to top, #191919, #282828 50%, #191919 100%);
+    /*background: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);*/
     border-bottom: 2px solid transparent;
     border-radius: 10%;
 }
@@ -217,6 +273,7 @@ header {
     box-sizing: border-box;
     background: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
     z-index: 105;
+    border-bottom: 4px groove silver;
 }
 
 #hdrNavbarList {
@@ -230,6 +287,8 @@ header {
     display: flex;
     flex-direction: row;
     position: relative;
+    /*background-image: linear-gradient(0deg, #9b9b9b, #b9b9b9 1%, #9b9b9b 2%, transparent 2%,*/
+    /*    transparent 10%, #9b9b9b 10%, #b9b9b9 11%, #9b9b9b 12%, transparent 12%);*/
 }
 
 .hdrNavbarListItem a {
@@ -439,11 +498,6 @@ footer {
     font-weight: normal;
 }
 
-#footerCopyright {
-    grid-area: footerCopyright;
-    background-image: linear-gradient(to top, #9b9b9b, #b9b9b9 50%, #9b9b9b 100%);
-}
-
 
 
 
@@ -451,6 +505,11 @@ footer {
 
 
 /** FOOTER COPYRIGHT**/
+#footerCopyright {
+    grid-area: footerCopyright;
+    background-image: linear-gradient(to top, #9b9b9b, #b9b9b9 50%, #9b9b9b 100%);
+}
+
 #footerCopyright span {
     display: block;
     width: 100%;
@@ -498,30 +557,52 @@ footer {
 
 
 
-
-
-/** FRONT PAGE **/
 #content {
     background: linear-gradient(45deg, rgba(25, 25, 25, 0.85) -50%, rgba(45, 45, 55, 0.85) 40%, rgba(30, 30, 35, 0.85) 100%), #020040;
+}
+
+/** FRONT PAGE **/
+.frontPageContentWrapper {
     display: grid;
     grid-template-areas: "frontPagePicture frontPageText";
-    grid-template-rows: 1fr;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 100%;
+    grid-template-columns: 50% 50%;
+}
+
+#frontPagePictureBox {
+    grid-area: frontPagePicture;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(75deg, rgba(255, 255, 255, 0) 25%,
+        rgba(192, 192, 192, 0.3) 25%, rgba(192, 192, 192, 0.3) 35%,
+        rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 55%,
+        rgba(192, 192, 192, 0.3) 55%, rgba(192, 192, 192, 0.3) 65%,
+        rgba(255, 255, 255, 0) 65%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #frontPagePicture {
-    grid-area: frontPagePicture;
-    background-image: linear-gradient(75deg, rgba(255, 255, 255, 0) 30%,
-        rgba(192, 192, 192, 0.3) 30%, rgba(192, 192, 192, 0.3) 40%,
-        rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%,
-        rgba(192, 192, 192, 0.3) 60%, rgba(192, 192, 192, 0.3) 70%,
-        rgba(255, 255, 255, 0) 70%);
+    width: auto;
+    height: 100%;
 }
+
+/*@media only screen and (max-width: 800px) {*/
+/*    #frontPagePicture {*/
+/*        width: 100%;*/
+/*        height: auto;*/
+/*        !*height: 70%;*!*/
+/*    }*/
+/*}*/
 
 #frontPageText {
     grid-area: frontPageText;
     color: silver;
     display: grid;
+    height: 100%;
     box-sizing: border-box;
     padding: 15% 15% 15% 0;
     grid-template-columns: 1fr;
@@ -541,47 +622,144 @@ footer {
 
 #frontPageArticleButton {
     grid-area: frontPageArticleButton;
-    color: silver;
     font-size: 4vh;
-    background: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
-    box-shadow: 0 0 10px 1px silver;
-    z-index: 2;
 }
 
 #frontPageArticleAnchor {
-    color: silver;
     font-size: 4vh;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.5s ease;
-    background: transparent;
+}
+
+
+
+
+
+
+
+
+/** POST **/
+.postTypePost {
+    display: grid;
+    grid-template-areas: "articleContent" "articlePagination";
+    grid-template-rows: 1fr 10vh;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+    background-image: linear-gradient(45deg, #9b9b9b -30%, #ffffff 50%, #9b9b9b 130%);
+}
+
+#articleContent {
+    grid-area: articleContent;
+}
+
+#articleHeader {
+    /*background: linear-gradient(to bottom, rgba(25, 25, 25, 0.85), rgba(45, 45, 55, 0.85) 50%, rgba(30, 30, 35, 0.85)), #020037;*/
     position: relative;
-    z-index: 4;
+    overflow: hidden;
+    /*height: auto;*/
+    width: 100%;
+    /*height: 0;*/
 }
 
-#frontPageArticleAnchor::before {
+.parallaxBg {
+    background-attachment: fixed;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position-y: 0;
+    /*height: 0;*/
+}
+
+#articleThumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    /*display: none;*/
+    /*visibility: hidden;*/
+}
+
+
+#articleH1 {
+    height: 10vh;
+    font-size: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    content: '';
-    background: linear-gradient(to top, #282828 , #191919 50%, #282828);
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    bottom: 2vh;
+    width: 100%;
+    color: silver;
+    box-shadow: 0 0 10px 1px silver, inset 0 0 50px 10px black;
+    text-shadow: 1px 1px 3px silver;
 }
 
-#frontPageArticleAnchor:hover::before {
-    opacity: 1;
+.articleBody {
+    font-size: 3vh;
+    height: auto;
 }
 
 
-#frontPageArticleAnchor:hover {
-    /*color: black;*/
+.articleBody h2 {
+    background: linear-gradient(45deg, rgba(75, 75, 75, 0.8),
+    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+    padding: 0 4% 0 4%;
+    box-sizing: border-box;
+    font-size: 4vh;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+    box-shadow: 8px 8px 4px 0 #2d2d2d;
+    color: #d7d7d7;
+    margin: 3% auto 0 auto;
+}
+
+.articleBody h2:first-child {
+    margin: 1% auto 0 auto;
+}
+
+.articleBody p {
+    box-sizing: border-box;
+    padding: 0 6% 0 6%;
+}
+
+.articleBody ol, .articleBody ul, .wp-block-table {
+    box-sizing: border-box;
+    padding: 0 10% 0 10%;
+}
+
+
+/** POST PAGINATION**/
+#articlePagination {
+    padding: 0.5% 1% 0.5% 1%;
+    box-sizing: border-box;
+    grid-area: articlePagination;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#articlePaginationPrev, #articlePaginationNext {
+    width: 48%;
+}
+
+#articlePagination .gradientButton {
+    box-shadow: 0 0 10px 1px black;
+}
+
+#articlePaginationNext {
+    padding: 0
+}
+
+#articlePaginationPrevLink, #articlePaginationNextLink  {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

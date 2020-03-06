@@ -7,26 +7,30 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<div id="siteContainer">
-			{% block header %}
-				<header class="header" >
-					{% include "header.twig" %}
-				</header>
-			{% endblock %}
-			<section id="content" role="main" class="content-wrapper">
-{#				{% if title %}<h1>{{title}}</h1>{% endif %}#}
-{#				<div class="wrapper">#}
-					{% block content %}
-						Sorry, no content
-					{% endblock %}
-{#				</div>#}
-			</section>
-			{% block footer %}
-				<footer id="footer">
-					{% include 'footer.twig' %}
-				</footer>
-				{{ function('wp_footer') }}
-			{% endblock %}
-		</div>
+		{% if fn('is_front_page') %}
+			<div id="siteContainerFrontPage">
+		{% else %}
+			<div id="siteContainer">
+		{% endif %}
+				{% block header %}
+					<header class="header" >
+						{% include "header.twig" %}
+					</header>
+				{% endblock %}
+				<section id="content" role="main" class="content-wrapper">
+	{#				{% if title %}<h1>{{title}}</h1>{% endif %}#}
+	{#				<div class="wrapper">#}
+						{% block content %}
+							Sorry, no content
+						{% endblock %}
+	{#				</div>#}
+				</section>
+				{% block footer %}
+					<footer id="footer">
+						{% include 'footer.twig' %}
+					</footer>
+					{{ function('wp_footer') }}
+				{% endblock %}
+			</div>
 	</body>
 </html>

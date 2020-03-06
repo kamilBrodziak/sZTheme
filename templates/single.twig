@@ -1,17 +1,38 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
-				</p>
-				<div class="article-body">
+	<div id="contentWrapper" class="articleContentWrapper">
+		<article class="postType{{ function('ucwords',post.post_type) }}" id="post-{{ post.ID }}">
+			<section id="articleContent">
+				<div id="articleHeader" class="parallaxBg" data-thumbnail-width="{{ post.thumbnail.width }}" data-thumbnail-height="{{ post.thumbnail.height }}"
+					 style="background-image: url({{ post.thumbnail.src }});">
+					<h1 id="articleH1">{{ post.title }}</h1>
+{#					<img id="articleThumbnail" src="{{ post.thumbnail.src }}">#}
+				</div>
+				<div class="articleBody">
 					{{post.content}}
 				</div>
 			</section>
+			<section id="articlePagination">
+				<div id="articlePaginationPrev" class="{% if post.prev != null %}gradientButton{% endif %}">
+					{% if post.prev != null %}
+						<a id="articlePaginationPrevLink" href="{{ post.prev.link }}" class="gradientButtonAnchor">
+							<span>Poprzedni post:</span>
+							<span>{{post.prev.title}}</span>
+						</a>
+					{% endif %}
+				</div>
+{#				<a href="{{ post.meta('prevPost').link }}">{{post.meta('prevPost').title}}</a>#}
+				<div id="articlePaginationNext" class="{% if post.next != null %}gradientButton{% endif %}">
+					{% if post.next != null %}
+						<a id="articlePaginationNextLink" href="{{ post.next.link }}" class="gradientButtonAnchor">
+							<span>Następny post:</span>
+							<span>{{post.next.title}}</span>
+						</a>
+					{% endif %}
+				</div>
+{#				<a href="{{ post.meta('nextPost').link }}">{{post.meta('nextPost').title}}</a>#}
+			</section>
 		</article>
-	</div><!-- /content-wrapper -->
+	</div>
 {% endblock %}

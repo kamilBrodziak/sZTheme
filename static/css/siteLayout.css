@@ -1,0 +1,68 @@
+:root {
+    --deviceHeight: 1188px;
+    --headerHeightForMobile: calc(var(--deviceHeight) * 0.16);
+    --headerHeightForTablet: calc(var(--deviceHeight) * 0.16);
+    --headerHeightForSmallScreen: calc(var(--deviceHeight) * 0.16);
+    --headerheightForLargeScreen: calc(var(--deviceHeight) * 0.13);
+}
+
+
+/** SITE CONTAINER**/
+#siteContainer {
+    display: grid;
+    grid-template-areas: "header" "content" "footer";
+    grid-template-columns: 1fr;
+    /*grid-template-rows: 20vh auto auto;*/
+    grid-template-rows: 5rem auto auto;
+}
+
+#siteContainerFrontPage {
+    display: grid;
+    grid-template-areas: "header" "content" "footer";
+    /*grid-template-rows: 20vh 80vh auto;*/
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem auto auto;
+}
+
+@media only screen and (min-width: 600px) {
+    #siteContainer {
+        grid-template-rows: 8rem auto auto;
+    }
+    #siteContainerFrontPage {
+        grid-template-rows: 8rem auto auto;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #siteContainer {
+        /*grid-template-rows: 26rem auto auto;*/
+        grid-template-rows: calc(var(--deviceHeight) * 0.16) auto auto;
+    }
+    #siteContainerFrontPage {
+        /*grid-template-rows: 15rem 82.5rem auto;*/
+        grid-template-rows: calc(var(--deviceHeight) * 0.16) calc(var(--deviceHeight) * 0.422) auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #siteContainer {
+        grid-template-rows: calc(var(--deviceHeight) * 0.13) auto auto;
+    }
+    #siteContainerFrontPage {
+        /*grid-template-rows: 15rem 82.5rem auto;*/
+        grid-template-rows: calc(var(--deviceHeight) * 0.13) calc(var(--deviceHeight) * 0.422) auto;
+        /*grid-template-rows: 20vh 80vh auto;*/
+    }
+}
+
+
+
+
+
+
+/** Section - main content**/
+#content {
+    grid-area: content;
+    /*background-color: #b76c77;*/
+    padding-bottom: 1px;
+}

@@ -1,14 +1,23 @@
 jQuery( document ).ready( function( $ ) {
-    let hdrNavbar = $('#hdrNavbar');
-    let stickyNavTop = hdrNavbar.offset().top;
+    let root = document.documentElement;
+    root.style.setProperty("--deviceHeight", window.screen.height * window.devicePixelRatio + "px");
+    let hdrNavbar = $("header");
     let isReload = true;
+    console.log(window.innerWidth);
+    let lastScrollTop = hdrNavbar.offset().top;
     let stickyNav = function(){
         let scrollTop = $(window).scrollTop();
-        if (scrollTop > stickyNavTop) {
-            hdrNavbar.addClass('sticky');
-        } else {
-            hdrNavbar.removeClass('sticky');
+        if (scrollTop <= parseInt(hdrNavbar.css("height"))) {
+            hdrNavbar.removeClass('stickyTransition');
+            hdrNavbar.removeClass('stickyFade');
+        } else if (lastScrollTop >= scrollTop || scrollTop <= parseInt(hdrNavbar.css("height"))) {
+            hdrNavbar.removeClass('stickyFade');
+            hdrNavbar.addClass('stickyTransition');
+        } else if(scrollTop > parseInt(hdrNavbar.css("height")) ){
+            hdrNavbar.addClass('stickyFade');
+            hdrNavbar.addClass('stickyTransition');
         }
+        lastScrollTop = scrollTop;
     };
     stickyNav();
 
@@ -37,7 +46,7 @@ function setArticleHeaderHeight() {
 }
 
 setArticleHeaderHeight();
-function parallax(isReload) {
+function parallax() {
     let wScroll = $(window).scrollTop();
     if(parallaxBackgroundInitialPosY - wScroll > 0) {
         parallaxBg.css("background-position-y", parallaxBackgroundInitialPosY - wScroll);
@@ -50,4 +59,45 @@ parallax();
 function setParallaxBackgroundPosY() {
     parallaxBackgroundInitialPosY = parseInt($(".header").css('height'));
     parallax();
+}
+
+
+
+$(document).mouseup(function(e)
+{
+    let hdrNavbar = $("#hdrNavbar");
+    let hdrNavbarMobile = $("#hdrNavbarMobileButton");
+    if (hdrNavbarMobile.hasClass("changeMobileNavButtonState") && !hdrNavbar.is(e.target) && hdrNavbar.has(e.target).length === 0)
+    {
+        hdrNavbar.css("width", 0);
+        let hdrNavbarMobile = $("#hdrNavbarMobileButton");
+        hdrNavbarMobile.removeClass("changeMobileNavButtonState")
+    }
+});
+
+$(window).resize(function() {
+    let hdrNavbarMobile = $("#hdrNavbarMobileButton");
+    let hdrNavbar = $("#hdrNavbar");
+    if(hdrNavbarMobile.css("display") === "none") {
+        hdrNavbarMobile.removeClass("changeMobileNavButtonState");
+        $.when(hdrNavbar.removeClass("hdrNavbarMobileTransition")).then(function() {
+            hdrNavbar.css("width", "100%");
+        })
+    } else {
+        $.when(hdrNavbar.css("width", "0px")).then(function() {
+            hdrNavbar.addClass("hdrNavbarMobileTransition");
+        })
+    }
+});
+
+function closeOrOpenNav() {
+    let hdrNavbar = $("#hdrNavbar");
+    let hdrNavbarMobile = $("#hdrNavbarMobileButton");
+    if(parseInt(hdrNavbar.css("width")) > 0) {
+        hdrNavbar.css("width", "0px");
+        hdrNavbarMobile.removeClass("changeMobileNavButtonState");
+    } else {
+        hdrNavbarMobile.addClass("changeMobileNavButtonState");
+        hdrNavbar.css("width", "70%");
+    }
 }

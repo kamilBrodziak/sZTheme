@@ -2,9 +2,13 @@
     <a id="hdrLogoLink" href="{{site.url}}" rel="home">{{site.name}}</a>
 </h1>
 <div id="hdrNewsletter">
-    {#							<h4 id="hdrNewsletterTitle">Zapisz się na newsletter i dowiedz się jak ulepszyć swój związek</h4>#}
     {% include "newsletter.twig" with
         {'newsletterTitle': "Zapisz się na newsletter i dowiedz się jak ulepszyć swój związek"} %}
+</div>
+<div id="hdrNavbarMobileButton" onclick="closeOrOpenNav()">
+    <div id="hdrNavbarMobileBar1" class="hdrNavbarMobileBars"></div>
+    <div id="hdrNavbarMobileBar2" class="hdrNavbarMobileBars"></div>
+    <div id="hdrNavbarMobileBar3" class="hdrNavbarMobileBars"></div>
 </div>
 <nav id="hdrNavbar" class="nav-main" role="navigation">
     {% include "menu.twig" with {'items': menu.get_items, 'menuLocation': 'hdr'} %}

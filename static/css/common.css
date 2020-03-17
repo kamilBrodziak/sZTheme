@@ -1,0 +1,81 @@
+/** NEWSLETTER **/
+.newsletterForm {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.newsletterForm input:not([type="submit"]) {
+    background-color: transparent;
+    margin-right: 1%;
+    background-image: linear-gradient(to top, #000000, rgba(0,0,0,0) 50%);
+    border-bottom: 1px solid silver;
+    box-sizing: border-box;
+}
+
+.newsletterForm input {
+    border: 0;
+    outline: none;
+    height: 80%;
+    text-align: center;
+    color: silver;
+}
+
+.newsletterForm input::placeholder {
+    color: #7f7f7f;
+}
+
+.newsletterSubmitButton {
+    background-image: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
+    box-shadow: 1px 1px 2px 0 silver;
+    font-weight: bold;
+}
+
+.newsletterSubmitButton:hover {
+    background-image: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/** SITE BUTTONS**/
+.gradientButtonAnchor::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    content: '';
+    background: linear-gradient(to top, #282828 , #191919 50%, #282828);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gradientButtonAnchor:hover::before {
+    opacity: 1;
+}
+
+
+.gradientButton {
+    color: silver;
+    background: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
+    box-shadow: 0 0 10px 1px silver;
+    z-index: 2;
+}
+
+.gradientButtonAnchor {
+    color: silver;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.5s ease;
+    background: transparent;
+    position: relative;
+    z-index: 4;
+}

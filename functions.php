@@ -166,7 +166,16 @@ class StarterSite extends Timber\Site {
         wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
         wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js', array('jquery'), null, true );
         $styleVer = time();
-        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);
+//        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);
+        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/site.css?' . $styleVer);
+        wp_enqueue_style('casino-style6', get_stylesheet_directory_uri() . '/static/css/siteLayout.css?' . $styleVer);
+        wp_enqueue_style('casino-style1', get_stylesheet_directory_uri() . '/static/css/normalization.css?' . $styleVer);
+        wp_enqueue_style('casino-style2', get_stylesheet_directory_uri() . '/static/css/frontPage.css?' . $styleVer);
+        wp_enqueue_style('casino-style3', get_stylesheet_directory_uri() . '/static/css/header.css?' . $styleVer);
+        wp_enqueue_style('casino-style4', get_stylesheet_directory_uri() . '/static/css/footer.css?' . $styleVer);
+        wp_enqueue_style('casino-style5', get_stylesheet_directory_uri() . '/static/css/articlePage.css?' . $styleVer);
+        wp_enqueue_style('casino-style7', get_stylesheet_directory_uri() . '/static/css/common.css?' . $styleVer);
+
         wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
     }

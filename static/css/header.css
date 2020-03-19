@@ -202,6 +202,7 @@ header {
     width: 0;
     z-index: 105;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .hdrNavbarMobileTransition {
@@ -216,12 +217,11 @@ header {
 
 @media only screen and (min-width: 1024px) {
     #hdrNavbar {
-        transition: none;
+        overflow: visible;
         display: block;
         grid-area: hdrNavbar;
         width: 100%;
         position: initial;
-        box-sizing: border-box;
     }
 }
 
@@ -260,6 +260,32 @@ header {
     border: 5px groove #282828;
 }
 
+@media only screen and (min-width: 1024px) {
+    .hdrNavbarListItem {
+        height: 100%;
+        width: 25%;
+        flex-direction: row;
+        position: relative;
+        z-index: 4;
+        background: linear-gradient(135deg, rgba(6, 6, 6, 0.7) 12.5%,
+        rgba(12, 12, 12, 0.7) 12.5%, rgba(12, 12, 12, 0.7) 25%,
+        rgba(18, 18, 18, 0.7) 25%, rgba(18, 18, 18, 0.7) 37.5%,
+        rgba(24, 24, 24, 0.7) 37.5%, rgba(24, 24, 24, 0.7) 50%,
+        rgba(30, 30, 30, 0.7) 50%, rgba(30, 30, 30, 0.7) 62.5%,
+        rgba(36, 36, 36, 0.7) 62.5%, rgba(36, 36, 36, 0.7) 75%,
+        rgba(42, 42, 42, 0.7) 75%, rgba(42, 42, 42, 0.7) 87.5%,
+        rgba(48, 48, 48, 0.7) 87.5%),
+        linear-gradient(45deg, rgb(60, 60, 60) 12.5%,
+                rgb(54, 54, 54) 12.5%, rgb(54, 54, 54) 25%,
+                rgb(48, 48, 48) 25%, rgb(48, 48, 48) 37.5%,
+                rgb(42, 42, 42) 37.5%, rgb(42, 42, 42) 50%,
+                rgb(36, 36, 36) 50%, rgb(36, 36, 36) 62.5%,
+                rgb(30, 30, 30) 62.5%, rgb(30, 30, 30) 75%,
+                rgb(24, 24, 24) 75%, rgb(24, 24, 24) 87.5%,
+                rgb(18, 18, 18) 87.5%);
+    }
+}
+
 .hdrNavbarListItem::before {
     background: rgba(50, 50, 50, 0.5);
     position: absolute;
@@ -292,31 +318,8 @@ header {
     }
 }
 
-@media only screen and (min-width: 1024px) {
-    .hdrNavbarListItem {
-        height: 100%;
-        width: 25%;
-        flex-direction: row;
-        position: relative;
-        z-index: 4;
-        background: linear-gradient(135deg, rgba(6, 6, 6, 0.7) 12.5%,
-        rgba(12, 12, 12, 0.7) 12.5%, rgba(12, 12, 12, 0.7) 25%,
-        rgba(18, 18, 18, 0.7) 25%, rgba(18, 18, 18, 0.7) 37.5%,
-        rgba(24, 24, 24, 0.7) 37.5%, rgba(24, 24, 24, 0.7) 50%,
-        rgba(30, 30, 30, 0.7) 50%, rgba(30, 30, 30, 0.7) 62.5%,
-        rgba(36, 36, 36, 0.7) 62.5%, rgba(36, 36, 36, 0.7) 75%,
-        rgba(42, 42, 42, 0.7) 75%, rgba(42, 42, 42, 0.7) 87.5%,
-        rgba(48, 48, 48, 0.7) 87.5%),
-        linear-gradient(45deg, rgb(60, 60, 60) 12.5%,
-                rgb(54, 54, 54) 12.5%, rgb(54, 54, 54) 25%,
-                rgb(48, 48, 48) 25%, rgb(48, 48, 48) 37.5%,
-                rgb(42, 42, 42) 37.5%, rgb(42, 42, 42) 50%,
-                rgb(36, 36, 36) 50%, rgb(36, 36, 36) 62.5%,
-                rgb(30, 30, 30) 62.5%, rgb(30, 30, 30) 75%,
-                rgb(24, 24, 24) 75%, rgb(24, 24, 24) 87.5%,
-                rgb(18, 18, 18) 87.5%);
-    }
 
+@media only screen and (min-width: 1024px) {
     .hdrNavbarListItem::before {
         background: linear-gradient(135deg, rgba(15, 15, 15, 0.7) 12.5%,
         rgba(21, 21, 21, 0.7) 12.5%, rgba(21, 21, 21, 0.7) 25%,
@@ -339,7 +342,7 @@ header {
 
 .hdrNavbarListItem a {
     display: flex;
-    font-size: 2.5rem;
+    font-size: 250%;
     justify-content: center;
     align-items: center;
     color: silver;
@@ -351,7 +354,6 @@ header {
 
 @media only screen and (min-width: 1024px) {
     .hdrNavbarListItem a {
-        font-size: 250%;
         width: calc(100% - 4px);
         height: 100%;
     }

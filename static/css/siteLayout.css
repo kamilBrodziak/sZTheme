@@ -1,9 +1,9 @@
 :root {
     --deviceHeight: 1188px;
-    --headerHeightForMobile: calc(var(--deviceHeight) * 0.08);
-    --headerHeightForTablet: calc(var(--deviceHeight) * 0.08);
-    --headerHeightForSmallScreen: calc(var(--deviceHeight) * 0.16);
-    --headerHeightForLargeScreen: calc(var(--deviceHeight) * 0.13);
+    --headerHeightForMobile: calc(var(--deviceHeight) * 0.12);
+    --headerHeightForTablet: calc(var(--deviceHeight) * 0.12);
+    --headerHeightForSmallScreen: calc(var(--deviceHeight) * 0.3);
+    --headerHeightForLargeScreen: calc(var(--deviceHeight) * 0.25);
 }
 
 
@@ -40,7 +40,7 @@
     }
     #siteContainerFrontPage {
         /*grid-template-rows: 15rem 82.5rem auto;*/
-        grid-template-rows: var(--headerHeightForSmallScreen) calc(var(--deviceHeight) * 0.422) auto;
+        grid-template-rows: var(--headerHeightForSmallScreen) calc(var(--deviceHeight) - var(--headerHeightForSmallScreen)) auto;
     }
 }
 
@@ -50,7 +50,7 @@
     }
     #siteContainerFrontPage {
         /*grid-template-rows: 15rem 82.5rem auto;*/
-        grid-template-rows: var(--headerHeightForLargeScreen) calc(var(--deviceHeight) * 0.422) auto;
+        grid-template-rows: var(--headerHeightForLargeScreen) calc(var(--deviceHeight) - var(--headerHeightForLargeScreen)) auto;
         /*grid-template-rows: 20vh 80vh auto;*/
     }
 }

@@ -1,8 +1,7 @@
 jQuery( document ).ready( function( $ ) {
-    let root = document.documentElement;
-    root.style.setProperty("--deviceHeight", window.screen.height * window.devicePixelRatio + "px");
+
+
     let hdrNavbar = $("header");
-    let isReload = true;
     let lastScrollTop = hdrNavbar.offset().top;
     let stickyNav = function(){
         let scrollTop = $(window).scrollTop();
@@ -22,46 +21,9 @@ jQuery( document ).ready( function( $ ) {
 
     $(window).scroll(function() {
         stickyNav();
-        if(!isReload) {
-            parallax();
-        } else {
-            isReload = false;
-        }
     });
-
-    $(window).resize(function() {
-        setParallaxBackgroundPosY();
-        setArticleHeaderHeight();
-    });
-    parallax($(window).scrollTop());
     enableMobileNavbar();
 });
-
-let parallaxBg = $('.parallaxBg');
-let parallaxBackgroundInitialPosY = parseInt(parallaxBg.css("background-position-y")) + parseInt($(".header").css('height'));
-
-function setArticleHeaderHeight() {
-    let parallaxBgHeight = parseInt(parseInt(parallaxBg.css('width')) * parallaxBg.data("thumbnail-height") /
-        parallaxBg.data("thumbnail-width"));
-    parallaxBg.css("height", parallaxBgHeight);
-}
-
-setArticleHeaderHeight();
-function parallax(reloadScrollTop) {
-
-    let wScroll = reloadScrollTop ? reloadScrollTop : $(window).scrollTop();
-    if(parallaxBackgroundInitialPosY - wScroll > 0) {
-        parallaxBg.css("background-position-y", parallaxBackgroundInitialPosY - wScroll);
-    } else {
-        parallaxBg.css("background-position-y", 0);
-    }
-}
-parallax();
-
-function setParallaxBackgroundPosY() {
-    parallaxBackgroundInitialPosY = parseInt($(".header").css('height'));
-    parallax();
-}
 
 let hdrNavbar = $("#hdrNavbar");
 let hdrNavbarMobile = $("#hdrNavbarMobileButton");
@@ -121,4 +83,59 @@ function closeNav() {
 function openNav() {
     hdrNavbarMobile.addClass("changeMobileNavButtonState");
     hdrNavbar.css("width", "70%");
+}
+
+window.onload = function() {
+    let root = document.documentElement;
+    root.style.setProperty("--deviceHeight",
+        window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
+    let parallax = new ParallaxBgPicture($('.parallaxBg'));
+}
+
+class ParallaxBgPicture {
+    constructor(parallaxBgDOM) {
+        this.parallaxBgDOM = parallaxBgDOM;
+        this.parallaxBgInitialPosY = 0;
+        this.setBgHeight();
+        this.setParallaxBgPosY();
+        this.adjustParallaxWhenBrowserResize();
+        this.toggleParallax();
+        this.scrollParallax();
+    }
+
+    setBgHeight() {
+        let parallaxBgThumbnailWidth = parseFloat(this.parallaxBgDOM.data("thumbnail-width"));
+        let parallaxBgThumbnailHeight = parseFloat(this.parallaxBgDOM.data("thumbnail-height"));
+        let parallaxBgContainerWidth = parseFloat(this.parallaxBgDOM.css('width'));
+        this.parallaxBgDOM.css("height", parallaxBgContainerWidth * parallaxBgThumbnailHeight / parallaxBgThumbnailWidth);
+    }
+
+    setParallaxBgPosY() {
+        this.parallaxBgInitialPosY = parseFloat($(".header").css('height'));
+    }
+
+    adjustParallaxWhenBrowserResize() {
+        let self = this;
+        $(window).resize(function() {
+            self.setParallaxBgPosY();
+            self.setBgHeight();
+            self.scrollParallax();
+        });
+    }
+
+    toggleParallax() {
+        let self = this;
+
+        $(window).scroll(function() {
+            self.setParallaxBgPosY();
+            self.scrollParallax();
+        });
+    }
+
+    scrollParallax() {
+        let wScroll = parseFloat($(window).scrollTop());
+        let newBgPosY = this.parallaxBgInitialPosY - wScroll > 0 ? this.parallaxBgInitialPosY - wScroll : 0;
+        this.parallaxBgDOM.css("background-position-y", newBgPosY);
+    }
+
 }

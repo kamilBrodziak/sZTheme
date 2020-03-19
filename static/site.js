@@ -3,7 +3,6 @@ jQuery( document ).ready( function( $ ) {
     root.style.setProperty("--deviceHeight", window.screen.height * window.devicePixelRatio + "px");
     let hdrNavbar = $("header");
     let isReload = true;
-    console.log(window.innerWidth);
     let lastScrollTop = hdrNavbar.offset().top;
     let stickyNav = function(){
         let scrollTop = $(window).scrollTop();
@@ -26,7 +25,7 @@ jQuery( document ).ready( function( $ ) {
         if(!isReload) {
             parallax();
         } else {
-            isReload=false;
+            isReload = false;
         }
     });
 
@@ -34,6 +33,8 @@ jQuery( document ).ready( function( $ ) {
         setParallaxBackgroundPosY();
         setArticleHeaderHeight();
     });
+    parallax($(window).scrollTop());
+    enableMobileNavbar();
 });
 
 let parallaxBg = $('.parallaxBg');
@@ -46,38 +47,43 @@ function setArticleHeaderHeight() {
 }
 
 setArticleHeaderHeight();
-function parallax() {
-    let wScroll = $(window).scrollTop();
+function parallax(reloadScrollTop) {
+
+    let wScroll = reloadScrollTop ? reloadScrollTop : $(window).scrollTop();
     if(parallaxBackgroundInitialPosY - wScroll > 0) {
         parallaxBg.css("background-position-y", parallaxBackgroundInitialPosY - wScroll);
     } else {
         parallaxBg.css("background-position-y", 0);
     }
-    window.scrollTo(0, wScroll);
 }
 parallax();
+
 function setParallaxBackgroundPosY() {
     parallaxBackgroundInitialPosY = parseInt($(".header").css('height'));
     parallax();
 }
 
+let hdrNavbar = $("#hdrNavbar");
+let hdrNavbarMobile = $("#hdrNavbarMobileButton");
 
 
-$(document).mouseup(function(e)
-{
-    let hdrNavbar = $("#hdrNavbar");
-    let hdrNavbarMobile = $("#hdrNavbarMobileButton");
+$(document).mouseup(function(e) {
     if (hdrNavbarMobile.hasClass("changeMobileNavButtonState") && !hdrNavbar.is(e.target) && hdrNavbar.has(e.target).length === 0)
     {
         hdrNavbar.css("width", 0);
-        let hdrNavbarMobile = $("#hdrNavbarMobileButton");
         hdrNavbarMobile.removeClass("changeMobileNavButtonState")
     }
 });
 
+$(window).scroll(function() {
+   closeNav();
+});
+
 $(window).resize(function() {
-    let hdrNavbarMobile = $("#hdrNavbarMobileButton");
-    let hdrNavbar = $("#hdrNavbar");
+    closeNav();
+});
+
+function enableMobileNavbar() {
     if(hdrNavbarMobile.css("display") === "none") {
         hdrNavbarMobile.removeClass("changeMobileNavButtonState");
         $.when(hdrNavbar.removeClass("hdrNavbarMobileTransition")).then(function() {
@@ -88,16 +94,27 @@ $(window).resize(function() {
             hdrNavbar.addClass("hdrNavbarMobileTransition");
         })
     }
+}
+
+$(window).resize(function() {
+    enableMobileNavbar();
 });
 
 function closeOrOpenNav() {
-    let hdrNavbar = $("#hdrNavbar");
-    let hdrNavbarMobile = $("#hdrNavbarMobileButton");
     if(parseInt(hdrNavbar.css("width")) > 0) {
-        hdrNavbar.css("width", "0px");
-        hdrNavbarMobile.removeClass("changeMobileNavButtonState");
+        closeNav();
     } else {
-        hdrNavbarMobile.addClass("changeMobileNavButtonState");
-        hdrNavbar.css("width", "70%");
+        openNav();
     }
+}
+
+
+function closeNav() {
+    hdrNavbar.css("width", "0px");
+    hdrNavbarMobile.removeClass("changeMobileNavButtonState");
+}
+
+function openNav() {
+    hdrNavbarMobile.addClass("changeMobileNavButtonState");
+    hdrNavbar.css("width", "70%");
 }

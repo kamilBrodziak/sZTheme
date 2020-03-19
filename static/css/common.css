@@ -28,14 +28,16 @@
 }
 
 .newsletterSubmitButton {
-    background-image: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
+    background: linear-gradient(to top, #0f0f0f 20% , #191919 50%, #0f0f0f 80%);
     box-shadow: 1px 1px 2px 0 silver;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .newsletterSubmitButton:hover {
-    background-image: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
-    cursor: pointer;
+    /*background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);*/
+    background-size: 1% 70%;
+    background-position-y: 550%;
 }
 
 

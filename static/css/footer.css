@@ -36,7 +36,7 @@ footer {
     text-align: center;
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1200px) {
     #footerNewsletter {
         padding: 2% 5% 2% 20%;
     }
@@ -51,7 +51,7 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #footerNewsletter .newsletterTitle {
-        font-size: 4.5rem;
+        font-size: 320%;
     }
 }
 
@@ -64,7 +64,7 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #footerNewsletter .newsletterSubtitle {
-        font-size: 3.5rem;
+        font-size: 260%;
     }
 }
 
@@ -76,7 +76,7 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #footerNewsletter .newsletterDescription {
-        font-size: 3rem;
+        font-size: 200%;
         width: 70%;
         margin: auto;
     }
@@ -99,7 +99,7 @@ footer {
 
 @media only screen and (min-width: 1024px) {
     #footerNewsletter .newsletterForm input {
-        font-size: 3rem;
+        font-size: 250%;
     }
 }
 

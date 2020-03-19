@@ -76,11 +76,15 @@ $(document).mouseup(function(e) {
 });
 
 $(window).scroll(function() {
-   closeNav();
+    if(hdrNavbarMobile.css("display") !== "none") {
+        closeNav();
+    }
 });
 
 $(window).resize(function() {
-    closeNav();
+    if(hdrNavbarMobile.css("display") !== "none") {
+        closeNav();
+    }
 });
 
 function enableMobileNavbar() {

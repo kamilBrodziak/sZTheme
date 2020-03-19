@@ -11,8 +11,8 @@ header {
     background:
             linear-gradient(45deg, transparent 46%,rgba(114, 114, 114,0.06) 46%,rgba(94, 94, 94,0.06) 70%,transparent 70%),
             linear-gradient(135deg, transparent 59%,rgba(114, 114, 114,0.06) 59%,rgba(124, 124, 124,0.06) 91%,transparent 91%),
-            linear-gradient(135deg, transparent 30%, rgba(124, 124, 124, 0.06) 30%, rgba(114, 114, 114, 0.06) 45%, transparent 45%),
-            linear-gradient(45deg, transparent 25%, rgba(131, 131, 131, 0.1) 25%, rgba(121, 121, 121, 0.1) 40%, transparent 40%),
+            linear-gradient(135deg, transparent 13%, rgba(124, 124, 124, 0.06) 13%, rgba(114, 114, 114, 0.06) 45%, transparent 45%),
+            linear-gradient(45deg, rgba(131, 131, 131, 0.1), rgba(121, 121, 121, 0.1) 32%, transparent 32%),
             linear-gradient(90deg, #191919, #191919);
 }
 

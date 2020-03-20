@@ -165,7 +165,7 @@ class StarterSite extends Timber\Site {
         wp_deregister_script( 'wp-embed' );
         wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
         $styleVer = time();
-        wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.js?' . $styleVer, array('jquery'), null, true );
+        wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer, array('jquery'), null, true );
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);
         wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/site.css?' . $styleVer);
         wp_enqueue_style('casino-style6', get_stylesheet_directory_uri() . '/static/css/siteLayout.css?' . $styleVer);

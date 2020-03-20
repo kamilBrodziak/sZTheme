@@ -1,17 +1,15 @@
-jQuery( document ).ready( function( $ ) {
-
-
+$( document ).ready( function() {
     let hdrNavbar = $("header");
     let lastScrollTop = hdrNavbar.offset().top;
     let stickyNav = function(){
         let scrollTop = $(window).scrollTop();
-        if (scrollTop <= parseInt(hdrNavbar.css("height"))) {
+        if (scrollTop <= parseFloat(hdrNavbar.css("height"))) {
             hdrNavbar.removeClass('stickyTransition');
             hdrNavbar.removeClass('stickyFade');
-        } else if (lastScrollTop >= scrollTop || scrollTop <= parseInt(hdrNavbar.css("height"))) {
+        } else if (lastScrollTop >= scrollTop || scrollTop <= parseFloat(hdrNavbar.css("height"))) {
             hdrNavbar.removeClass('stickyFade');
             hdrNavbar.addClass('stickyTransition');
-        } else if(scrollTop > parseInt(hdrNavbar.css("height")) ){
+        } else if(scrollTop > parseFloat(hdrNavbar.css("height")) ){
             hdrNavbar.addClass('stickyFade');
             hdrNavbar.addClass('stickyTransition');
         }
@@ -22,75 +20,16 @@ jQuery( document ).ready( function( $ ) {
     $(window).scroll(function() {
         stickyNav();
     });
-    enableMobileNavbar();
+
+    let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"));
 });
-
-let hdrNavbar = $("#hdrNavbar");
-let hdrNavbarMobile = $("#hdrNavbarMobileButton");
-
-
-$(document).mouseup(function(e) {
-    if (hdrNavbarMobile.hasClass("changeMobileNavButtonState") && !hdrNavbar.is(e.target) && hdrNavbar.has(e.target).length === 0)
-    {
-        hdrNavbar.css("width", 0);
-        hdrNavbarMobile.removeClass("changeMobileNavButtonState")
-    }
-});
-
-$(window).scroll(function() {
-    if(hdrNavbarMobile.css("display") !== "none") {
-        closeNav();
-    }
-});
-
-$(window).resize(function() {
-    if(hdrNavbarMobile.css("display") !== "none") {
-        closeNav();
-    }
-});
-
-function enableMobileNavbar() {
-    if(hdrNavbarMobile.css("display") === "none") {
-        hdrNavbarMobile.removeClass("changeMobileNavButtonState");
-        $.when(hdrNavbar.removeClass("hdrNavbarMobileTransition")).then(function() {
-            hdrNavbar.css("width", "100%");
-        })
-    } else {
-        $.when(hdrNavbar.css("width", "0px")).then(function() {
-            hdrNavbar.addClass("hdrNavbarMobileTransition");
-        })
-    }
-}
-
-$(window).resize(function() {
-    enableMobileNavbar();
-});
-
-function closeOrOpenNav() {
-    if(parseInt(hdrNavbar.css("width")) > 0) {
-        closeNav();
-    } else {
-        openNav();
-    }
-}
-
-
-function closeNav() {
-    hdrNavbar.css("width", "0px");
-    hdrNavbarMobile.removeClass("changeMobileNavButtonState");
-}
-
-function openNav() {
-    hdrNavbarMobile.addClass("changeMobileNavButtonState");
-    hdrNavbar.css("width", "70%");
-}
 
 window.onload = function() {
     let root = document.documentElement;
     root.style.setProperty("--deviceHeight",
         window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
     let parallax = new ParallaxBgPicture($('.parallaxBg'));
-}
+};
 
 class ParallaxBgPicture {
     constructor(parallaxBgDOM) {
@@ -111,7 +50,7 @@ class ParallaxBgPicture {
     }
 
     setParallaxBgPosY() {
-        this.parallaxBgInitialPosY = parseFloat($(".header").css('height'));
+        this.parallaxBgInitialPosY = parseFloat($("header").css('height'));
     }
 
     adjustParallaxWhenBrowserResize() {
@@ -137,5 +76,76 @@ class ParallaxBgPicture {
         let newBgPosY = this.parallaxBgInitialPosY - wScroll > 0 ? this.parallaxBgInitialPosY - wScroll : 0;
         this.parallaxBgDOM.css("background-position-y", newBgPosY);
     }
+}
 
+class MobileNav {
+    constructor(mobileNavButton, navbar) {
+        this.mobileNavButton = mobileNavButton;
+        this.navbar = navbar;
+        this.enableMobileNavbarButton();
+        this.closeNavByClickEvent();
+        this.closeNavWhenResizeEvent();
+        this.closeNavWhenScrollEvent();
+        this.changeNavMode();
+    }
+
+    closeNavByClickEvent() {
+        let self = this;
+        $(document).mouseup(function(e) {
+            if (self.mobileNavButton.hasClass("changeMobileNavButtonState") && !self.mobileNavButton.is(e.target) &&
+                !self.navbar.is(e.target) && self.navbar.has(e.target).length === 0) {
+                    self.closeNav();
+            }
+        });
+    }
+
+    closeNavWhenResizeEvent() {
+        let self = this;
+        $(window).resize(function() {
+            self.changeNavMode();
+        });
+    }
+
+    closeNavWhenScrollEvent() {
+        let self = this;
+        $(window).scroll(function() {
+            if(self.mobileNavButton.css("display") !== "none") {
+                self.closeNav();
+            }
+        });
+    }
+
+    changeNavMode() {
+        let self = this, doneCallback, promise;
+        this.mobileNavButton.removeClass("changeMobileNavButtonState");
+        if(this.mobileNavButton.css("display") === "none") {
+            promise = () => {self.navbar.removeClass("hdrNavbarMobileTransition")};
+            doneCallback = () => {self.navbar.css("width","100%")};
+        } else {
+            promise = () => {self.navbar.css("width", 0)};
+            doneCallback = () => {self.navbar.addClass("hdrNavbarMobileTransition")};
+        }
+        $.when(promise()).then(doneCallback);
+    }
+
+    enableMobileNavbarButton() {
+        let self = this;
+        this.mobileNavButton.on("click", function() {
+            if(parseFloat(self.navbar.css("width")) > 0) {
+                self.closeNav();
+            } else {
+                self.openNav();
+            }
+        });
+    }
+
+    closeNav() {
+        this.navbar.css("width", 0);
+        this.mobileNavButton.removeClass("changeMobileNavButtonState");
+    }
+
+    openNav() {
+        this.mobileNavButton.addClass("changeMobileNavButtonState");
+        this.navbar.css("width", "70%");
+    }
 }

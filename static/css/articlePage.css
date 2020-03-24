@@ -92,7 +92,7 @@
 
 /** POST PAGINATION**/
 #articlePagination {
-    padding: 0.5% 1% 0.5% 1%;
+    padding: 0.5% 1% 20px 1%;
     box-sizing: border-box;
     grid-area: articlePagination;
     display: flex;
@@ -101,11 +101,23 @@
 }
 
 #articlePaginationPrev, #articlePaginationNext {
-    width: 48%;
+    width: 46%;
 }
 
-#articlePagination .gradientButton {
-    box-shadow: 0 0 10px 1px black;
+@media only screen and (min-width: 1024px) {
+    #articlePaginationPrev, #articlePaginationNext {
+        width: 48%;
+    }
+}
+
+#articlePagination .buttonGradient {
+    transition: all 0.3s ease;
+}
+
+@media only screen and (min-width: 1024px) {
+    #articlePagination .buttonGradient:hover {
+        box-shadow: 0 10px 20px 10px #191919;
+    }
 }
 
 #articlePaginationNext {

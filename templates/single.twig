@@ -14,18 +14,18 @@
 				</div>
 			</section>
 			<section id="articlePagination">
-				<div id="articlePaginationPrev" class="{% if post.prev != null %}gradientButton{% endif %}">
+				<div id="articlePaginationPrev" class="{% if post.prev != null %}buttonGradient{% endif %}">
 					{% if post.prev != null %}
-						<a id="articlePaginationPrevLink" href="{{ post.prev.link }}" class="gradientButtonAnchor">
+						<a id="articlePaginationPrevLink" href="{{ post.prev.link }}" class="">
 							<span>Poprzedni post:</span>
 							<span>{{post.prev.title}}</span>
 						</a>
 					{% endif %}
 				</div>
 {#				<a href="{{ post.meta('prevPost').link }}">{{post.meta('prevPost').title}}</a>#}
-				<div id="articlePaginationNext" class="{% if post.next != null %}gradientButton{% endif %}">
+				<div id="articlePaginationNext" class="{% if post.next != null %}buttonGradient{% endif %}">
 					{% if post.next != null %}
-						<a id="articlePaginationNextLink" href="{{ post.next.link }}" class="gradientButtonAnchor">
+						<a id="articlePaginationNextLink" href="{{ post.next.link }}" class="">
 							<span>Następny post:</span>
 							<span>{{post.next.title}}</span>
 {#							<span>{{ post.next.get_preview(25) }}</span>#}

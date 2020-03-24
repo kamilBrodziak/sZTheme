@@ -251,6 +251,7 @@ header {
     flex-direction: column;
     position: relative;
     border: 5px groove #282828;
+    background: var(--customGoldLeftBorder), var(--customGoldRightBorder);
 }
 
 @media only screen and (min-width: 1024px) {
@@ -299,7 +300,8 @@ header {
 
 @media only screen and (min-width: 1024px) {
     .hdrNavbarListItem::before {
-        background: linear-gradient(135deg, rgba(15, 15, 15, 0.7) 12.5%,
+        background: var(--customGoldLeftBorder), var(--customGoldRightBorder),
+                linear-gradient(135deg, rgba(15, 15, 15, 0.7) 12.5%,
         rgba(21, 21, 21, 0.7) 12.5%, rgba(21, 21, 21, 0.7) 25%,
         rgba(28, 28, 28, 0.7) 25%, rgba(28, 28, 28, 0.7) 37.5%,
         rgba(34, 34, 34, 0.7) 37.5%, rgba(34, 34, 34, 0.7) 50%,

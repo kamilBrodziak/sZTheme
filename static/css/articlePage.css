@@ -1,4 +1,7 @@
 /** POST **/
+:root {
+    --bgHeight: 0;
+}
 .postTypePost {
     display: grid;
     grid-template-areas: "articleContent" "articlePagination";
@@ -8,17 +11,22 @@
     background-image: linear-gradient(45deg, #9b9b9b -30%, #ffffff 50%, #9b9b9b 130%);
 }
 
+.postTypePage {
+    background-image: linear-gradient(45deg, #9b9b9b -30%, #ffffff 50%, #9b9b9b 130%);
+    box-sizing: border-box;
+}
+
 #articleContent {
     grid-area: articleContent;
 }
 
 #articleHeader {
-    /*background: linear-gradient(to bottom, rgba(25, 25, 25, 0.85), rgba(45, 45, 55, 0.85) 50%, rgba(30, 30, 35, 0.85)), #020037;*/
     position: relative;
     overflow: hidden;
-    /*height: auto;*/
+    font-size: 450%;
     width: 100%;
-    /*height: 0;*/
+    height: 0;
+    padding-bottom: 35%;
 }
 
 .parallaxBg {
@@ -26,35 +34,41 @@
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position-y: 0;
-    /*height: 0;*/
-}
-
-#articleThumbnail {
-    width: 100%;
-    height: auto;
-    display: block;
-    /*display: none;*/
-    /*visibility: hidden;*/
 }
 
 
 #articleH1 {
-    height: 10vh;
-    font-size: 5vh;
+    min-height: 1.5em;
+    font-size: 100%;
+    /*line-height: 1.5em;*/
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     position: absolute;
     left: 0;
-    bottom: 2vh;
     width: 100%;
     color: silver;
+    bottom: 2%;
     box-shadow: 0 0 10px 1px silver, inset 0 0 50px 10px black;
     text-shadow: 1px 1px 3px silver;
 }
 
+#pageTitle {
+    background: linear-gradient(45deg, rgba(75, 75, 75, 0.8),
+    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+    box-sizing: border-box;
+    font-size: 450%;
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 4px 0 #2d2d2d;
+    color: silver;
+}
+
 .articleBody {
-    font-size: 3vh;
+    font-size: 250%;
     height: auto;
 }
 
@@ -64,8 +78,8 @@
     rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
     padding: 0 4% 0 4%;
     box-sizing: border-box;
-    font-size: 4vh;
-    height: 8vh;
+    font-size: 150%;
+    min-height: 1.5em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,7 +141,7 @@
 #articlePaginationPrevLink, #articlePaginationNextLink  {
     width: 100%;
     height: 100%;
-    font-size: 3vh;
+    font-size: 250%;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -4,11 +4,17 @@
 	<div id="contentWrapper" class="articleContentWrapper">
 		<article class="postType{{ function('ucwords',post.post_type) }}" id="post-{{ post.ID }}">
 			<section id="articleContent">
-				<div id="articleHeader" class="parallaxBg" data-thumbnail-width="{{ post.thumbnail.width }}" data-thumbnail-height="{{ post.thumbnail.height }}"
+				{% if post.thumbnail %}
+				<div id="articleHeader"	class="parallaxBg"
+{#					 data-thumbnail-width="{{ post.thumbnail.width }}"#}
+{#					 data-thumbnail-height="{{ post.thumbnail.height }}"#}
 					 style="background-image: url({{ post.thumbnail.src }});">
 					<h1 id="articleH1">{{ post.title }}</h1>
 {#					<img id="articleThumbnail" src="{{ post.thumbnail.src }}">#}
 				</div>
+				{% else %}
+					<h1 id="pageTitle">{{post.title}}</h1>
+				{% endif %}
 				<div class="articleBody">
 					{{post.content}}
 				</div>

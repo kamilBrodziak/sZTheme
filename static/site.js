@@ -1,17 +1,20 @@
 $( document ).ready( function() {
+    let root = document.documentElement;
+    root.style.setProperty("--deviceHeight",
+        window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
+    let parallax = new ParallaxBgPicture($('.parallaxBg'));
+    parallax.toggleParallax();
     let hdrNavbar = $("header");
     let lastScrollTop = hdrNavbar.offset().top;
     let stickyNav = function(){
         let scrollTop = $(window).scrollTop();
         if (scrollTop <= parseFloat(hdrNavbar.css("height"))) {
-            hdrNavbar.removeClass('stickyTransition');
-            hdrNavbar.removeClass('stickyFade');
+            hdrNavbar.removeClass(['stickyFade', 'stickyTransition']);
         } else if (lastScrollTop >= scrollTop || scrollTop <= parseFloat(hdrNavbar.css("height"))) {
             hdrNavbar.removeClass('stickyFade');
             hdrNavbar.addClass('stickyTransition');
         } else if(scrollTop > parseFloat(hdrNavbar.css("height")) ){
-            hdrNavbar.addClass('stickyFade');
-            hdrNavbar.addClass('stickyTransition');
+            hdrNavbar.addClass(['stickyFade', 'stickyTransition']);
         }
         lastScrollTop = scrollTop;
     };
@@ -19,35 +22,26 @@ $( document ).ready( function() {
 
     $(window).scroll(function() {
         stickyNav();
+        console.log($(window).scrollTop());
     });
-
     let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"));
-});
 
-window.onload = function() {
-    let root = document.documentElement;
-    root.style.setProperty("--deviceHeight",
-        window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
-    let parallax = new ParallaxBgPicture($('.parallaxBg'));
-};
+});
 
 class ParallaxBgPicture {
     constructor(parallaxBgDOM) {
         this.parallaxBgDOM = parallaxBgDOM;
         this.parallaxBgInitialPosY = 0;
-        this.setBgHeight();
-        this.setParallaxBgPosY();
+        // this.setBgHeight();
         this.adjustParallaxWhenBrowserResize();
-        this.toggleParallax();
-        this.scrollParallax();
     }
 
-    setBgHeight() {
-        let parallaxBgThumbnailWidth = parseFloat(this.parallaxBgDOM.data("thumbnail-width"));
-        let parallaxBgThumbnailHeight = parseFloat(this.parallaxBgDOM.data("thumbnail-height"));
-        let parallaxBgContainerWidth = parseFloat(this.parallaxBgDOM.css('width'));
-        this.parallaxBgDOM.css("height", parallaxBgContainerWidth * parallaxBgThumbnailHeight / parallaxBgThumbnailWidth);
-    }
+    // setBgHeight() {
+    //     let parallaxBgThumbnailWidth = parseFloat(this.parallaxBgDOM.data("thumbnail-width"));
+    //     let parallaxBgThumbnailHeight = parseFloat(this.parallaxBgDOM.data("thumbnail-height"));
+    //     let parallaxBgContainerWidth = parseFloat(this.parallaxBgDOM.css('width'));
+    //     this.parallaxBgDOM.css("height", parallaxBgContainerWidth * parallaxBgThumbnailHeight / parallaxBgThumbnailWidth);
+    // }
 
     setParallaxBgPosY() {
         this.parallaxBgInitialPosY = parseFloat($("header").css('height'));
@@ -57,26 +51,26 @@ class ParallaxBgPicture {
         let self = this;
         $(window).resize(function() {
             self.setParallaxBgPosY();
-            self.setBgHeight();
-            self.scrollParallax();
+            // self.setBgHeight();
+            self.scrollParallax(parseFloat($(window).scrollTop()));
         });
     }
 
     toggleParallax() {
         let self = this;
-
+        this.setParallaxBgPosY();
+        this.scrollParallax($(window).scrollTop());
         $(window).scroll(function() {
-            self.setParallaxBgPosY();
-            self.scrollParallax();
+            self.scrollParallax(this.scrollY);
         });
     }
 
-    scrollParallax() {
-        let wScroll = parseFloat($(window).scrollTop());
-        let newBgPosY = this.parallaxBgInitialPosY - wScroll > 0 ? this.parallaxBgInitialPosY - wScroll : 0;
+    scrollParallax(scrollY) {
+        let newBgPosY = this.parallaxBgInitialPosY - scrollY > 0 ? this.parallaxBgInitialPosY - scrollY : 0;
         this.parallaxBgDOM.css("background-position-y", newBgPosY);
     }
 }
+
 
 class MobileNav {
     constructor(mobileNavButton, navbar) {

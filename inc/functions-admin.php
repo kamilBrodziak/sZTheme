@@ -8,6 +8,8 @@ function szczesliwyZwiazekAddAdminPage() {
 	                 'sZThemeSettings', 'sZThemeSettingsPage');
 	add_submenu_page('sZTheme', 'Newsletter','Newsletter', 'manage_options',
 	                 'sZThemeNewsletter', 'sZThemeNewsletterPage');
+	add_submenu_page('sZTheme', 'Custom css','Custom css', 'manage_options',
+	                 'sZThemeCustomCss', 'sZThemeCustomCssPage');
 
 	add_action('admin_init', 'sZThemeNewsletterSettings');
 	add_action('admin_init', 'sZThemeSettings');
@@ -46,3 +48,10 @@ function sanitizeInput($input) {
 	return sanitize_text_field($input);
 }
 
+function generateHTMLElement($elemType, $inputAttr, $closingTag = true, $elemValue='') {
+	$inputHtml = "<$elemType ";
+	foreach ($inputAttr as $attrName => $attrValue) {
+		$inputHtml .= "$attrName= '$attrValue' ";
+	}
+	return ($closingTag) ? "$inputHtml />" :  "$inputHtml >$elemValue</$elemType>" ;
+}

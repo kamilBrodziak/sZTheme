@@ -48,40 +48,124 @@ function sZThemeFooterNewsletterSection() {}
 //====================================
 
 // HEADER SECTION FIELDS
+function sZThemeHdrNewsletterActionLinkOptionName() {
+	return 'hdrNewsletterActionLink';
+}
+
+function sZThemeHdrNewsletterActionLinkOptionValue() {
+	return esc_attr( get_option(sZThemeHdrNewsletterActionLinkOptionName()));
+}
+
 function sZThemeHdrNewsletterActionLink() {
-	$optionName = 'hdrNewsletterActionLink';
-	$optionValue = esc_attr( get_option($optionName));
-	echo '<input type="text" size=90 name="' . $optionName . '" value="' . $optionValue . '" placeholder="Header newsletter action link">';
+	echo generateHTMLElement("input" ,
+		[
+			'type' => 'text',
+			'name' => sZThemeHdrNewsletterActionLinkOptionName(),
+			'value' => sZThemeHdrNewsletterActionLinkOptionValue(),
+			'size' => '100',
+			'placeholder' => 'Header newsletter action link'
+		]
+	);
+}
+
+function sZThemeHdrNewsletterH1OptionName() {
+	return 'hdrNewsletterH1';
+}
+
+function sZThemeHdrNewsletterH1OptionValue() {
+	return esc_attr( get_option(sZThemeHdrNewsletterH1OptionName()));
 }
 
 function sZThemeHdrNewsletterH1() {
-	$optionName = 'hdrNewsletterH1';
-	$optionValue = esc_attr( get_option($optionName));
-	echo '<input type="text" maxlength="80" size=90 name="' . $optionName . '" value="' . $optionValue . '" placeholder="Header text">
-			<p class="description">Maximum 80 chars!</p>';
+	echo generateHTMLElement("input" ,
+		[
+			'type' => 'text',
+			'name' => sZThemeHdrNewsletterH1OptionName(),
+			'value' => sZThemeHdrNewsletterH1OptionValue(),
+			'size' => '100',
+			'maxlength' => '80',
+			'placeholder' => 'Header text'
+		]
+	);
+	echo '<p class="description">Maximum 80 chars!</p>';
 }
 
 // FOOTER SECTION FIELDS
+function sZThemeFooterNewsletterActionLinkOptionName() {
+	return 'footerNewsletterActionLink';
+}
+
+function sZThemeFooterNewsletterActionLinkOptionValue() {
+	return esc_attr( get_option(sZThemeFooterNewsletterActionLinkOptionName()));
+}
+
 function sZThemeFooterNewsletterActionLink() {
-	$optionName = 'footerNewsletterActionLink';
-	$optionValue = esc_attr( get_option($optionName));
-	echo '<input type="text" size=90 name="' . $optionName . '" value="' . $optionValue . '" placeholder="Footer newsletter action link">';
+	echo generateHTMLElement("input" ,
+		[
+			'type' => 'text',
+			'name' => sZThemeFooterNewsletterActionLinkOptionName(),
+			'value' => sZThemeFooterNewsletterActionLinkOptionValue(),
+			'size' => '100',
+			'placeholder' => 'Footer newsletter action link'
+		]
+	);
+}
+
+function sZThemeFooterNewsletterH1OptionName() {
+	return 'footerNewsletterH1';
+}
+
+function sZThemeFooterNewsletterH1OptionValue() {
+	return esc_attr( get_option(sZThemeFooterNewsletterH1OptionName()));
 }
 
 function sZThemeFooterNewsletterH1() {
-	$optionName = 'footerNewsletterH1';
-	$optionValue = esc_attr( get_option($optionName));
-	echo '<input type="text" name="' . $optionName . '" value="' . $optionValue . '" placeholder="H1 text"><br>';
+	echo generateHTMLElement("input" ,
+		[
+			'type' => 'text',
+			'name' => sZThemeFooterNewsletterH1OptionName(),
+			'value' => sZThemeFooterNewsletterH1OptionValue(),
+			'size' => '100',
+			'placeholder' => 'Header text'
+		]
+	);
+}
+
+function sZThemeFooterNewsletterH2OptionName() {
+	return 'footerNewsletterH2';
+}
+
+function sZThemeFooterNewsletterH2OptionValue() {
+	return esc_attr( get_option(sZThemeFooterNewsletterH2OptionName()));
 }
 
 function sZThemeFooterNewsletterH2() {
-	$optionName = 'footerNewsletterH2';
-	$optionValue = esc_attr( get_option($optionName));
-	echo '<input type="text" name="' . $optionName . '" value="' . $optionValue . '" placeholder="H2 text"><br>';
+	echo generateHTMLElement("input" ,
+         [
+             'type' => 'text',
+             'name' => sZThemeFooterNewsletterH2OptionName(),
+             'value' => sZThemeFooterNewsletterH2OptionValue(),
+             'size' => '100',
+             'placeholder' => 'Subheader text'
+         ]
+	);
+}
+
+function sZThemeFooterNewsletterDescOptionName() {
+	return 'footerNewsletterDesc';
+}
+
+function sZThemeFooterNewsletterDescOptionValue() {
+	return esc_attr( get_option(sZThemeFooterNewsletterDescOptionName()));
 }
 
 function sZThemeFooterNewsletterDesc() {
-	$optionName = 'footerNewsletterDesc';
-	$optionValue = esc_attr( get_option( $optionName ) );
-	echo '<input type="text" name="' . $optionName . '" value="' . $optionValue . '" placeholder="Desc text"><br>';
+	echo generateHTMLElement("textarea" ,
+         [
+             'name' => sZThemeFooterNewsletterDescOptionName(),
+             'cols' => '100',
+             'rows' => '5',
+             'placeholder' => 'Description text'
+         ], false, sZThemeFooterNewsletterDescOptionValue()
+	);
 }

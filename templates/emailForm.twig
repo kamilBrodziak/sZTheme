@@ -1,0 +1,12 @@
+<form id=contactForm name="contactForm" method="post" action="{{site.url}}/dziekuje">
+    <label for="contactFormFirstName">First Name *</label>
+    <input type="text" name="contactFormFirstName" pattern="[a-zA-Z0-9 ]+" maxlength="50"
+           value="{{ fn('insertValueIntoInput', 'contactFormFirstName') }}">
+    <label for="contactFormAddress">Email Address *</label>
+    <input type="text" name="contactFormAddress" maxlength="80">
+    <label for="contactFormSubject">Email Address *</label>
+    <input type="text" name="contactFormSubject" maxlength="80">
+    <label for="contactFormMessage">Comments *</label>
+    <textarea name="contactFormMessage" maxlength="1000"></textarea>
+    <input name="contactFormSubmit" type="submit" value="Submit">
+</form>

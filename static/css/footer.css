@@ -9,17 +9,18 @@ footer {
             linear-gradient(90deg, #191919, #191919);
     border-top: 4px groove #b88f00;
     display: grid;
-    grid-template-areas: "footerNewsletter" "footerContact" "footerCopyright";
-    grid-template-rows: auto auto auto;
+    grid-template-areas: "footerNewsletter" "footerContact" "footerLinks" "footerCopyright";
+    grid-template-rows: auto auto auto auto;
     grid-template-columns: 1fr;
     padding: 1% 0 0 0;
 }
 
 @media only screen and (min-width: 1200px) {
     footer {
-        grid-template-areas: "footerNewsletter footerContact" "footerCopyright footerCopyright";
-        grid-template-rows: auto auto;
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-areas: "footerNewsletter footerContact" "footerNewsletter footerLinks"
+            "footerCopyright  footerCopyright";
+        grid-template-rows: 1fr auto auto;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -44,7 +45,7 @@ footer {
 
 @media only screen and (min-width: 1200px) {
     #footerNewsletter {
-        padding: 0 5% 2% 20%;
+        padding: 0 5% 2% 10%;
     }
 }
 
@@ -52,14 +53,13 @@ footer {
     grid-area: footerNewsletterTitle;
     padding: 0;
     font-size: 320%;
-    margin: 0 0 3% 0;
 }
 
 #footerNewsletter .newsletterSubtitle {
     grid-area: footerNewsletterSubtitle;
     padding: 0;
     font-size: 260%;
-    margin: 0 0 2% 0;
+    margin: 3% 0 2% 0;
 }
 
 #footerNewsletter .newsletterDescription {
@@ -107,20 +107,24 @@ footer {
     padding: 0 5% 2% 5%;
     text-align: center;
     background: var(--customGoldTopBorder);
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-between;*/
 }
 
 @media only screen and (min-width: 1200px) {
     #footerContact {
         text-align: left;
         background: var(--customGoldLeftBorder);
+        padding: 0 10% 2% 5%;
     }
 }
 
-@media only screen and (min-width: 1400px) {
-    #footerContact {
-        padding: 0 0 3% 5%;
-    }
-}
+/*@media only screen and (min-width: 1400px) {*/
+/*    #footerContact {*/
+/*        padding: 0 0 3% 5%;*/
+/*    }*/
+/*}*/
 
 #footerContactTitle {
     margin: 0 0 3% 0;
@@ -141,8 +145,33 @@ footer {
     font-weight: normal;
 }
 
-.footerContactLinks {
+
+
+
+
+/** Footer Links**/
+#footerLinks {
+    grid-area: footerLinks;
+    color: silver;
+    padding: 1% 10% 1% 5%;
+    box-sizing: border-box;
+}
+
+#footerLinksList {
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#footerLinksList li a{
+    color: silver;
+}
+
+@media only screen and (min-width: 1200px) {
+    #footerLinksList {
+        font-size: 150%;
+    }
 }
 
 

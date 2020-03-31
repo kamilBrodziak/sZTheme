@@ -20,18 +20,18 @@ function sZThemeNewsletterSettings() {
 	// HEADER NEWSLETTER SECTION
 	addSectionWithFields('hdrNewsletterSection', 'Newsletter header options', 'sZThemeHeaderNewsletterSection',
 	                     $page, $newsletterGroup,
-	                     ['hdrNewsletterH1'],
-	                     ['hdrNewsletterH1'],
-	                     ['Header'],
-	                     ['sZThemeHdrNewsletterH1']);
+	                     ['hdrNewsletterActionLink', 'hdrNewsletterH1'],
+	                     ['hdrNewsletterActionLink', 'hdrNewsletterH1'],
+	                     ['Action', 'Header'],
+	                     ['sZThemeHdrNewsletterActionLink', 'sZThemeHdrNewsletterH1']);
 
 	// FOOTER NEWSLETTER SECTION
 	addSectionWithFields('footerNewsletterSection', 'Newsletter footer options', 'sZThemeFooterNewsletterSection',
 	                     $page, $newsletterGroup,
-	                     ['footerNewsletterH1', 'footerNewsletterH2', 'footerNewsletterDesc'],
-	                     ['footerNewsletterH1', 'footerNewsletterH2', 'footerNewsletterDesc'],
-	                     ['Header', 'SubHeader', 'Description'],
-	                     ['sZThemeFooterNewsletterH1', 'sZThemeFooterNewsletterH2', 'sZThemeFooterNewsletterDesc']);
+	                     ['footerNewsletterActionLink', 'footerNewsletterH1', 'footerNewsletterH2', 'footerNewsletterDesc'],
+	                     ['footerNewsletterActionLink', 'footerNewsletterH1', 'footerNewsletterH2', 'footerNewsletterDesc'],
+	                     ['Action', 'Header', 'SubHeader', 'Description'],
+	                     ['sZThemeFooterNewsletterActionLink', 'sZThemeFooterNewsletterH1', 'sZThemeFooterNewsletterH2', 'sZThemeFooterNewsletterDesc']);
 }
 
 
@@ -46,11 +46,26 @@ function sZThemeFooterNewsletterSection() {}
 //====================================
 // FIELDS
 //====================================
+
+// HEADER SECTION FIELDS
+function sZThemeHdrNewsletterActionLink() {
+	$optionName = 'hdrNewsletterActionLink';
+	$optionValue = esc_attr( get_option($optionName));
+	echo '<input type="text" size=90 name="' . $optionName . '" value="' . $optionValue . '" placeholder="Header newsletter action link">';
+}
+
 function sZThemeHdrNewsletterH1() {
 	$optionName = 'hdrNewsletterH1';
 	$optionValue = esc_attr( get_option($optionName));
 	echo '<input type="text" maxlength="80" size=90 name="' . $optionName . '" value="' . $optionValue . '" placeholder="Header text">
 			<p class="description">Maximum 80 chars!</p>';
+}
+
+// FOOTER SECTION FIELDS
+function sZThemeFooterNewsletterActionLink() {
+	$optionName = 'footerNewsletterActionLink';
+	$optionValue = esc_attr( get_option($optionName));
+	echo '<input type="text" size=90 name="' . $optionName . '" value="' . $optionValue . '" placeholder="Footer newsletter action link">';
 }
 
 function sZThemeFooterNewsletterH1() {

@@ -1,0 +1,7 @@
+{#{{post.content}}#}
+{% filter shortcodes %}
+{#{{ function('add_shortcode', 'sitepoint_contact_form', 'cf_shortcode') }}#}
+    [sitepoint_contact_form]
+
+{% endfilter %}
+{% include "emailForm.twig"  %}

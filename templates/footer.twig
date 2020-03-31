@@ -10,10 +10,19 @@
     <ul id="footerContactList">
         <li>Adres email: <a href="mailto:cornelloshop@gmail.com">cornelloshop@gmail.com</a></li>
         <li>Numer telefonu: <a href="tel:+48884674219">(+48) 884 674 219</a></li>
-        <li><a href="{{site.url}}/polityka-prywatnosci" class="footerContactLinks">Polityka prywatności</a></li>
-        <li><a href="{{site.url}}/regulamin-sklepu-internetowego" class="footerContactLinks">Regulamin sprzedaży</a></li>
-        <li><a id="footerSitemap" class="footerContactLinks">Mapa strony</a></li>
     </ul>
+    <form id=footerContactForm name="contactForm" method="post" action="page-dziekuje">
+        {% include "emailForm.twig" %}
+    </form>
+</div>
+<div id="footerLinks">
+     <ul id="footerLinksList">
+         <li><a href="{{site.url}}/polityka-prywatnosci">Polityka prywatności</a></li>
+         <li>&bull;</li>
+         <li><a href="{{site.url}}/regulamin-sklepu-internetowego">Regulamin sprzedaży</a></li>
+         <li>&bull;</li>
+         <li><a id="footerSitemap">Mapa strony</a></li>
+     </ul>
 </div>
 <div id="footerCopyright">
     <span>Copyright &#169; {{"now"|date('Y')}} szczesliwyzwiazek.pl</span>

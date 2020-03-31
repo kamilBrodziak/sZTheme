@@ -57,6 +57,8 @@ Timber::$autoescape = false;
 include ("inc/functions-admin.php");
 include ("inc/functions-adminSettings.php");
 include ("inc/functions-adminNewsletter.php");
+include ("inc/functions-adminCustomCss.php");
+include ("inc/functions-adminEnqueue.php");
 
 class StarterSite extends Timber\Site {
 	/** Add timber support. */

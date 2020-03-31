@@ -19,18 +19,12 @@ function sZThemeSettings() {
 	$settingsGroup = 'sZTheme-settings-group';
 	$page = 'sZThemeSettings';
 
-
 	addSectionWithFields('gutenbergSection', 'Enable or disable gutenberg', 'sZThemeGutenbergSection',
 	                     $page, $settingsGroup,
 	                     ['gutenbergDisable'],
 	                     ['gutenbergDisable'],
 	                     ['Disable gutenberg'],
 	                     ['sZThemeSettingsGutenberg']);
-	// disable for posts
-	//	add_filter('use_block_editor_for_post', '__return_false', 10);
-	//
-	//	// disable for post types
-	//	add_filter('use_block_editor_for_post_type', '__return_false', 10);
 }
 
 

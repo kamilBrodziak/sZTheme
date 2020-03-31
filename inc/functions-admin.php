@@ -13,7 +13,7 @@ function szczesliwyZwiazekAddAdminPage() {
 
 	add_action('admin_init', 'sZThemeNewsletterSettings');
 	add_action('admin_init', 'sZThemeSettings');
-
+//	add_action('admin_init', 'sZThemeCustomCssSettings');
 }
 
 add_action('admin_menu', 'szczesliwyZwiazekAddAdminPage');

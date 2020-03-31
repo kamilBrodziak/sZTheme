@@ -1,11 +1,8 @@
 <?php
 /**
- * Timber starter-theme
- * https://github.com/timber/starter-theme
+ * Szczesliwy Zwiazek Theme
  *
  * @package  WordPress
- * @subpackage  Timber
- * @since   Timber 0.1
  */
 
 /**
@@ -57,6 +54,10 @@ Timber::$autoescape = false;
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
  */
+include ("inc/functions-admin.php");
+include ("inc/functions-adminSettings.php");
+include ("inc/functions-adminNewsletter.php");
+
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
@@ -179,7 +180,6 @@ class StarterSite extends Timber\Site {
         wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
     }
-
 }
 
 new StarterSite();

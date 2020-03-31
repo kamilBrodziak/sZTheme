@@ -1,0 +1,7 @@
+<h1>Newsletter settings</h1>
+{{ fn('settings_errors') }}
+<form method="post" action="options.php">
+    {{ fn('settings_fields', 'sZTheme-newsletterSettings-group') }}
+    {{ fn('do_settings_sections', 'sZThemeNewsletter') }}
+    {{ fn('submit_button') }}
+</form>

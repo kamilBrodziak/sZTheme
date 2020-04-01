@@ -1,8 +1,9 @@
  <div id="footerNewsletter">
-        {% include "newsletter.twig" with {"newsletterTitle": "Poznaj ponad 20 sekretnych technik atrakcyjności!",
-            "newsletterSubtitle": "﻿I zacznij korzystać z wiedzy, o której inni nie mają pojęcia",
-            "newsletterDescription": "Odbierz ebooka Generator Atrakcyjności całkowicie za darmo wpisując najlepszy adres email i imię poniżej.
-        "}%}
+        {% include "newsletter.twig" with {
+            "newsletterTitle": fn('sZThemeFooterNewsletterH1OptionValue', fn('sZThemeFooterNewsletterH1OptionName')),
+            "newsletterSubtitle": fn('sZThemeFooterNewsletterH2OptionValue', fn('sZThemeFooterNewsletterH2OptionName')),
+            "newsletterDescription": fn('sZThemeFooterNewsletterDescOptionValue', fn('sZThemeFooterNewsletterDescOptionName'))
+        }%}
 
 </div>
 <div id="footerContact">

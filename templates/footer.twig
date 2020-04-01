@@ -1,31 +1,32 @@
  <div id="footerNewsletter">
-        {% include "newsletter.twig" with {
-            "newsletterTitle": fn('sZThemeFooterNewsletterH1OptionValue', fn('sZThemeFooterNewsletterH1OptionName')),
-            "newsletterSubtitle": fn('sZThemeFooterNewsletterH2OptionValue', fn('sZThemeFooterNewsletterH2OptionName')),
-            "newsletterDescription": fn('sZThemeFooterNewsletterDescOptionValue', fn('sZThemeFooterNewsletterDescOptionName'))
-        }%}
+    {% include "newsletter.twig" with {
+        "newsletterTitle": fn('sZThemeFooterNewsletterH1OptionValue', fn('sZThemeFooterNewsletterH1OptionName')),
+        "newsletterSubtitle": fn('sZThemeFooterNewsletterH2OptionValue', fn('sZThemeFooterNewsletterH2OptionName')),
+        "newsletterDescription": fn('sZThemeFooterNewsletterDescOptionValue', fn('sZThemeFooterNewsletterDescOptionName'))
+    }%}
 
 </div>
 <div id="footerContact">
-    <h4 id="footerContactTitle">Dane kontaktowe</h4>
+    <h4 id="footerContactTitle">Formularz kontaktowy</h4>
     <ul id="footerContactList">
         <li>Adres email: <a href="mailto:cornelloshop@gmail.com">cornelloshop@gmail.com</a></li>
         <li>Numer telefonu: <a href="tel:+48884674219">(+48) 884 674 219</a></li>
     </ul>
-    <form id=footerContactForm name="contactForm" method="post" action="page-dziekuje">
-        {% include "emailForm.twig" %}
-    </form>
+    {% include "emailForm.twig" %}
 </div>
+
 <div id="footerLinks">
-     <ul id="footerLinksList">
-         <li><a href="{{site.url}}/polityka-prywatnosci">Polityka prywatności</a></li>
-         <li>&bull;</li>
-         <li><a href="{{site.url}}/regulamin-sklepu-internetowego">Regulamin sprzedaży</a></li>
-         <li>&bull;</li>
-         <li><a id="footerSitemap">Mapa strony</a></li>
-     </ul>
+    <ul id="footerLinksList">
+        <li><a href="{{site.url}}/polityka-prywatnosci">Polityka prywatności</a></li>
+        <li>&bull;</li>
+        <li><a href="{{site.url}}/regulamin-sklepu-internetowego">Regulamin sprzedaży</a></li>
+        <li>&bull;</li>
+        <li><a id="footerSitemap">Mapa strony</a></li>
+    </ul>
 </div>
+
 <div id="footerCopyright">
+{#    <span> test</span>#}
     <span>Copyright &#169; {{"now"|date('Y')}} szczesliwyzwiazek.pl</span>
-    <span>Powered by <a href="wordpress.org">Wordpress</a> and <a>Kamil Brodziak</a> theme.</span>
+    <span>Powered by <a href="wordpress.org">Wordpress</a> and theme created by <a>Kamil Brodziak</a></span>
 </div>

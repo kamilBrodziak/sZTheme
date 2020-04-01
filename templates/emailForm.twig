@@ -1,12 +1,13 @@
-<form id=contactForm name="contactForm" method="post" action="{{site.url}}/dziekuje">
-    <label for="contactFormFirstName">First Name *</label>
+<form class="contactForm" name="contactForm" method="post" action="">
+{#    <label for="contactFormFirstName">Twoje imię *</label>#}
     <input type="text" name="contactFormFirstName" pattern="[a-zA-Z0-9 ]+" maxlength="50"
-           value="{{ fn('insertValueIntoInput', 'contactFormFirstName') }}">
-    <label for="contactFormAddress">Email Address *</label>
-    <input type="text" name="contactFormAddress" maxlength="80">
-    <label for="contactFormSubject">Email Address *</label>
-    <input type="text" name="contactFormSubject" maxlength="80">
-    <label for="contactFormMessage">Comments *</label>
-    <textarea name="contactFormMessage" maxlength="1000"></textarea>
-    <input name="contactFormSubmit" type="submit" value="Submit">
+            placeholder="Twoje imię" required>
+{#    value="{{ fn('insertValueIntoInput', 'contactFormFirstName') }}"#}
+{#    <label for="contactFormAddress">Adres Email *</label>#}
+    <input type="email" name="contactFormAddress" maxlength="80" placeholder="Email" required>
+{#    <label for="contactFormTitle">Tytuł *</label>#}
+{#    <input type="text" name="contactFormTitle" maxlength="80" placeholder="Tytuł">#}
+{#    <label for="contactFormMessage">Wiadomość *</label>#}
+    <textarea rows=7 name="contactFormMessage" maxlength="1000" placeholder="Wiadomość"></textarea>
+    <input class="contactFormSubmit" name="contactFormSubmit" type="submit" value="Wyślij" required>
 </form>

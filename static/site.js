@@ -4,28 +4,46 @@ $( document ).ready( function() {
         window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
     let parallax = new ParallaxBgPicture($('.parallaxBg'));
     parallax.toggleParallax();
-    let hdrNavbar = $("header");
-    let lastScrollTop = hdrNavbar.offset().top;
-    let stickyNav = function(){
-        let scrollTop = $(window).scrollTop();
-        if (scrollTop <= parseFloat(hdrNavbar.css("height"))) {
-            hdrNavbar.removeClass(['stickyFade', 'stickyTransition']);
-        } else if (lastScrollTop >= scrollTop || scrollTop <= parseFloat(hdrNavbar.css("height"))) {
-            hdrNavbar.removeClass('stickyFade');
-            hdrNavbar.addClass('stickyTransition');
-        } else if(scrollTop > parseFloat(hdrNavbar.css("height")) ){
-            hdrNavbar.addClass(['stickyFade', 'stickyTransition']);
+    let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"), $("header"));
+    mobileNav.addHeaderFade();
+    let contactForm = $('.contactForm');
+    contactForm.on('submit', function (e) {
+        e.preventDefault();
+        let form = $(this),
+            name = form.find('#name').val(),
+            email = form.find('#email').val(),
+            message = form.find('#message').val(),
+            ajaxUrl = form.data('url');
+        console.log(message);
+        if(name == '' || email == '' || message == '') {
+            console.log('required inputs are empty');
+            return;
         }
-        lastScrollTop = scrollTop;
-    };
-    stickyNav();
 
-    $(window).scroll(function() {
-        stickyNav();
-        console.log($(window).scrollTop());
+        $.ajax({
+            url: ajaxUrl,
+            type: 'post',
+            data: {
+                name: name,
+                email: email,
+                message: message,
+                action: 'sendUserEmail'
+            },
+            error: function (response) {
+                console.log(response);
+            },
+            success: function (response) {
+                console.log(response);
+
+            }
+        });
+
+        form.find(".contactFormSuccessInfo").addClass("contactFormSuccessInfoDisplay");
+        setTimeout(function() {
+            form.find(".contactFormSuccessInfo").removeClass("contactFormSuccessInfoDisplay");
+        }, 2000);
     });
-    let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"));
-
+    
 });
 
 class ParallaxBgPicture {
@@ -73,9 +91,11 @@ class ParallaxBgPicture {
 
 
 class MobileNav {
-    constructor(mobileNavButton, navbar) {
+    constructor(mobileNavButton, navbar, header) {
         this.mobileNavButton = mobileNavButton;
         this.navbar = navbar;
+        this.header = header;
+        this.lastScrollTop = header.offset().top;
         this.enableMobileNavbarButton();
         this.closeNavByClickEvent();
         this.closeNavWhenResizeEvent();
@@ -130,6 +150,28 @@ class MobileNav {
             } else {
                 self.openNav();
             }
+        });
+    }
+
+    // let lastScrollTop = hdrNavbar.offset().top;
+    headerFade(){
+        let scrollTop = $(window).scrollTop();
+        if (scrollTop <= parseFloat(this.header.css("height"))) {
+            this.header.removeClass(['stickyFade', 'stickyTransition']);
+        } else if (this.lastScrollTop >= scrollTop || scrollTop <= parseFloat(this.header.css("height"))) {
+            this.header.removeClass('stickyFade');
+            this.header.addClass('stickyTransition');
+        } else if(scrollTop > parseFloat(this.header.css("height")) ){
+            this.header.addClass(['stickyFade', 'stickyTransition']);
+        }
+        this.lastScrollTop = scrollTop;
+    };
+
+    addHeaderFade() {
+        this.headerFade();
+        let self = this;
+        $(window).scroll(function() {
+            self.headerFade();
         });
     }
 

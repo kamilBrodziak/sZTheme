@@ -156,6 +156,7 @@ footer {
     outline: none;
     text-align: center;
     color: silver;
+    position: relative;
 }
 
 #footerContact .contactForm input:not([type="submit"]) {
@@ -164,7 +165,7 @@ footer {
     border-bottom: 1px solid silver;
 }
 
-#footerContact .contactForm input, #footerContact .contactForm textarea {
+#footerContact .contactForm input, #footerContact .contactForm #message {
     display: block;
     box-sizing: border-box;
     padding: 1% 0 1% 0;
@@ -178,7 +179,7 @@ footer {
     line-height: 100%;
 }
 
-#footerContact .contactForm textarea {
+#footerContact .contactForm #message {
     width: 80%;
     /*font-size: 200%;*/
     border: 5px groove #282828;
@@ -188,18 +189,44 @@ footer {
     /*line-height: 300%;*/
 }
 
-#footerContact .contactForm .contactFormSubmit {
+#footerContact .contactForm #submit {
     line-height: 200%;
     background: linear-gradient(to top, #0f0f0f 20% , #191919 50%, #0f0f0f 80%);
     box-shadow: 1px 1px 2px 0 silver;
     font-weight: bold;
     cursor: pointer;
 }
-#footerContact .contactForm .contactFormSubmit:hover {
+#footerContact .contactForm #submit:hover {
     background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
     background-size: 1% 70%;
     background-position-y: 550%;
 }
+
+.tooltip {
+    position:absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+#footerContact .contactForm .contactFormSuccessInfo {
+    display: none;
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    border: 5px groove #282828;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    font-size: 250%;
+}
+
+#footerContact .contactForm .contactFormSuccessInfoDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 

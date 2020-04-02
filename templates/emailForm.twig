@@ -1,13 +1,16 @@
-<form class="contactForm" name="contactForm" method="post" action="">
+<form class="contactForm" name="contactForm" method="post" action="#" data-url="{{ fn('admin_url', 'admin-ajax.php') }}">
 {#    <label for="contactFormFirstName">Twoje imię *</label>#}
-    <input type="text" name="contactFormFirstName" pattern="[a-zA-Z0-9 ]+" maxlength="50"
-            placeholder="Twoje imię" required>
-{#    value="{{ fn('insertValueIntoInput', 'contactFormFirstName') }}"#}
-{#    <label for="contactFormAddress">Adres Email *</label>#}
-    <input type="email" name="contactFormAddress" maxlength="80" placeholder="Email" required>
-{#    <label for="contactFormTitle">Tytuł *</label>#}
-{#    <input type="text" name="contactFormTitle" maxlength="80" placeholder="Tytuł">#}
-{#    <label for="contactFormMessage">Wiadomość *</label>#}
-    <textarea rows=7 name="contactFormMessage" maxlength="1000" placeholder="Wiadomość"></textarea>
-    <input class="contactFormSubmit" name="contactFormSubmit" type="submit" value="Wyślij" required>
+    <div class="contactFormSuccessInfo">Twoja wiadomość została wysłana pomyślnie!</div>
+{#    <div>Wystąpił problem z Twoją wiadomością, spróbuj ponownie</div>#}
+    <input type="text" id="name" name="name" pattern="[a-zA-Z0-9 ]+" maxlength="50"
+           oninvalid="this.setCustomValidity('Proszę wprowadź swoje imię używając tylko liter.')"
+           oninput="this.setCustomValidity('')"
+           placeholder="Twoje imię*" required>
+    <input type="email" id="email" name="email" maxlength="80" placeholder="Twój email*"
+           pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required
+           oninvalid="this.setCustomValidity('Proszę wprowadź poprawny email. Przykład: nazwa@gmail.com')"
+           oninput="this.setCustomValidity('')"
+    >
+    <textarea id="message" name="message" maxlength="1000" placeholder="Wiadomość*" rows=7></textarea>
+    <input id="submit" name="submit" type="submit" value="Wyślij" required>
 </form>

@@ -59,6 +59,7 @@ include ("inc/functions-adminSettings.php");
 include ("inc/functions-adminNewsletter.php");
 include ("inc/functions-adminCustomCss.php");
 include ("inc/functions-adminEnqueue.php");
+include ("inc/ajax.php");
 
 class StarterSite extends Timber\Site {
 	/** Add timber support. */

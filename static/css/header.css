@@ -250,8 +250,7 @@ header {
     display: flex;
     flex-direction: column;
     position: relative;
-    border: 5px groove #282828;
-    background: var(--customGoldLeftBorder), var(--customGoldRightBorder);
+    background: var(--customGoldBottomBorder), var(--customGoldTopBorder);
 }
 
 @media only screen and (min-width: 1024px) {
@@ -261,6 +260,7 @@ header {
         flex-direction: row;
         position: relative;
         z-index: 4;
+        border: 5px groove #282828;
         background: var(--gradientButton);
     }
 }
@@ -284,6 +284,9 @@ header {
 
 .hdrNavbarListItem:last-child {
     box-shadow: 0 0 0 0 rgba(204,169,44, 1);
+}
+
+.pulseAnimationButton {
     animation: pulse 3s infinite;
     animation-delay: 1s;
 }
@@ -325,6 +328,7 @@ header {
     font-size: 250%;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: silver;
     font-weight: bold;
     width: 100%;

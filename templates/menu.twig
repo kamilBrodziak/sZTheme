@@ -1,11 +1,19 @@
 {% if menu %}
 	<ul {% if menuLocation %} id="{{ menuLocation }}NavbarList" {% endif %}>
 		{% for item in items %}
-		<li class="{{ item.classes | join(' ') }} {% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %}">
-			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }} {% if item.title == "Sklep" %} {% endif %}</a>
-{#			{% include "menu.twig" with {'items': item.children} %}#}
-{#			{% if item.title != "Sklep" %}  {% endif %}#}
-		</li>
-	{% endfor %}
+			<li class="{{ item.classes | join(' ') }} {% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %}{% if item.title == 'Sklep' and navShopItemAnimation != 'disabled' %} {{ navShopItemAnimation }} {% endif %}">
+{#				animationButton #}
+				<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+
+				{% if item.title == "Sklep" and navShopItemAnimation == 'snakeAnimationButton' %}
+					<div class="leftButtonAnimation"></div>
+					<div class="rightButtonAnimation"></div>
+					<div class="topButtonAnimation"></div>
+					<div class="bottomButtonAnimation"></div>
+				{% endif %}
+{#				{% include "menu.twig" with {'items': item.children} %}#}
+{#				{% if item.title != "Sklep" %}  {% endif %}#}
+			</li>
+		{% endfor %}
 	</ul>
 {% endif %}

@@ -31,6 +31,12 @@ function sZThemeSettings() {
 	                     ['tableOfContents'],
 	                     ['Enable table of contents layout'],
 	                     ['sZThemeSettingsTableOfContents']);
+	addSectionWithFields('menuShopAnimationSection', 'Choose animation for shop menu item', 'sZThemeShopMenuAnimationSection',
+	                     $page, $settingsGroup,
+	                     ['shopMenuAnimation'],
+	                     ['shopMenuAnimation'],
+	                     ['Choose animation'],
+	                     ['sZThemeSettingsShopMenuAnimation']);
 }
 
 
@@ -39,6 +45,7 @@ function sZThemeSettings() {
 //====================================
 function sZThemeGutenbergSection() {}
 function sZThemeTableOfContentsSection() {}
+function sZThemeShopMenuAnimationSection() {}
 
 //====================================
 // FIELDS
@@ -106,4 +113,44 @@ function sZThemeSettingsTableOfContents() {
              ]
 		);
 	}
+}
+
+function sZThemeSettingsShopMenuOptionName() {
+	return 'shopMenuAnimation';
+}
+
+function sZThemeSettingsShopMenuOptionValue() {
+	return esc_attr( get_option(sZThemeSettingsShopMenuOptionName()));
+}
+
+function sZThemeSettingsShopMenuAnimation() {
+	$isSelected = [];
+	$isSelected['disabled'] = '';
+	$isSelected['pulseAnimationButton'] = '';
+	$isSelected['snakeAnimationButton'] = '';
+	$isSelected[sZThemeSettingsShopMenuOptionValue()] = 'selected';
+	$options = [];
+	$options['disabled'] = generateHTMLElement("option",
+		[
+			'name'=>'disabled',
+			'value'=>'disabled',
+			$isSelected['disabled'] => $isSelected['disabled']
+		], false, "Disabled");
+	$options['pulseAnimationButton'] = generateHTMLElement("option",
+           [
+               'name'=>'pulseAnimationButton',
+               'value'=>'pulseAnimationButton',
+               $isSelected['pulseAnimationButton'] => $isSelected['pulseAnimationButton']
+           ], false, "Pulse");
+	$options['snakeAnimationButton'] = generateHTMLElement("option",
+           [
+               'name'=>'snakeAnimationButton',
+               'value'=>'snakeAnimationButton',
+               $isSelected['snakeAnimationButton'] => $isSelected['snakeAnimationButton']
+           ], false, 'Snake');
+	echo generateHTMLElement("select" ,
+         [
+             'name' => sZThemeSettingsShopMenuOptionName(),
+         ], false, $options['disabled'] . $options['pulseAnimationButton'] . $options['snakeAnimationButton']
+	);
 }

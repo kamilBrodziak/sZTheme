@@ -179,8 +179,9 @@ class StarterSite extends Timber\Site {
         wp_enqueue_style('casino-style4', get_stylesheet_directory_uri() . '/static/css/footer.css?' . $styleVer);
         wp_enqueue_style('casino-style5', get_stylesheet_directory_uri() . '/static/css/articlePage.css?' . $styleVer);
         wp_enqueue_style('casino-style7', get_stylesheet_directory_uri() . '/static/css/common.css?' . $styleVer);
+	    wp_enqueue_style('casino-style8', get_stylesheet_directory_uri() . '/static/css/tableOfContentsPage.css?' . $styleVer);
 
-        wp_dequeue_style( 'wp-block-library' );
+	    wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
     }
 }

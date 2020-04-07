@@ -25,6 +25,12 @@ function sZThemeSettings() {
 	                     ['gutenbergDisable'],
 	                     ['Disable gutenberg'],
 	                     ['sZThemeSettingsGutenberg']);
+	addSectionWithFields('tableOfContentsSection', 'Enable or disable table of contents layout', 'sZThemeTableOfContentsSection',
+	                     $page, $settingsGroup,
+	                     ['tableOfContents'],
+	                     ['tableOfContents'],
+	                     ['Enable table of contents layout'],
+	                     ['sZThemeSettingsTableOfContents']);
 }
 
 
@@ -32,21 +38,72 @@ function sZThemeSettings() {
 // SECTIONS
 //====================================
 function sZThemeGutenbergSection() {}
-
+function sZThemeTableOfContentsSection() {}
 
 //====================================
 // FIELDS
 //====================================
+
+//GUTENBERG
 $optionName = 'gutenbergDisable';
 $isGutenbergDisabled = esc_attr( get_option($optionName));
 if($isGutenbergDisabled) {
 	add_filter('use_block_editor_for_post', '__return_false');
 	add_filter('use_block_editor_for_post_type', '__return_false');
 }
-function sZThemeSettingsGutenberg() {
-	$optionName = 'gutenbergDisable';
-	$isGutenbergDisabled = esc_attr( get_option($optionName));
-	$optionValue = ($isGutenbergDisabled) ? 'checked' : '';
 
-	echo '<input type="checkbox" maxlength="80" size=90 name="' . $optionName . '"' . $optionValue . ' placeholder="Header text">';
+function sZThemeSettingsGutenbergOptionName() {
+	return 'gutenbergDisable';
+}
+
+function sZThemeSettingsGutenbergOptionValue() {
+	return esc_attr( get_option(sZThemeSettingsGutenbergOptionName()));
+}
+
+function sZThemeSettingsGutenberg() {
+	if(sZThemeSettingsGutenbergOptionValue()) {
+		echo generateHTMLElement("input" ,
+             [
+                 'name' => sZThemeSettingsGutenbergOptionName(),
+                 'type' => 'checkbox',
+                 'checked' => 'checked'
+             ]
+		);
+	} else {
+		echo generateHTMLElement("input" ,
+             [
+                 'name' => sZThemeSettingsGutenbergOptionName(),
+                 'type' => 'checkbox',
+             ]
+		);
+	}
+}
+
+// TABLE OF CONTENTS
+
+function sZThemeSettingsTableOfContentsOptionName() {
+	return 'tableOfContents';
+}
+
+function sZThemeSettingsTableOfContentsOptionValue() {
+	return esc_attr( get_option(sZThemeSettingsTableOfContentsOptionName()));
+}
+
+function sZThemeSettingsTableOfContents() {
+	if(sZThemeSettingsTableOfContentsOptionValue()) {
+		echo generateHTMLElement("input" ,
+             [
+                 'name' => sZThemeSettingsTableOfContentsOptionName(),
+                 'type' => 'checkbox',
+                 'checked' => 'checked'
+             ]
+		);
+	} else {
+		echo generateHTMLElement("input" ,
+             [
+                 'name' => sZThemeSettingsTableOfContentsOptionName(),
+                 'type' => 'checkbox',
+             ]
+		);
+	}
 }

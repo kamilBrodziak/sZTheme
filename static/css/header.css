@@ -260,7 +260,7 @@ header {
         flex-direction: row;
         position: relative;
         z-index: 4;
-        border: 5px groove #282828;
+        border: var(--gradientButtonBorder);
         background: var(--gradientButton);
     }
 }
@@ -403,4 +403,31 @@ header {
 
 .changeMobileNavButtonState #hdrNavbarMobileBar3 {
     transform: rotate(45deg) translate(-50%, -50%);
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+    .hdrNavbarShopItem {
+        position: relative;
+    }
+
+    #shopPreview {
+        opacity: 0;
+        transition: all 0.3s ease;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: calc(100% + 5px);
+        right: -5px;
+        border: var(--gradientButtonBorder);
+        background: var(--gradientButton);
+        box-sizing: border-box;
+    }
+
+    .hdrNavbarShopItem:hover #shopPreview {
+        height: 60vh;
+        width: 40vw;
+        opacity: 1;
+    }
 }

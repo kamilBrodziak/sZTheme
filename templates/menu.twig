@@ -1,10 +1,12 @@
 {% if menu %}
 	<ul {% if menuLocation %} id="{{ menuLocation }}NavbarList" {% endif %}>
 		{% for item in items %}
-			<li class="{{ item.classes | join(' ') }} {% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %}{% if item.title == 'Sklep' and navShopItemAnimation != 'disabled' %} {{ navShopItemAnimation }} {% endif %}">
+			<li class="{{ item.classes | join(' ') }} {% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %}{% if item.title == 'Sklep' and navShopItemAnimation != 'disabled' %} hdrNavbarShopItem {{ navShopItemAnimation }}{% endif %}">
 {#				animationButton #}
 				<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-
+				{% if item.title == 'Sklep' %}
+					<div id="shopPreview"></div>
+				{% endif %}
 				{% if item.title == "Sklep" and navShopItemAnimation == 'snakeAnimationButton' %}
 					<div class="leftButtonAnimation"></div>
 					<div class="rightButtonAnimation"></div>

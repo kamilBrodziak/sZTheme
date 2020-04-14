@@ -25,6 +25,7 @@
             rgb(24, 24, 24) 75%, rgb(24, 24, 24) 87.5%,
             rgb(18, 18, 18) 87.5%);
     --gradientButton: var(--customGoldLeftBorder), var(--customGoldRightBorder), var(--gradientButtonWithoutBorders);
+    --gradientButtonBorder: 5px groove #282828;
 
 }
 
@@ -114,7 +115,7 @@
 
 .buttonGradient {
     background: var(--gradientButton);
-    border: 5px groove #282828;
+    border: var(--gradientButtonBorder);
     border-radius: 10px;
     box-shadow: 0 3px 2px 1px #191919;
 }

@@ -1,0 +1,114 @@
+#productList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.3);
+    width: 90%;
+    height: auto;
+    margin: 0 auto 0 auto;
+    box-sizing: border-box;
+    padding: 2rem 0 5rem 0;
+}
+
+.teaseProduct {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5% 0 5%;
+    height: auto;
+    margin: 1rem 0 2rem 0;
+}
+
+.teaseProductAnchor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.teaseProductPicture {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: auto;
+}
+
+.teaseProductTitle {
+    font-size: 300%;
+    color: silver;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/*.teaseProductAnchor:hover .teaseProductTitle {*/
+/*    color: #878787;*/
+/*    !*letter-spacing: 2px;*!*/
+/*}*/
+
+.teaseProductAnchor:hover .teaseProductPicture {
+    border-radius: 20%;
+}
+
+@media only screen and (min-width: 800px) {
+    .teaseProduct {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .teaseProduct {
+        width: 33.3333%;
+    }
+}
+
+.teaseProductPrice {
+    text-align: center;
+    color: silver;
+    font-size: 2rem;
+    height: auto;
+}
+
+.teaseProductPrice > *:only-child > *:last-child{
+    text-decoration: none;
+}
+
+.teaseProductBasketButtons {
+    color: silver;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.teaseProductBasketButtons a {
+    color: silver;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--gradientButton);
+    border: var(--gradientButtonBorder);
+    border-radius: 10px;
+    box-shadow: 0 3px 2px 1px #191919;
+}
+
+.teaseProductBasketButtons a:hover {
+    letter-spacing: 2px;
+}
+
+.teaseProductBasketButtons a:only-child {
+    width: 100%;
+}
+
+.teaseProductBasketButtons > *:not(:only-child){
+    width: 49%;
+}
+
+
+
+/* Single product */
+.singleProduct {
+    width: 100%;
+    height: auto;
+}
+

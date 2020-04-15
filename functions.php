@@ -61,12 +61,10 @@ include ("inc/functions-adminCustomCss.php");
 include ("inc/functions-adminEnqueue.php");
 include ("inc/ajax.php");
 
-//add_filter( 'woocommerce_product_single_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );
-//add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );
-//function woocommerce_custom_product_add_to_cart_text() {
-//	return __( 'Dodaj do koszyka', 'woocommerce' );
-//}
 
+/*
+ * WooCommerce
+ * */
 
 function timber_set_product( $post ) {
 	global $product;
@@ -79,7 +77,6 @@ function timber_set_product( $post ) {
 add_filter('add_to_cart_redirect', 'addToCartRedirectToCheckout');
 function addToCartRedirectToCheckout() {
 	global $woocommerce;
-//	$lw_redirect_checkout = $woocommerce->cart->get_checkout_url();
 	return $woocommerce->cart->get_checkout_url();
 }
 
@@ -108,6 +105,24 @@ function woocommerce_custom_single_add_to_cart_text() {
 }
 
 
+add_filter('woocommerce_billing_fields','wpb_custom_billing_fields');
+function wpb_custom_billing_fields( $fields = array() ) {
+	unset($fields['billing_company']);
+//	unset($fields['billing_address_1']);
+//	unset($fields['billing_address_2']);
+//	unset($fields['billing_state']);
+//	unset($fields['billing_city']);
+//	unset($fields['billing_phone']);
+//	unset($fields['billing_postcode']);
+//	unset($fields['billing_country']);
+	return $fields;
+}
+
+
+
+/*
+ * END WooCommerce
+ * */
 
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
@@ -126,39 +141,31 @@ class StarterSite extends Timber\Site {
         remove_action('wp_head', 'rest_output_link_wp_head', 10);
         remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
         remove_action('template_redirect', 'rest_output_link_header', 11, 0);
-//		add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+		/*
+		 * WooCommerce
+		 * */
 		add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 		add_filter( 'woocommerce_is_sold_individually','__return_true', 10, 2 );
 		add_filter('woocommerce_reset_variations_link', '__return_empty_string');
+		add_filter( 'wc_add_to_cart_message', '__return');
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-		//		add_filter('woocommerce_add_to_cart_sold_individually_found_in_cart', '__return_null');
-
-
-//		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-
 		add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 21 );
 		parent::__construct();
 	}
 
-
-
-	/** This is where you can register custom post types. */
 	public function register_post_types() {
 
 	}
-	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
 
 	}
 
-	/** This is where you add some context
-	 *
-	 * @param string $context context['this'] Being the Twig's {{ this }}.
-	 */
 	public function add_to_context( $context ) {
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
@@ -166,30 +173,10 @@ class StarterSite extends Timber\Site {
 	}
 
 	public function theme_supports() {
-		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
 		add_theme_support( 'title-tag' );
-
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
 		add_theme_support( 'post-thumbnails' );
-
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support(
-			'html5',
+		add_theme_support('html5',
 			array(
 //				'comment-form',
 //				'comment-list',
@@ -197,14 +184,7 @@ class StarterSite extends Timber\Site {
 //				'caption',
 			)
 		);
-
-		/*
-		 * Enable support for Post Formats.
-		 *
-		 * See: https://codex.wordpress.org/Post_Formats
-		 */
-		add_theme_support(
-			'post-formats',
+		add_theme_support('post-formats',
 			array(
 				'aside',
 				'image',
@@ -221,10 +201,7 @@ class StarterSite extends Timber\Site {
 
 	}
 
-	/** This is where you can add your own functions to twig.
-	 *
-	 * @param string $twig get extension.
-	 */
+
 	public function add_to_twig( $twig ) {
 		$twig->addExtension( new Twig\Extension\StringLoaderExtension() );
 		$twig->addFilter( new Twig\TwigFilter( 'myfoo', array( $this, 'myfoo' ) ) );
@@ -269,6 +246,7 @@ class StarterSite extends Timber\Site {
 	    wp_enqueue_style('casino-style8', get_stylesheet_directory_uri() . '/static/css/tableOfContentsPage.css?' . $styleVer);
 	    wp_enqueue_style('casino-style9', get_stylesheet_directory_uri() . '/static/css/shop.css?' . $styleVer);
 	    wp_enqueue_style('casino-style10', get_stylesheet_directory_uri() . '/static/css/singleProduct.css?' . $styleVer);
+	    wp_enqueue_style('casino-style11', get_stylesheet_directory_uri() . '/static/css/checkout.css?' . $styleVer);
 	    wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
     }

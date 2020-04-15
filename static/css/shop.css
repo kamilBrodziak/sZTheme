@@ -73,9 +73,7 @@
 
 .teaseProductBasketButtons {
     color: silver;
-    height: 5rem;
-    display: flex;
-    justify-content: space-between;
+    height: 6rem;
 }
 
 .teaseProductBasketButtons a {
@@ -86,6 +84,7 @@
     align-items: center;
     text-align: center;
     font-size: 1.5rem;
+    box-sizing: border-box;
     background: var(--gradientButton);
     border: var(--gradientButtonBorder);
     border-radius: 10px;
@@ -94,14 +93,6 @@
 
 .teaseProductBasketButtons a:hover {
     letter-spacing: 2px;
-}
-
-.teaseProductBasketButtons a:only-child {
-    width: 100%;
-}
-
-.teaseProductBasketButtons > *:not(:only-child){
-    width: 49%;
 }
 
 

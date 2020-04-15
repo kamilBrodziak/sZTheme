@@ -6,7 +6,9 @@
 			<section id="articleContent">
 				<h1 id="pageTitle">{{post.title}}</h1>
 				<div class="articleBody">
-					{{post.content}}
+					{% block pageContent %}
+						{{post.content}}
+					{% endblock %}
 				</div>
 			</section>
 		</article>

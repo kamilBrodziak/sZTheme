@@ -76,6 +76,25 @@ function timber_set_product( $post ) {
 	}
 }
 
+add_filter('add_to_cart_redirect', 'lw_add_to_cart_redirect');
+function lw_add_to_cart_redirect() {
+	global $woocommerce;
+//	if(!is_page('checkout')) {
+//		$woocommerce->cart->empty_cart();
+//	}
+	$lw_redirect_checkout = $woocommerce->cart->get_checkout_url();
+	return $lw_redirect_checkout;
+}
+
+add_filter( 'woocommerce_add_to_cart_validation', 'remove_cart_item_before_add_to_cart', 20, 3 );
+function remove_cart_item_before_add_to_cart( $passed, $product_id, $quantity ) {
+	if( ! WC()->cart->is_empty() )
+		WC()->cart->empty_cart();
+	return $passed;
+}
+
+
+
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
@@ -95,15 +114,12 @@ class StarterSite extends Timber\Site {
         remove_action('template_redirect', 'rest_output_link_header', 11, 0);
 //		add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 		add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
-		//		add_action('wp_enqueue_scripts', 'woocommerce_ajax_add_to_cart_js', 99);
+		add_filter( 'woocommerce_is_sold_individually','__return_true', 10, 2 );
+//		add_filter('woocommerce_add_to_cart_sold_individually_found_in_cart', '__return_null');
 		parent::__construct();
 	}
 
-	function woocommerce_ajax_add_to_cart_js() {
-		if (function_exists('is_product') && is_product()) {
-			wp_enqueue_script('woocommerce-ajax-add-to-cart', plugin_dir_url(__FILE__) . 'static/js/ajax-add-to-cart.js', array('jquery'), '', true);
-		}
-	}
+
 
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
@@ -193,21 +209,30 @@ class StarterSite extends Timber\Site {
     function loadScripts() {
         wp_deregister_script('jquery');
         wp_deregister_script( 'wp-embed' );
-        wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
+	    wp_dequeue_style( 'wc-block-style' );
+	    if(!is_checkout()) {
+		    wp_dequeue_script('wc-add-to-cart');
+		    wp_dequeue_script('jquery-blockui');
+		    wp_dequeue_script('jquery-placeholder');
+		    wp_dequeue_script('woocommerce');
+		    wp_dequeue_script('jquery-cookie');
+		    wp_dequeue_script('wc-cart-fragments');
+	    }
+	    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
         $styleVer = time();
         wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer, array('jquery'), null, true );
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/site.css?' . $styleVer);
-        wp_enqueue_style('casino-style6', get_stylesheet_directory_uri() . '/static/css/siteLayout.css?' . $styleVer);
-        wp_enqueue_style('casino-style1', get_stylesheet_directory_uri() . '/static/css/normalization.css?' . $styleVer);
-        wp_enqueue_style('casino-style2', get_stylesheet_directory_uri() . '/static/css/frontPage.css?' . $styleVer);
-        wp_enqueue_style('casino-style3', get_stylesheet_directory_uri() . '/static/css/header.css?' . $styleVer);
-        wp_enqueue_style('casino-style4', get_stylesheet_directory_uri() . '/static/css/footer.css?' . $styleVer);
-        wp_enqueue_style('casino-style5', get_stylesheet_directory_uri() . '/static/css/articlePage.css?' . $styleVer);
+        wp_enqueue_style('casino-style1', get_stylesheet_directory_uri() . '/static/css/siteLayout.css?' . $styleVer);
+        wp_enqueue_style('casino-style2', get_stylesheet_directory_uri() . '/static/css/normalization.css?' . $styleVer);
+        wp_enqueue_style('casino-style3', get_stylesheet_directory_uri() . '/static/css/frontPage.css?' . $styleVer);
+        wp_enqueue_style('casino-style4', get_stylesheet_directory_uri() . '/static/css/header.css?' . $styleVer);
+        wp_enqueue_style('casino-style5', get_stylesheet_directory_uri() . '/static/css/footer.css?' . $styleVer);
+        wp_enqueue_style('casino-style6', get_stylesheet_directory_uri() . '/static/css/articlePage.css?' . $styleVer);
         wp_enqueue_style('casino-style7', get_stylesheet_directory_uri() . '/static/css/common.css?' . $styleVer);
 	    wp_enqueue_style('casino-style8', get_stylesheet_directory_uri() . '/static/css/tableOfContentsPage.css?' . $styleVer);
-	    wp_enqueue_style('casino-style9', get_stylesheet_directory_uri() . '/static/css/basket.css?' . $styleVer);
-
+	    wp_enqueue_style('casino-style9', get_stylesheet_directory_uri() . '/static/css/shop.css?' . $styleVer);
+//	    wp_enqueue_style('casino-style10', get_stylesheet_directory_uri() . '/static/css/basket.css?' . $styleVer);
 	    wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
     }

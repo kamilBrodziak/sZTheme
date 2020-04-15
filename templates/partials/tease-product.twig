@@ -35,7 +35,9 @@
                 {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
             </div>
             <div class="teaseProductBasketButtons">
-                {% do action( 'woocommerce_after_shop_loop_item' ) %}
+{#                {% do action( 'woocommerce_after_shop_loop_item' ) %}#}
+                <a href="{{ post.link }}">Dowiedz się więcej!</a>
+{#                <a href="?add-to-cart=133" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="133" data-product_sku="" aria-label="Add “test” to your basket" rel="nofollow">Add to basketsa</a>#}
             </div>
 
 {#        </div>#}

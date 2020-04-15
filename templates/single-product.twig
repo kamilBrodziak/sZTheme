@@ -5,18 +5,33 @@
 {#    {% do action('woocommerce_before_single_product') %}#}
 
     <article itemscope itemtype="http://schema.org/Product" class="single-product-details singleProduct {{ post.class }}">
-
-        <div class="singleProductPictureContainer">
-{#            {% do action('woocommerce_before_single_product_summary') %}#}
-            <img src="{{ post.thumbnail.src('shop_single') }}" />
+        <div id="singleProductContainer">
+            <div id="singleProductPictureContainer">
+                {#            {% do action('woocommerce_before_single_product_summary') %}#}
+                <img id="singleProductPicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}" />
+            </div>
+            <h1 id="pageTitle" class="singleProductTitle">{{ post.title }}</h1>
+            <div id="singleProductSummary">
+                {% do action("woocommerce_single_product_summary") %}
+{#                {% if fn('isSimpleProduct', post.ID) %}#}
+{#                    {% do action('woocommerce_template_single_price') %}#}
+{#                    {% do action('woocommerce_simple_add_to_cart') %}#}
+{#                {% else %}#}
+{#                    {% do action( 'woocommerce_variable_add_to_cart' ) %}#}
+{#                {% endif %}#}
+            </div>
+            <div id="singleProductDescription">
+                <h2 id="singleProductDescriptionHeader">Opis produktu:</h2>
+                <div id="singleProductDescriptionContent">{{ post.content }}</div>
+                <a href="#singleProductContainer" id="singleProductDescriptionRedirectToBuyButton">Przejdź do kupna</a>
+            </div>
         </div>
 
-        <div class="summary entry-summary productSummary">
-            {% do action('woocommerce_single_product_summary') %}
-        </div>
+
+
 
 {#        {% do action('woocommerce_after_single_product_summary') %}#}
-        {{ post.content }}
+
         <meta itemprop="url" content="{{ post.link }}" />
 
     </article>

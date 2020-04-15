@@ -76,14 +76,11 @@ function timber_set_product( $post ) {
 	}
 }
 
-add_filter('add_to_cart_redirect', 'lw_add_to_cart_redirect');
-function lw_add_to_cart_redirect() {
+add_filter('add_to_cart_redirect', 'addToCartRedirectToCheckout');
+function addToCartRedirectToCheckout() {
 	global $woocommerce;
-//	if(!is_page('checkout')) {
-//		$woocommerce->cart->empty_cart();
-//	}
-	$lw_redirect_checkout = $woocommerce->cart->get_checkout_url();
-	return $lw_redirect_checkout;
+//	$lw_redirect_checkout = $woocommerce->cart->get_checkout_url();
+	return $woocommerce->cart->get_checkout_url();
 }
 
 add_filter( 'woocommerce_add_to_cart_validation', 'remove_cart_item_before_add_to_cart', 20, 3 );
@@ -91,6 +88,23 @@ function remove_cart_item_before_add_to_cart( $passed, $product_id, $quantity ) 
 	if( ! WC()->cart->is_empty() )
 		WC()->cart->empty_cart();
 	return $passed;
+}
+
+add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'wc_remove_options_text');
+function wc_remove_options_text( $args ){
+	$args['show_option_none'] = '';
+	return $args;
+}
+
+
+function isSimpleProduct($id) {
+	return wc_get_product($id)->is_type('simple');
+}
+
+
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woocommerce_custom_single_add_to_cart_text' );
+function woocommerce_custom_single_add_to_cart_text() {
+	return __( 'Kup teraz', 'woocommerce' );
 }
 
 
@@ -115,7 +129,18 @@ class StarterSite extends Timber\Site {
 //		add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 		add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 		add_filter( 'woocommerce_is_sold_individually','__return_true', 10, 2 );
-//		add_filter('woocommerce_add_to_cart_sold_individually_found_in_cart', '__return_null');
+		add_filter('woocommerce_reset_variations_link', '__return_empty_string');
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
+		//		add_filter('woocommerce_add_to_cart_sold_individually_found_in_cart', '__return_null');
+
+
+//		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+
+		add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 21 );
 		parent::__construct();
 	}
 
@@ -210,14 +235,25 @@ class StarterSite extends Timber\Site {
         wp_deregister_script('jquery');
         wp_deregister_script( 'wp-embed' );
 	    wp_dequeue_style( 'wc-block-style' );
-	    if(!is_checkout()) {
-		    wp_dequeue_script('wc-add-to-cart');
-		    wp_dequeue_script('jquery-blockui');
-		    wp_dequeue_script('jquery-placeholder');
-		    wp_dequeue_script('woocommerce');
-		    wp_dequeue_script('jquery-cookie');
-		    wp_dequeue_script('wc-cart-fragments');
+//	    if(!is_checkout()) {
+//	    	wp_deregister_script('woocommerce');
+//		    wp_dequeue_script('wc-add-to-cart');
+//		    wp_dequeue_script('jquery-blockui');
+//		    wp_dequeue_script('jquery-placeholder');
+//		    wp_dequeue_script('woocommerce');
+//		    wp_dequeue_script('jquery-cookie');
+//		    wp_dequeue_script('wc-cart-fragments');
+//	    }
+	    if(!is_product() && !is_checkout()) {
+	    	wp_deregister_script('woocommerce');
+	    	wp_deregister_script('wc-cart-fragments');
 	    }
+//		wp_deregister_script('wc-single-product');
+//	    if(is_product()) {
+////		    wp_deregister_script( 'wc-add-to-cart-variation' );
+////			wp_deregister_script('jquery-blockui');
+//			wp_dequeue_script('jquery-blockui');
+//	    }
 	    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
         $styleVer = time();
         wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer, array('jquery'), null, true );
@@ -232,7 +268,7 @@ class StarterSite extends Timber\Site {
         wp_enqueue_style('casino-style7', get_stylesheet_directory_uri() . '/static/css/common.css?' . $styleVer);
 	    wp_enqueue_style('casino-style8', get_stylesheet_directory_uri() . '/static/css/tableOfContentsPage.css?' . $styleVer);
 	    wp_enqueue_style('casino-style9', get_stylesheet_directory_uri() . '/static/css/shop.css?' . $styleVer);
-//	    wp_enqueue_style('casino-style10', get_stylesheet_directory_uri() . '/static/css/basket.css?' . $styleVer);
+	    wp_enqueue_style('casino-style10', get_stylesheet_directory_uri() . '/static/css/singleProduct.css?' . $styleVer);
 	    wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
     }

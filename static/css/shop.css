@@ -25,6 +25,10 @@
     height: auto;
 }
 
+.teaseProductPictureContainer {
+    height: auto;
+}
+
 .teaseProductPicture {
     border-radius: 10px;
     transition: all 0.3s ease;
@@ -97,9 +101,7 @@
 
 
 
-/* Single product */
-.singleProduct {
-    width: 100%;
-    height: auto;
-}
+/* Shop preview */
+#shopPreview .teaseProduct {
 
+}

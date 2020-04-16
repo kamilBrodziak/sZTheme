@@ -119,6 +119,21 @@ function wpb_custom_billing_fields( $fields = array() ) {
 }
 
 
+function getWCProducts() {
+//	$products =  wc_get_products([]);
+//	$posts = [];
+//	foreach ($products as $product) {
+//		array_push($posts, get_post($product->get_id()));
+//	}
+//	return $posts;
+	return Timber::get_posts( [
+		'post_type'      => 'product',
+		'orderby' => [
+			'date' => 'ASC'
+		]
+   ] );
+}
+
 
 /*
  * END WooCommerce

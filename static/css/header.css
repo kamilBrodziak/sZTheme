@@ -417,7 +417,9 @@ header {
     }
 
     #shopPreview {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         opacity: 0;
         transition: all 0.3s ease;
         width: 0;
@@ -426,10 +428,32 @@ header {
         overflow-y: scroll;
         position: absolute;
         top: calc(100% + 5px);
+        box-sizing: border-box;
         right: -5px;
         border: var(--gradientButtonBorder);
         background: var(--gradientButton);
         box-sizing: border-box;
+    }
+
+    #shopPreview .teaseProduct {
+        padding: 0 2% 0 2%;
+    }
+
+    #shopPreview .teaseProduct .teaseProductAnchor {
+        justify-content: flex-start;
+        height: auto;
+    }
+
+    #shopPreview .teaseProduct .teaseProductAnchor .teaseProductTitle {
+        font-size: 1.6rem;
+    }
+
+    #shopPreview .teaseProduct .teaseProductPrice {
+        font-size: 1.2rem;
+    }
+
+    #shopPreview .teaseProduct .teaseProductBasketButtons a {
+        font-size: 1.2rem;
     }
 
     .hdrNavbarShopItem:hover #shopPreview {

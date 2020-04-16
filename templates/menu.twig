@@ -5,7 +5,11 @@
 {#				animationButton #}
 				<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
 				{% if item.title == 'Sklep' %}
-					<div id="shopPreview"></div>
+					<div id="shopPreview">
+						{% for post in fn('getWCProducts') %}
+							{% include ["partials/tease-product.twig"] %}
+						{% endfor %}
+					</div>
 				{% endif %}
 				{% if item.title == "Sklep" and navShopItemAnimation == 'snakeAnimationButton' %}
 					<div class="leftButtonAnimation"></div>

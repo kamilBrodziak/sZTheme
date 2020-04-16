@@ -1,0 +1,29 @@
+#pageBody {
+    width: 90%;
+    margin: 2rem auto 2rem auto;
+    font-size: 2rem;
+}
+
+#aboutMeImgContainer {
+    grid-area: aboutMeImgContainer;
+    margin: 0 2rem 2rem 0;
+    height: auto;
+}
+
+#aboutMeImg {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#pageBodyContent {
+    grid-area: pageBodyContent;
+    font-size: 1.8rem;
+}
+
+@media only screen and (min-width: 600px) {
+    #aboutMeImgContainer {
+        float: left;
+        width: 25%;
+    }
+}

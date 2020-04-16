@@ -5,9 +5,14 @@
         <article class="postType{{function('ucwords',post.post_type)}}" id="post-{{post.ID}}">
             <section id="articleContent">
                 <h1 id="pageTitle">{{post.title}}</h1>
-                <div class="articleBody">
+                <div id="pageBody">
+                    <div id="aboutMeImgContainer">
+                        <img id="aboutMeImg" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}"/>
+                    </div>
                     {{post.content}}
-                    ttttt
+{#                    <div id="pageBodyContent">#}
+{#                        #}
+{#                    </div>#}
                 </div>
             </section>
         </article>

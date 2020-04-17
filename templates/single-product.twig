@@ -5,12 +5,15 @@
 {#    {% do action('woocommerce_before_single_product') %}#}
 
     <article itemscope itemtype="http://schema.org/Product" class="single-product-details singleProduct {{ post.class }}">
+        <header id="pageHeader">
+            <h1 id="pageTitle">{{ post.title }}</h1>
+        </header>
         <div id="singleProductContainer">
             <div id="singleProductPictureContainer">
                 {#            {% do action('woocommerce_before_single_product_summary') %}#}
                 <img id="singleProductPicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}" />
             </div>
-            <h1 id="pageTitle" class="singleProductTitle">{{ post.title }}</h1>
+{#            <h1 id="pageTitle" class="singleProductTitle">{{ post.title }}</h1>#}
             <div id="singleProductSummary">
                 {% do action("woocommerce_single_product_summary") %}
 {#                {% if fn('isSimpleProduct', post.ID) %}#}
@@ -23,15 +26,10 @@
             <div id="singleProductDescription">
                 <h2 id="singleProductDescriptionHeader">Opis produktu:</h2>
                 <div id="singleProductDescriptionContent">{{ post.content }}</div>
-                <a href="#singleProductContainer" id="singleProductDescriptionRedirectToBuyButton">Przejdź do kupna</a>
+                <a href="#singleProductContainer" id="singleProductDescriptionRedirectToBuyButton">Kup teraz</a>
             </div>
         </div>
-
-
-
-
 {#        {% do action('woocommerce_after_single_product_summary') %}#}
-
         <meta itemprop="url" content="{{ post.link }}" />
 
     </article>

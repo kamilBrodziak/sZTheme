@@ -9,7 +9,7 @@
     margin: 2rem auto 2rem auto;
     display: grid;
     grid-template-areas: "singleProductPictureContainer"
-        "singleProductTitle"
+        /*"singleProductTitle"*/
         "singleProductSummary"
         "singleProductDescription";
     grid-template-rows: auto auto auto auto;
@@ -18,9 +18,10 @@
 
 @media only screen and (min-width: 600px) {
     #singleProductContainer {
-        grid-template-areas: "singleProductTitle singleProductTitle"
-        "singleProductPictureContainer singleProductSummary"
-        "singleProductDescription singleProductDescription";
+        grid-template-areas:
+            /*"singleProductTitle singleProductTitle"*/
+            "singleProductPictureContainer singleProductSummary"
+            "singleProductDescription singleProductDescription";
         grid-template-rows: auto auto auto;
         grid-template-columns: 1fr 2fr;
     }
@@ -36,10 +37,10 @@
     border-radius: 10px;
 }
 
-.singleProductTitle {
-    grid-area: singleProductTitle;
-    margin: 0 0 2rem 0;
-}
+/*.singleProductTitle {*/
+/*    grid-area: singleProductTitle;*/
+/*    margin: 0 0 2rem 0;*/
+/*}*/
 
 #singleProductSummary {
     grid-area: singleProductSummary;

@@ -129,7 +129,6 @@ main {
     /*background-color: #b76c77;*/
     width: 100%;
     height: auto;
-    padding-bottom: 1px;
     background:
         linear-gradient(35deg,
             rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 53%,

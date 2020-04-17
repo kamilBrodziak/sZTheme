@@ -1,45 +1,32 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div id="contentWrapper" class="articleContentWrapper">
-		<article class="postType{{ function('ucwords',post.post_type) }}" id="post-{{ post.ID }}">
-			<section id="articleContent">
-				{% if post.thumbnail %}
-				<div id="articleHeader"	class="parallaxBg"
-{#					 data-thumbnail-width="{{ post.thumbnail.width }}"#}
-{#					 data-thumbnail-height="{{ post.thumbnail.height }}"#}
-					 style="background-image: url({{ post.thumbnail.src }});">
-					<h1 id="articleH1">{{ post.title }}</h1>
-{#					<img id="articleThumbnail" src="{{ post.thumbnail.src }}">#}
-				</div>
-				{% else %}
-					<h1 id="pageTitle">{{post.title}}</h1>
+	<article id="postArticle">
+		<header id="articleHeader" class="parallaxBg" style="background-image: url({{ post.thumbnail.src }});">
+			<h1 id="articleTitle">{{ post.title }}</h1>
+		</header>
+		<section id="articleContent">
+				{{post.content}}
+		</section>
+		<footer id="articlePagination">
+			<div id="articlePaginationPrev" class="{% if post.prev != null %}buttonGradient{% endif %}">
+				{% if post.prev != null %}
+					<a id="articlePaginationPrevLink" href="{{ post.prev.link }}" class="">
+						<span>Poprzedni post:</span>
+						<span>{{post.prev.title}}</span>
+					</a>
 				{% endif %}
-				<div class="articleBody">
-					{{post.content}}
-				</div>
-			</section>
-			<section id="articlePagination">
-				<div id="articlePaginationPrev" class="{% if post.prev != null %}buttonGradient{% endif %}">
-					{% if post.prev != null %}
-						<a id="articlePaginationPrevLink" href="{{ post.prev.link }}" class="">
-							<span>Poprzedni post:</span>
-							<span>{{post.prev.title}}</span>
-						</a>
-					{% endif %}
-				</div>
-{#				<a href="{{ post.meta('prevPost').link }}">{{post.meta('prevPost').title}}</a>#}
-				<div id="articlePaginationNext" class="{% if post.next != null %}buttonGradient{% endif %}">
-					{% if post.next != null %}
-						<a id="articlePaginationNextLink" href="{{ post.next.link }}" class="">
-							<span>Następny post:</span>
-							<span>{{post.next.title}}</span>
-{#							<span>{{ post.next.get_preview(25) }}</span>#}
-						</a>
-					{% endif %}
-				</div>
-{#				<a href="{{ post.meta('nextPost').link }}">{{post.meta('nextPost').title}}</a>#}
-			</section>
-		</article>
-	</div>
+			</div>
+			<div id="articlePaginationNext" class="{% if post.next != null %}buttonGradient{% endif %}">
+				{% if post.next != null %}
+					<a id="articlePaginationNextLink" href="{{ post.next.link }}" class="">
+						<span>Następny post:</span>
+						<span>{{post.next.title}}</span>
+						{#							<span>{{ post.next.get_preview(25) }}</span>#}
+					</a>
+				{% endif %}
+			</div>
+		</footer>
+	</article>
 {% endblock %}
+

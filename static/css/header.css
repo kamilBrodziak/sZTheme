@@ -1,5 +1,5 @@
 /** HEADER **/
-header {
+#siteHeader {
     grid-area: header;
     display: grid;
     position: sticky;
@@ -17,19 +17,19 @@ header {
 }
 
 @media only screen and (max-width: 1023px) {
-    header {
+    #siteHeader {
         box-shadow: inset 0 -3px 3px 1px silver, inset 0 0 20px 10px black;
     }
-    .stickyFade {
+    #stickyFade {
         transform: translateY(calc(0px - var(--headerHeightForTablet)));
     }
-    .stickyTransition {
+    #stickyTransition {
         transition: all 0.3s ease;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    header {
+    #siteHeader {
         grid-template-areas: "hdrLogo" "hdrNewsletter" "hdrNavbar";
         --hdrHeight: var(--headerHeightForSmallScreen);
         --hdrLogoHeight: 0.33; /* percents */
@@ -41,7 +41,7 @@ header {
 }
 
 @media only screen and (min-width: 1200px) {
-    header {
+    #siteHeader {
         --hdrLogoHeight: 0.38; /* percents */
         --hdrMewsletterHeight: 0.24; /* percents */
         --hdrHeight: var(--headerHeightForLargeScreen);

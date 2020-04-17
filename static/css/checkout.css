@@ -1,13 +1,5 @@
-#checkoutContent {
-    height: auto;
-    color: silver;
-    font-size: 2rem;
+.woocommerce {
     text-align: center;
-}
-
-#checkoutContent .woocommerce {
-    width: 90%;
-    margin: 2rem auto 2rem auto;
 }
 
 .woocommerce-billing-fields h3, .woocommerce-additional-fields h3{

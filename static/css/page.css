@@ -1,0 +1,84 @@
+#pageHeader {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    height: auto;
+    padding: 1% 1% 1% 1%;
+    box-sizing: border-box;
+    background: linear-gradient(30deg, rgba(75, 75, 75, 0.8),
+    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+}
+
+#pageTitle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: silver;
+    box-sizing: border-box;
+}
+
+#pageContent {
+    padding: 0 5% 0 5%;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+    color: silver;
+    font-size: 2rem;
+}
+
+#pageContent > h1, #pageContent > h2, #pageContent > h3, #pageContent > h4, #pageContent > h5, #pageContent > h6 {
+    color: silver;
+    background: linear-gradient(30deg, rgba(75, 75, 75, 0.8),
+    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1% 1% 1% 1%;
+    box-sizing: border-box;
+    box-shadow: 0 8px 4px 0 #2d2d2d;
+}
+
+#pageContent h1 {
+    font-size: 2.8rem;
+}
+
+#pageContent h2 {
+    font-size: 2.6rem;
+}
+
+#pageContent h3 {
+    font-size: 2.4rem;
+}
+
+#pageContent h4 {
+    font-size: 2.3rem;
+}
+
+#pageContent h5 {
+    font-size: 2.2rem;
+}
+
+#pageContent h6 {
+    font-size: 2.1rem;
+}
+
+#pageContent ol, #pageContent ul {
+    padding: 0 5% 0 5%;
+    box-sizing: border-box;
+}
+
+#pageContent ol ul {
+    list-style-type: circle;
+}
+
+#pageContent ol ol, #pageContent ol ul {
+    padding: 0 10% 0 10%;
+    box-sizing: border-box;
+}
+
+#pageContent p {
+    padding: 0 5% 0 5%;
+    box-sizing: border-box;
+}

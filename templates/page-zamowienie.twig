@@ -1,15 +1,7 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
-{% block content %}
-    <div id="contentWrapper" class="checkoutContentWrapper">
-        <h1 id="pageTitle">{{post.title}}</h1>
-        <div id="checkoutContent">
-{#            {% block pageContent %}#}
-{#                {{post.content}}#}
-{#            {% endblock %}#}
-            {% filter shortcodes %}
-                [woocommerce_checkout]
-            {% endfilter %}
-        </div>
-    </div><!-- /content-wrapper -->
+{% block pageContent %}
+    {% filter shortcodes %}
+        [woocommerce_checkout]
+    {% endfilter %}
 {% endblock %}

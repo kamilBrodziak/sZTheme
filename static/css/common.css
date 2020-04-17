@@ -225,3 +225,13 @@ table th {
 table td {
     background: rgba(0, 0, 0, 0.2);
 }
+
+a {
+    color: #9b9b9b;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #7d7d7d;
+}

@@ -1,15 +1,15 @@
 {% extends "base.twig" %}
 {% block content %}
-    <div id="contentWrapper" class="frontPageContentWrapper">
+    <article id="frontPageContentContainer">
         <div id="frontPagePictureBox">
-            <img id="frontPagePicture" src="{{ post.thumbnail.src }}">
+            <img id="frontPagePicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}">
         </div>
         <div id="frontPageText">
-            <h3 id="frontPageTitle">{{ post.title }}</h3>
-            <div id="frontPageDesc">{{post.content}}</div>
+            <h1 id="frontPageTitle">{{ post.title }}</h1>
+            <section id="frontPageDesc">{{post.content}}</section>
             <div id="frontPageArticleButton" class="buttonGradient goldCustomBorder">
                 <a href="{{site.url}}/zacznij-tutaj" id="frontPageArticleAnchor">Zacznij tutaj</a>
             </div>
         </div>
-    </div>
+    </article>
 {% endblock %}

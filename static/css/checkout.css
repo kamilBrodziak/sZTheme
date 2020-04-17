@@ -5,6 +5,15 @@
 .woocommerce-billing-fields h3, .woocommerce-additional-fields h3{
     font-size: 2.8rem;
     text-align: center;
+    color: silver;
+    background: linear-gradient(30deg, rgba(75, 75, 75, 0.8),
+    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 1% 1% 1%;
+    box-sizing: border-box;
+    box-shadow: 0 8px 4px 0 #2d2d2d;
 }
 
 .woocommerce-billing-fields__field-wrapper > *, .woocommerce-additional-fields__field-wrapper > * {

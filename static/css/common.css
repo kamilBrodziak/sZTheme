@@ -200,3 +200,28 @@
         transform: translateX(-100%);
     }
 }
+
+
+table {
+    text-align: center;
+    width: 60%;
+    margin: 2rem auto 2rem auto;
+    border-radius: 5px;
+    border: var(--gradientButtonBorder);
+    border-collapse: collapse;
+    border-width: 8px;
+}
+
+table th, table td {
+    border: var(--gradientButtonBorder);
+    padding: 1em 0 1em 0;
+    box-sizing: border-box;
+}
+
+table th {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+table td {
+    background: rgba(0, 0, 0, 0.2);
+}

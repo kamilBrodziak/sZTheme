@@ -4,7 +4,7 @@ $( document ).ready( function() {
         window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
     let parallax = new ParallaxBgPicture($('.parallaxBg'));
     parallax.toggleParallax();
-    let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"), $("header"));
+    let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"), $("#siteHeader"));
     mobileNav.addHeaderFade();
     let contactForm = $('.contactForm');
     contactForm.on('submit', function (e) {
@@ -154,7 +154,7 @@ class MobileNav {
     }
 
     // let lastScrollTop = hdrNavbar.offset().top;
-    headerFade(){
+    headerFade() {
         let scrollTop = $(window).scrollTop();
         if (scrollTop <= parseFloat(this.header.css("height"))) {
             this.header.removeClass(['stickyFade', 'stickyTransition']);

@@ -1,105 +1,118 @@
 /** FRONT PAGE **/
-#frontPageContentContainer {
+#frontPageArticle {
     display: grid;
-    grid-template-areas: "frontPageText" "frontPagePicture";
+    grid-template-areas: "frontPageContentContainer" "frontPagePictureContainer";
     grid-template-rows: auto auto;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
 }
 
 @media only screen and (min-width: 1024px) {
-    #frontPageContentContainer {
-        grid-template-areas: "frontPagePicture frontPageText";
-        grid-template-rows: 100%;
-        grid-template-columns: 50% 50%;
+    #frontPageArticle {
+        grid-template-areas: "frontPagePictureContainer frontPageContentContainer";
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-#frontPagePictureBox {
-    grid-area: frontPagePicture;
-    /*width: 100%;*/
-    /*height: auto;*/
+#frontPagePictureContainer {
+    grid-area: frontPagePictureContainer;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding: 0 5% 0 5%;
+    box-sizing: border-box;
 }
 
 @media only screen and (min-width: 1024px) {
-    #frontPagePictureBox {
-        overflow-x: hidden;
-
+    #frontPagePictureContainer {
+        padding: 0;
     }
 }
 
 #frontPagePicture {
     height: auto;
-    width: 90%;
-    margin: auto;
+    width: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
     #frontPagePicture {
         width: auto;
         height: 100%;
-        margin: 0;
     }
 }
 
-#frontPageText {
-    grid-area: frontPageText;
-    color: silver;
-    display: grid;
-    height: 100%;
+#frontPageContentContainer {
+    grid-area: frontPageContentContainer;
+    padding: 5% 5% 5% 5%;
     box-sizing: border-box;
-    padding: 15% 5% 15% 5%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 10vh;
-    grid-template-areas: "frontPageTitle" "frontPageDesc" "frontPageArticleButton";
+    text-align: center;
 }
 
 @media only screen and (min-width: 1024px) {
-    #frontPageText {
-        padding: 15% 15% 15% 0;
+    #frontPageContentContainer {
+        padding: 5% 15% 5% 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+#frontPageHeader {
+    font-size: 3.5rem;
+    color: silver;
+    width: 100%;
+    padding: 0 0 5% 0;
+}
+
+@media only screen and (min-width: 1024px) {
+    #frontPageHeader {
+        padding: 0;
     }
 }
 
 #frontPageTitle {
-    grid-area: frontPageTitle;
-    font-size: 400%;
+    font-size: inherit;
 }
 
-@media only screen and (max-width: 1023px) {
-    #frontPageTitle {
-        text-align: center;
-    }
-}
 
-#frontPageDesc {
-    grid-area: frontPageDesc;
-    font-size: 250%;
-}
 
-@media only screen and (max-width: 1023px) {
-    #frontPageDesc {
-        text-align: center;
-    }
-}
-
-#frontPageArticleButton {
-    grid-area: frontPageArticleButton;
-    transition: all 0.5s ease;
+#frontPageContent {
+    font-size: 2rem;
+    color: silver;
+    height: auto;
+    padding: 0 0 5% 0;
 }
 
 @media only screen and (min-width: 1024px) {
-    #frontPageArticleButton:hover{
-        box-shadow: 0 10px 20px 10px #191919;
-        width: 110%;
-        height: 110%;
-        margin-left: -5%;
+    #frontPageContent {
+        padding: 0;
     }
 }
 
-#frontPageArticleAnchor {
-    font-size: 350%;
+#frontPageFooter {
+    transition: all 0.5s ease;
+    height: auto;
+    box-sizing: border-box;
+    margin: 5% 0 5% 0;
+    width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+    #frontPageFooter {
+        margin: 0;
+    }
+
+    #frontPageFooter:hover{
+        box-shadow: 0 10px 20px 10px #191919;
+        transform: scale(1.1);
+    }
+}
+
+#frontPageFirstArticleAnchor {
+    font-size: 3.5rem;
+    padding: 3% 0 3% 0;
+    box-sizing: border-box;
 }

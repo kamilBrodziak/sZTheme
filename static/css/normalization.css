@@ -2,7 +2,7 @@ html {
     font-size: 10px;
 }
 
-html, body, div, header, section, footer, h1, h2, h3, h4, h5, h6, ul, li, nav {
+* {
     margin: 0;
     padding: 0;
 }

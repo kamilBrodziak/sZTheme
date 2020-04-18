@@ -139,6 +139,15 @@ function getWCProducts() {
  * END WooCommerce
  * */
 
+function deferLoad($url) {
+	if ( strpos( $url, '#asyncload') === false )
+		return $url;
+	else if ( is_admin() )
+		return str_replace( '#asyncload', '', $url );
+	else
+		return str_replace( "#asyncload'", '', $url )."' defer='defer";
+}
+
 class StarterSite extends Timber\Site {
 	/** Add timber support. */
 	public function __construct() {
@@ -156,6 +165,7 @@ class StarterSite extends Timber\Site {
         remove_action('wp_head', 'rest_output_link_wp_head', 10);
         remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
         remove_action('template_redirect', 'rest_output_link_header', 11, 0);
+		add_filter( 'clean_url', 'deferLoad', 11, 1 );
 
 		/*
 		 * WooCommerce
@@ -246,9 +256,9 @@ class StarterSite extends Timber\Site {
 ////			wp_deregister_script('jquery-blockui');
 //			wp_dequeue_script('jquery-blockui');
 //	    }
-	    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
+	    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js' . "#asyncload");
         $styleVer = time();
-        wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer, array('jquery'), null, true );
+        wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer . "#asyncload", array('jquery'), null, true );
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/site.css?' . $styleVer);
         wp_enqueue_style('casino-style1', get_stylesheet_directory_uri() . '/static/css/siteLayout.css?' . $styleVer);

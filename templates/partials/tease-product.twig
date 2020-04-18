@@ -1,47 +1,17 @@
 <article {{ fn('post_class', ['$classes', 'entry', 'teaseProduct'] ) }}>
-
     {{ fn('timber_set_product', post) }}
-
-{#    <div class="media">#}
-
-{#        {% if showthumb %}#}
-{#            <div class="media-figure {% if not post.thumbnail %}placeholder{% endif %} productPictureContainer">#}
-{#                <a href="{{ post.link }}" class="productPictureAnchor">#}
-{#                    {% if post.thumbnail %}#}
-{#                        <img class="productPicture" src="{{ post.thumbnail.src|resize(post_thumb_size[0], post_thumb_size[1]) }}" />#}
-{#                    {% else %}#}
-{#                        <span class="thumb-placeholder"><i class="icon-camera"></i></span>#}
-{#                    {% endif %}#}
-{#                </a>#}
-{#            </div>#}
-{#        {% endif %}#}
-
-{#        <div class="teaseProductContent">#}
-{#            {% do action('woocommerce_before_shop_loop_item_title') %}#}
-            <a class="teaseProductAnchor" href="{{ post.link }}">
-                <div class="teaseProductPictureContainer">
-                    <img class="teaseProductPicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}"/>
-                </div>
-                <h3 class="teaseProductTitle">{{ post.title }}</h3>
-            </a>
-{#            {% do action('woocommerce_before_shop_loop_item_title') %}#}
-{#            {% if post.title %}#}
-{#                <h3 class="entry-title productTitle"><a class="productTitleAnchor" href="{{ post.link }}">{{ post.title }}</a></h3>#}
-{#            {% else %}#}
-{#                <h3 class="entry-title productTitle"><a class="productTitleAnchor" href="{{ post.link }}">{{ fn('the_title') }}</a></h3>#}
-{#            {% endif %}#}
-{#            {% do action('woocommerce_product_price_class') %}#}
-            <div class="teaseProductPrice">
-                {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
-            </div>
-            <div class="teaseProductBasketButtons">
-{#                {% do action( 'woocommerce_after_shop_loop_item' ) %}#}
-                <a href="{{ post.link }}">Dowiedz się więcej!</a>
-{#                <a href="?add-to-cart=133" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="133" data-product_sku="" aria-label="Add “test” to your basket" rel="nofollow">Add to basketsa</a>#}
-            </div>
-
-{#        </div>#}
-
-{#    </div>#}
-
+    <a class="teaseProductAnchor" href="{{ post.link }}">
+        <figure class="teaseProductPictureContainer">
+            <img class="teaseProductPicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}"/>
+        </figure>
+        <header id="teaseProductHeader">
+            <h3 class="teaseProductTitle">{{ post.title }}</h3>
+        </header>
+    </a>
+    <div class="teaseProductPrice">
+        {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+    </div>
+    <footer class="teaseProductBasketButtons">
+        <a href="{{ post.link }}">Dowiedz się więcej!</a>
+    </footer>
 </article>

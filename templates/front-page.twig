@@ -1,9 +1,9 @@
 {% extends "base.twig" %}
 {% block content %}
     <article id="frontPageArticle">
-        <div id="frontPagePictureContainer">
+        <figure id="frontPagePictureContainer">
             <img id="frontPagePicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}" height="{{ post.thumbnail.height }}" width="{{ post.thumbnail.width }}">
-        </div>
+        </figure>
         <div id="frontPageContentContainer">
             <header id="frontPageHeader">
                 <h1 id="frontPageTitle">{{ post.title }}</h1>

@@ -14,7 +14,7 @@
                 <img id="singleProductPicture" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}" />
             </div>
 {#            <h1 id="pageTitle" class="singleProductTitle">{{ post.title }}</h1>#}
-            <div id="singleProductSummary">
+            <section id="singleProductSummary">
                 {% do action("woocommerce_single_product_summary") %}
 {#                {% if fn('isSimpleProduct', post.ID) %}#}
 {#                    {% do action('woocommerce_template_single_price') %}#}
@@ -22,12 +22,12 @@
 {#                {% else %}#}
 {#                    {% do action( 'woocommerce_variable_add_to_cart' ) %}#}
 {#                {% endif %}#}
-            </div>
-            <div id="singleProductDescription">
+            </section>
+            <section id="singleProductDescription">
                 <h2 id="singleProductDescriptionHeader">Opis produktu:</h2>
                 <div id="singleProductDescriptionContent">{{ post.content }}</div>
                 <a href="#singleProductContainer" id="singleProductDescriptionRedirectToBuyButton">Kup teraz</a>
-            </div>
+            </section>
         </div>
 {#        {% do action('woocommerce_after_single_product_summary') %}#}
         <meta itemprop="url" content="{{ post.link }}" />

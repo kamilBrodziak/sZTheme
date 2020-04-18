@@ -1,10 +1,10 @@
 <h1 id="hdrLogo" role="banner">
     <a id="hdrLogoLink" href="{{site.url}}" rel="home">{{site.name}}</a>
 </h1>
-<div id="hdrNewsletter">
+<section id="hdrNewsletter">
     {% include "newsletter.twig" with
         {'newsletterTitle': fn('sZThemeHdrNewsletterH1OptionValue', fn('sZThemeHdrNewsletterH1OptionName'))} %}
-</div>
+</section>
 <div id="hdrNavbarMobileButton">
     <div id="hdrNavbarMobileBar1" class="hdrNavbarMobileBars"></div>
     <div id="hdrNavbarMobileBar2" class="hdrNavbarMobileBars"></div>
@@ -12,4 +12,4 @@
 </div>
 <nav id="hdrNavbar" class="nav-main" role="navigation">
     {% include "menu.twig" with {'items': menu.get_items, 'menuLocation': 'hdr', 'navShopItemAnimation': fn('sZThemeSettingsShopMenuOptionValue')} %}
-</nav><!-- #nav -->
+</nav>

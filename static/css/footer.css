@@ -276,17 +276,15 @@
     font-size: 200%;
 }
 
-#footerCopyright span {
-    display: block;
-    width: 100%;
+#footerCopyright p {
     text-align: center;
 }
 
-#footerCopyright span a {
+#footerCopyright p a {
     font-weight: bold;
     color: black;
 }
 
-#footerCopyright span a:hover {
+#footerCopyright p a:hover {
     color: #373737;
 }

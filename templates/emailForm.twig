@@ -1,16 +1,17 @@
 <form class="contactForm" name="contactForm" method="post" action="#" data-url="{{ fn('admin_url', 'admin-ajax.php') }}">
-{#    <label for="contactFormFirstName">Twoje imię *</label>#}
     <div class="contactFormSuccessInfo">Twoja wiadomość została wysłana pomyślnie!</div>
 {#    <div>Wystąpił problem z Twoją wiadomością, spróbuj ponownie</div>#}
+    <label for="name"></label>
     <input type="text" id="name" name="name" pattern="[a-zA-Z0-9 ]+" maxlength="50"
            oninvalid="this.setCustomValidity('Proszę wprowadź swoje imię używając tylko liter.')"
            oninput="this.setCustomValidity('')"
            placeholder="Twoje imię*" required>
+    <label for="email"></label>
     <input type="email" id="email" name="email" maxlength="80" placeholder="Twój email*"
            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required
            oninvalid="this.setCustomValidity('Proszę wprowadź poprawny email. Przykład: nazwa@gmail.com')"
-           oninput="this.setCustomValidity('')"
-    >
+           oninput="this.setCustomValidity('')">
+    <label for="message"></label>
     <textarea id="message" name="message" maxlength="1000" placeholder="Wiadomość*" rows=7></textarea>
     <input id="submit" name="submit" type="submit" value="Wyślij" required>
 </form>

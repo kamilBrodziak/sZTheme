@@ -8,11 +8,13 @@
     <div class="newsletterDescription">{{ newsletterDescription }}</div>
 {% endif %}
 <form method="post" action="" class="newsletterForm">
-    <input class="newsletterNameInput" name="fname"type="text" required pattern="[a-zA-Z0-9 ]+" placeholder="Twoje imię"
+    <label for="fname"></label>
+    <input class="newsletterNameInput" name="fname"type="text" required pattern="[a-zA-Z0-9 ]+" placeholder="Twoje imię*"
            oninvalid="this.setCustomValidity('Proszę wprowadź swoje imię używając tylko liter.')"
            oninput="setCustomValidity('')">
+    <label for="email"></label>
     <input class="newsletterEmailInput" name="email" type="email" required
-           pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" placeholder="Twój email"
+           pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" placeholder="Twój email*"
            oninvalid="this.setCustomValidity('Proszę wprowadź poprawny email. Przykład: nazwa@gmail.com')"
            oninput="setCustomValidity('')">
     <input class="newsletterSubmitButton" type="submit" value="Zapisz się">

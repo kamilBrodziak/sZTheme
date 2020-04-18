@@ -2,7 +2,6 @@
 	<ul {% if menuLocation %} id="{{ menuLocation }}NavbarList" {% endif %}>
 		{% for item in items %}
 			<li class="{{ item.classes | join(' ') }} {% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %}{% if item.title == 'Sklep' and navShopItemAnimation != 'disabled' %} hdrNavbarShopItem {{ navShopItemAnimation }}{% endif %}">
-{#				animationButton #}
 				<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
 				{% if item.title == 'Sklep' %}
 					<div id="shopPreview">
@@ -17,8 +16,6 @@
 					<div class="topButtonAnimation"></div>
 					<div class="bottomButtonAnimation"></div>
 				{% endif %}
-{#				{% include "menu.twig" with {'items': item.children} %}#}
-{#				{% if item.title != "Sklep" %}  {% endif %}#}
 			</li>
 		{% endfor %}
 	</ul>

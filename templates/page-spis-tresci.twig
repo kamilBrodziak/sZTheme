@@ -7,7 +7,6 @@
             <li class="postListItem">
                 {% if fn('sZThemeSettingsTableOfContentsOptionValue') %}
                     <a class="postListItemAnchor" href="{{ post.link }}">
-                        {#                                    <img class="postListItemPicture" src="{{ post.thumbnail }}">#}
                         <div class="postListItemPicture" style="background-image: url({{ post.thumbnail.src }});"></div>
                         <h2 class="postListItemTitle">{{ post.postOrder }}. {{ post.title }}</h2>
                         <div class="postListItemDesc">

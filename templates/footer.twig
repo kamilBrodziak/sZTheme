@@ -1,21 +1,21 @@
- <div id="footerNewsletter">
+<section id="footerNewsletter">
     {% include "newsletter.twig" with {
         "newsletterTitle": fn('sZThemeFooterNewsletterH1OptionValue', fn('sZThemeFooterNewsletterH1OptionName')),
         "newsletterSubtitle": fn('sZThemeFooterNewsletterH2OptionValue', fn('sZThemeFooterNewsletterH2OptionName')),
         "newsletterDescription": fn('sZThemeFooterNewsletterDescOptionValue', fn('sZThemeFooterNewsletterDescOptionName'))
     }%}
 
-</div>
-<div id="footerContact">
+</section>
+<section id="footerContact">
     <h4 id="footerContactTitle">Formularz kontaktowy</h4>
     <ul id="footerContactList">
         <li>Adres email: <a href="mailto:cornelloshop@gmail.com">cornelloshop@gmail.com</a></li>
         <li>Numer telefonu: <a href="tel:+48884674219">(+48) 884 674 219</a></li>
     </ul>
     {% include "emailForm.twig" %}
-</div>
+</section>
 
-<div id="footerLinks">
+<section id="footerLinks">
     <ul id="footerLinksList">
         <li><a href="{{site.url}}/polityka-prywatnosci">Polityka prywatności</a></li>
         <li>&bull;</li>
@@ -23,10 +23,10 @@
         <li>&bull;</li>
         <li><a id="footerSitemap">Mapa strony</a></li>
     </ul>
-</div>
+</section>
 
-<div id="footerCopyright">
+<section id="footerCopyright">
 {#    <span> test</span>#}
-    <span>Copyright &#169; {{"now"|date('Y')}} szczesliwyzwiazek.pl</span>
-    <span>Powered by <a href="wordpress.org">Wordpress</a> and theme created by <a>Kamil Brodziak</a></span>
-</div>
+    <p>Copyright &#169; {{"now"|date('Y')}} szczesliwyzwiazek.pl</p>
+    <p>Powered by theme created by <a>Kamil Brodziak</a></p>
+</section>

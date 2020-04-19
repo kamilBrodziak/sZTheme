@@ -13,9 +13,11 @@
                 {% do action("woocommerce_single_product_summary") %}
             </section>
             <section id="singleProductDescription">
-                <h2 id="singleProductDescriptionHeader">Opis produktu:</h2>
+                <h2 id="singleProductDescriptionHeader" class="flexCenterCenter textAlignCenter">Opis produktu:</h2>
                 <div id="singleProductDescriptionContent">{{ post.content }}</div>
-                <a href="#singleProductContainer" id="singleProductDescriptionRedirectToBuyButton">Kup teraz</a>
+                <div id="singleProductRedirectToBuyAnchorContainer" class="buttonGradient">
+                    <a href="#singleProductContainer" id="singleProductRedirectToBuyAnchor" class="textAlignCenter">Kup teraz</a>
+                </div>
             </section>
         </div>
         <meta itemprop="url" content="{{ post.link }}" />

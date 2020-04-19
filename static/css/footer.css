@@ -1,15 +1,13 @@
-/** FOOTER **/
+/*
+=====================================================
+    FOOTER
+=====================================================
+*/
 #siteFooter {
     grid-area: footer;
-    background:
-            linear-gradient(45deg, transparent 46%,rgba(114, 114, 114,0.06) 46%,rgba(94, 94, 94,0.06) 70%,transparent 70%),
-            linear-gradient(135deg, transparent 59%,rgba(114, 114, 114,0.06) 59%,rgba(124, 124, 124,0.06) 91%,transparent 91%),
-            linear-gradient(135deg, transparent 13%, rgba(124, 124, 124, 0.06) 13%, rgba(114, 114, 114, 0.06) 45%, transparent 45%),
-            linear-gradient(45deg, rgba(131, 131, 131, 0.1), rgba(121, 121, 121, 0.1) 32%, transparent 32%),
-            linear-gradient(90deg, #191919, #191919);
     border-top: 4px groove #b88f00;
     display: grid;
-    grid-template-areas: "footerNewsletter" "footerContact" "footerLinks" "footerCopyright";
+    grid-template-areas: "ftrNewsletter" "ftrContact" "ftrLinks" "ftrCopyright";
     grid-template-rows: auto auto auto auto;
     grid-template-columns: 1fr;
     padding: 1% 0 0 0;
@@ -17,7 +15,7 @@
 
 @media only screen and (min-width: 1200px) {
     #siteFooter {
-        grid-template-areas: "footerNewsletter footerContact" "footerLinks footerLinks" "footerCopyright footerCopyright";
+        grid-template-areas: "ftrNewsletter ftrContact" "ftrLinks ftrLinks" "ftrCopyright ftrCopyright";
         grid-template-rows: 1fr auto auto;
         grid-template-columns: 1fr 1fr;
     }
@@ -25,86 +23,70 @@
 
 
 
-
-
-
-
-/** FOOTER NEWSLETTER**/
-#footerNewsletter {
-    grid-area: footerNewsletter;
-    color: silver;
-    display: grid;
+/*
+=====================================================
+    FOOTER NEWSLETTER
+=====================================================
+*/
+#ftrNewsletter {
+    grid-area: ftrNewsletter;
     padding: 0 5% 2% 5%;
-    box-sizing: border-box;
-    grid-template-areas: "footerNewsletterTitle" "footerNewsletterSubtitle" "footerNewsletterDescription" "footerNewsletterForm";
-    grid-template-rows: auto auto auto auto;
-    grid-template-columns: 1fr;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-@media only screen and (min-width: 1200px) {
-    #footerNewsletter {
-        padding: 0 5% 2% 10%;
-    }
+#ftrNewsletterTitle {
+    font-size: 3.5rem;
 }
 
-#footerNewsletter .newsletterTitle {
-    grid-area: footerNewsletterTitle;
-    padding: 0;
-    font-size: 320%;
+#ftrNewsletterSubtitle {
+    font-size: 3rem;
+    padding: 2% 0 2% 0;
 }
 
-#footerNewsletter .newsletterSubtitle {
-    grid-area: footerNewsletterSubtitle;
-    padding: 0;
-    font-size: 260%;
-    margin: 3% 0 2% 0;
-}
-
-#footerNewsletter .newsletterDescription {
-    grid-area: footerNewsletterDescription;
-    font-size: 200%;
+#ftrNewsletterDescription {
+    font-size: 2rem;
+    height: auto;
 }
 
 @media only screen and (min-width: 1024px) {
-    #footerNewsletter .newsletterDescription {
-        width: 70%;
-        margin: auto;
+    #ftrNewsletterDescription {
+        padding: 0 15% 0 15%;
     }
 }
 
-#footerNewsletter .newsletterForm {
-    grid-area: footerNewsletterForm;
+#ftrNewsletterForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
+    padding: 2% 10% 0 10%;
 }
 
-#footerNewsletter .newsletterForm input {
+#ftrNewsletterForm input {
     display: block;
-    width: 80%;
-    margin-top: 2%;
-    font-size: 250%;
-    line-height: 200%;
+    width: 100%;
+    font-size: 2rem;
+    padding: 1% 0 1% 0;
 }
 
-#footerNewsletter .newsletterForm .newsletterSubmitButton {
-    line-height: 400%;
+#ftrNewsletterForm #ftrNewsletterSubmitButton {
+    padding: 5% 0 5% 0;
 }
 
 
 
-
-
-
-
-/** FOOTER CONTACT **/
-#footerContact {
-    grid-area: footerContact;
-    color: silver;
-    box-sizing: border-box;
+/*
+=====================================================
+    FOOTER CONTACT
+=====================================================
+*/
+#ftrContact {
+    grid-area: ftrContact;
     padding: 0 5% 2% 5%;
-    text-align: center;
     background: var(--customGoldTopBorder);
     display: flex;
     flex-direction: column;
@@ -112,105 +94,72 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    #footerContact {
-        /*text-align: left;*/
+    #ftrContact {
         background: var(--customGoldLeftBorder);
-        padding: 0 5% 2% 5%;
     }
 }
 
-/*@media only screen and (min-width: 1400px) {*/
-/*    #footerContact {*/
-/*        padding: 0 0 3% 5%;*/
-/*    }*/
-/*}*/
-
-#footerContactTitle {
-    margin: 0 0 3% 0;
-    font-size: 320%;
+#ftrContactTitle {
+    font-size: 3.5rem;
 }
 
-#footerContactList li {
-    padding: 1% 0 1% 0;
+#ftrContactList li {
+    padding: 1% 0 0 0;
     font-weight: bold;
-    font-size: 260%;
+    font-size: 2.2rem;
 }
 
-#footerContact a {
-    color: silver;
-}
-
-#footerContact a:not([class="footerContactLinks"]) {
+#ftrContact a:not([class="ftrContactLinks"]) {
     font-weight: normal;
 }
 
-#footerContact .contactForm {
-    box-sizing: border-box;
+#ftrContactForm {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    /*height: 100%;*/
-    justify-content: space-around;
+    justify-content: space-between;
+    height: 70%;
     border: 0;
-    outline: none;
-    text-align: center;
-    color: silver;
     position: relative;
+    padding: 0 10% 0 10%;
 }
 
-#footerContact .contactForm input:not([type="submit"]) {
-    /*margin-right: 1%;*/
+#ftrContactForm input:not([type="submit"]) {
     background: linear-gradient(to top, #000000, rgba(0,0,0,0) 50%);
     border-bottom: 1px solid silver;
 }
 
-#footerContact .contactForm input, #footerContact .contactForm #message {
+#ftrContactForm input, #ftrContactFormMessage {
     display: block;
-    box-sizing: border-box;
-    padding: 1% 0 1% 0;
     border: 0;
     outline: none;
-    text-align: center;
-    color: silver;
-    width: 80%;
-    margin: 2% 10% 0 10%;
-    font-size: 200%;
-    line-height: 100%;
+    width: 100%;
+    margin: 2% 0 0 0;
+    font-size: 2rem;
 }
 
-#footerContact .contactForm #message {
-    width: 80%;
-    /*font-size: 200%;*/
+#ftrContactFormMessage {
     border: 5px groove #282828;
     background: rgba(0, 0, 0, 0.21);
-
     resize: none;
-    /*line-height: 300%;*/
 }
 
-#footerContact .contactForm #submit {
-    line-height: 200%;
+#ftrContactFormSubmit {
+    font-size: 2rem;
+    padding: 5% 0 5% 0;
     background: linear-gradient(to top, #0f0f0f 20% , #191919 50%, #0f0f0f 80%);
     box-shadow: 1px 1px 2px 0 silver;
     font-weight: bold;
-    cursor: pointer;
-}
-#footerContact .contactForm #submit:hover {
-    background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
-    background-size: 1% 70%;
-    background-position-y: 550%;
 }
 
-.tooltip {
-    position:absolute;
+#ftrContactFormSubmit:hover {
+    background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
 }
 
 .hidden {
     display: none;
 }
 
-#footerContact .contactForm .contactFormSuccessInfo {
+#ftrContactFormSuccessInfo {
     display: none;
     position: absolute;
     width: 80%;
@@ -221,70 +170,55 @@
     font-size: 250%;
 }
 
-#footerContact .contactForm .contactFormSuccessInfoDisplay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
+/*
+=====================================================
+    FOOTER LINKS
+=====================================================
+*/
 
-
-
-
-
-/** Footer Links**/
-#footerLinks {
-    grid-area: footerLinks;
-    color: silver;
-    box-sizing: border-box;
+#ftrLinks {
+    grid-area: ftrLinks;
     padding: 5px 0 5px 0;
 }
 
-#footerLinksList {
+#ftrLinksList {
     font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
-#footerLinksList li {
-    box-sizing: border-box;
+#ftrLinksList li {
     padding: 0 5px 0 5px;
 }
 
-#footerLinksList li a{
-    color: silver;
-}
-
 @media only screen and (min-width: 1200px) {
-    #footerLinksList {
+    #ftrLinksList {
         font-size: 150%;
     }
 }
 
 
 
-
-
-
-
-/** FOOTER COPYRIGHT**/
-#footerCopyright {
-    grid-area: footerCopyright;
+/*
+=====================================================
+    FOOTER COPYRIGHT
+=====================================================
+*/
+#ftrCopyright {
+    grid-area: ftrCopyright;
     background-image: linear-gradient(to top, #9b9b9b, #b9b9b9 50%, #9b9b9b 100%);
-    font-size: 200%;
+    font-size: 1.5rem;
 }
 
-#footerCopyright p {
-    text-align: center;
+#ftrCopyright p {
+    color: black;
 }
 
-#footerCopyright p a {
+#ftrCopyright p a {
     font-weight: bold;
     color: black;
 }
 
-#footerCopyright p a:hover {
+#ftrCopyright p a:hover {
     color: #373737;
 }

@@ -16,13 +16,9 @@
 
 #frontPagePictureContainer {
     grid-area: frontPagePictureContainer;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     padding: 0 5% 0 5%;
-    box-sizing: border-box;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -46,8 +42,6 @@
 #frontPageContentContainer {
     grid-area: frontPageContentContainer;
     padding: 5% 5% 5% 5%;
-    box-sizing: border-box;
-    text-align: center;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -62,7 +56,6 @@
 
 #frontPageHeader {
     font-size: 3.5rem;
-    color: silver;
     width: 100%;
     padding: 0 0 5% 0;
 }
@@ -81,7 +74,6 @@
 
 #frontPageContent {
     font-size: 2rem;
-    color: silver;
     height: auto;
     padding: 0 0 5% 0;
 }
@@ -93,9 +85,7 @@
 }
 
 #frontPageFooter {
-    transition: all 0.5s ease;
     height: auto;
-    box-sizing: border-box;
     margin: 5% 0 5% 0;
     width: 100%;
 }
@@ -114,5 +104,4 @@
 #frontPageFirstArticleAnchor {
     font-size: 3.5rem;
     padding: 3% 0 3% 0;
-    box-sizing: border-box;
 }

@@ -1,32 +1,33 @@
-<section id="footerNewsletter">
+<section id="ftrNewsletter" class="textAlignCenter">
     {% include "newsletter.twig" with {
         "newsletterTitle": fn('sZThemeFooterNewsletterH1OptionValue', fn('sZThemeFooterNewsletterH1OptionName')),
         "newsletterSubtitle": fn('sZThemeFooterNewsletterH2OptionValue', fn('sZThemeFooterNewsletterH2OptionName')),
-        "newsletterDescription": fn('sZThemeFooterNewsletterDescOptionValue', fn('sZThemeFooterNewsletterDescOptionName'))
+        "newsletterDescription": fn('sZThemeFooterNewsletterDescOptionValue', fn('sZThemeFooterNewsletterDescOptionName')),
+        'location': 'ftr'
     }%}
 
 </section>
-<section id="footerContact">
-    <h4 id="footerContactTitle">Formularz kontaktowy</h4>
-    <ul id="footerContactList">
+<section id="ftrContact" class="textAlignCenter">
+    <h4 id="ftrContactTitle">Formularz kontaktowy</h4>
+    <ul id="ftrContactList">
         <li>Adres email: <a href="mailto:cornelloshop@gmail.com">cornelloshop@gmail.com</a></li>
         <li>Numer telefonu: <a href="tel:+48884674219">(+48) 884 674 219</a></li>
     </ul>
-    {% include "emailForm.twig" %}
+    {% include "emailForm.twig" with {'location': "ftr"}%}
 </section>
 
-<section id="footerLinks">
-    <ul id="footerLinksList">
+<section id="ftrLinks">
+    <ul id="ftrLinksList" class="flexCenterCenter textAlignCenter">
         <li><a href="{{site.url}}/polityka-prywatnosci">Polityka prywatności</a></li>
         <li>&bull;</li>
         <li><a href="{{site.url}}/regulamin-sklepu-internetowego">Regulamin sprzedaży</a></li>
         <li>&bull;</li>
-        <li><a id="footerSitemap">Mapa strony</a></li>
+        <li><a id="ftrSitemap">Mapa strony</a></li>
     </ul>
 </section>
 
-<section id="footerCopyright">
+<section id="ftrCopyright">
 {#    <span> test</span>#}
-    <p>Copyright &#169; {{"now"|date('Y')}} szczesliwyzwiazek.pl</p>
-    <p>Powered by theme created by <a>Kamil Brodziak</a></p>
+    <p class="textAlignCenter">Copyright &#169; {{"now"|date('Y')}} szczesliwyzwiazek.pl</p>
+    <p class="textAlignCenter">Powered by theme created by <a>Kamil Brodziak</a></p>
 </section>

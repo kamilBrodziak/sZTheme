@@ -2,24 +2,24 @@
 
 {% block content %}
 	<article id="postArticle">
-		<header id="articleHeader" class="parallaxBg" style="background-image: url({{ post.thumbnail.src }});">
-			<h1 id="articleTitle">{{ post.title }}</h1>
+		<header id="postHeader"{% if post.thumbnail %} class="parallaxBg" style="background-image: url({{ post.thumbnail.src }}); padding-bottom: {{ ((post.thumbnail.height / post.thumbnail.width) * 100)|number_format(1) }}%;" {% endif %}>
+			<h1 id="postTitle" class="textAlignCenter flexCenterCenter">{{ post.title }}</h1>
 		</header>
-		<section id="articleContent">
+		<section id="postContent">
 				{{post.content}}
 		</section>
-		<footer id="articlePagination">
-			<div id="articlePaginationPrev" class="{% if post.prev != null %}buttonGradient{% endif %}">
+		<footer id="postPagination">
+			<div id="postPaginationPrev" class="{% if post.prev != null %}buttonGradient{% endif %}">
 				{% if post.prev != null %}
-					<a id="articlePaginationPrevLink" href="{{ post.prev.link }}" class="">
+					<a id="postPaginationPrevLink" href="{{ post.prev.link }}" class="textAlignCenter">
 						<span>Poprzedni post:</span>
 						<span>{{post.prev.title}}</span>
 					</a>
 				{% endif %}
 			</div>
-			<div id="articlePaginationNext" class="{% if post.next != null %}buttonGradient{% endif %}">
+			<div id="postPaginationNext" class="{% if post.next != null %}buttonGradient{% endif %}">
 				{% if post.next != null %}
-					<a id="articlePaginationNextLink" href="{{ post.next.link }}" class="">
+					<a id="postPaginationNextLink" href="{{ post.next.link }}" class="textAlignCenter">
 						<span>Następny post:</span>
 						<span>{{post.next.title}}</span>
 					</a>

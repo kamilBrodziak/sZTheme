@@ -6,18 +6,18 @@
         {% for post in posts %}
             <li class="postListItem">
                 {% if fn('sZThemeSettingsTableOfContentsOptionValue') %}
-                    <a class="postListItemAnchor" href="{{ post.link }}">
-                        <div class="postListItemPicture" style="background-image: url({{ post.thumbnail.src }});"></div>
-                        <h2 class="postListItemTitle">{{ post.postOrder }}. {{ post.title }}</h2>
-                        <div class="postListItemDesc">
+                    <a id="postListItemAnchor" href="{{ post.link }}">
+                        <div id="postListItemPicture" style="background-image: url({{ post.thumbnail.src }});"></div>
+                        <h2 id="postListItemTitle" class="textAlignCenter flexCenterCenter">{{ post.postOrder }}. {{ post.title }}</h2>
+                        <div id="postListItemDesc" class="textAlignCenter">
                             {% if post.meta('desc') %}{{ post.meta('desc') }}
                             {% else %}{{ post.preview.length(20).read_more('') }}
                             {% endif %}
                         </div>
                     </a>
                 {% else %}
-                    <a class="postListItemAnchorSimpleLayout" href="{{ post.link }}">
-                        <h2 class="postListItemTitle">{{ post.postOrder }}. {{ post.title }}</h2>
+                    <a id="postListItemAnchorSimpleLayout" class="textAlignCenter flexCenterCenter" href="{{ post.link }}">
+                        <h2 id="postListItemTitle" class="textAlignCenter flexCenterCenter">{{ post.postOrder }}. {{ post.title }}</h2>
                     </a>
                 {% endif %}
             </li>

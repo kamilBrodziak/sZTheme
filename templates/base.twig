@@ -13,7 +13,7 @@
 			<div id="siteContainer">
 		{% endif %}
 				{% block header %}
-					<header id="siteHeader" >
+					<header id="siteHeader" class="hashGradient">
 						{% include "header.twig" %}
 					</header>
 				{% endblock %}
@@ -23,7 +23,7 @@
 					{% endblock %}
 				</main>
 				{% block footer %}
-					<footer id="siteFooter">
+					<footer id="siteFooter" class="hashGradient">
 						{% include 'footer.twig' %}
 					</footer>
 					{{ function('wp_footer') }}

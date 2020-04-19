@@ -1,132 +1,42 @@
 :root {
-    --deviceHeight: 600px;
-    --headerHeightForMobile: calc(var(--deviceHeight) * 0.12);
-    --headerHeightForTablet: calc(var(--deviceHeight) * 0.12);
-    --headerHeightForSmallScreen: calc(var(--deviceHeight) * 0.3);
-    --headerHeightForLargeScreen: calc(var(--deviceHeight) * 0.25);
-}
-
-@media only screen and (min-height: 700px) {
-    :root {
-        --deviceHeight: 700px;
-    }
-}
-
-@media only screen and (min-height: 800px) {
-    :root {
-        --deviceHeight: 800px;
-    }
-}
-
-@media only screen and (min-height: 900px) {
-    :root {
-        --deviceHeight: 900px;
-    }
-}
-
-@media only screen and (min-height: 1000px) {
-    :root {
-        --deviceHeight: 1000px;
-    }
-}
-
-@media only screen and (min-height: 1100px) {
-    :root {
-        --deviceHeight: 1100px;
-    }
-}
-
-@media only screen and (min-height: 1200px) {
-    :root {
-        --deviceHeight: 1200px;
-    }
-}
-
-@media only screen and (min-height: 1300px) {
-    :root {
-        --deviceHeight: 1300px;
-    }
-}
-
-@media only screen and (min-height: 1400px) {
-    :root {
-        --deviceHeight: 1400px;
-    }
-}
-
-@media only screen and (min-height: 1500px) {
-    :root {
-        --deviceHeight: 1500px;
-    }
-}
-
-@media only screen and (min-height: 1600px) {
-    :root {
-        --deviceHeight: 1600px;
-    }
-}
-
-
-
-/** SITE CONTAINER**/
-#siteContainer {
-    display: grid;
-    grid-template-areas: "header" "main" "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: var(--headerHeightForMobile) auto auto;
-    /*grid-template-rows: auto auto auto;*/
-}
-
-#siteContainerFrontPage {
-    display: grid;
-    grid-template-areas: "header" "main" "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: var(--headerHeightForMobile) auto auto;
-    /*grid-template-rows: auto auto auto;*/
-}
-
-@media only screen and (min-width: 600px) {
-    #siteContainer {
-        grid-template-rows: var(--headerHeightForTablet) auto auto;
-        /*grid-template-rows: auto auto auto;*/
-    }
-    #siteContainerFrontPage {
-        grid-template-rows: var(--headerHeightForTablet) auto auto;
-        /*grid-template-rows: auto auto auto;*/
-    }
+    --headerHeight: 80px;
 }
 
 @media only screen and (min-width: 1024px) {
-    #siteContainer {
-        grid-template-rows: var(--headerHeightForSmallScreen) auto auto;
-        /*grid-template-rows: auto auto auto;*/
-    }
-    #siteContainerFrontPage {
-        grid-template-rows: var(--headerHeightForSmallScreen) calc(var(--deviceHeight) - var(--headerHeightForSmallScreen)) auto;
-        /*grid-template-rows: auto auto auto;*/
+    :root {
+        --headerHeight: 190px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    #siteContainer {
-        grid-template-rows: var(--headerHeightForLargeScreen) auto auto;
-        /*grid-template-rows: auto auto auto;*/
-    }
-    #siteContainerFrontPage {
-        grid-template-rows: var(--headerHeightForLargeScreen) calc(var(--deviceHeight) - var(--headerHeightForLargeScreen)) auto;
-        /*grid-template-rows: auto auto auto;*/
+    :root {
+        --headerHeight: 160px;
     }
 }
 
+/** SITE CONTAINER**/
+#siteContainer, #siteContainerFrontPage {
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--headerHeight) auto auto;
+}
 
+@media only screen and (min-width: 1024px) and (max-height: 599px) {
+    #siteContainerFrontPage {
+        grid-template-rows: var(--headerHeight) calc(599px - var(--headerHeight)) auto;
+    }
+}
 
-
-
+@media only screen and (min-width: 1024px) and (min-height: 600px) {
+    #siteContainerFrontPage {
+        grid-template-rows: var(--headerHeight) calc(100vh - var(--headerHeight)) auto;
+    }
+}
 
 /** MAIN **/
 main {
     grid-area: main;
-    /*background-color: #b76c77;*/
     width: 100%;
     height: auto;
     background:

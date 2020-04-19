@@ -1,25 +1,35 @@
 $( document ).ready( function() {
-    let root = document.documentElement;
-    root.style.setProperty("--deviceHeight",
-        window.screen.availHeight - (window.outerHeight - window.innerHeight) + "px");
     let parallax = new ParallaxBgPicture($('.parallaxBg'));
     parallax.toggleParallax();
     let mobileNav = new MobileNav($("#hdrNavbarMobileButton"), $("#hdrNavbar"), $("#siteHeader"));
     mobileNav.addHeaderFade();
-    let contactForm = $('.contactForm');
-    contactForm.on('submit', function (e) {
-        e.preventDefault();
-        let form = $(this),
-            name = form.find('#name').val(),
-            email = form.find('#email').val(),
-            message = form.find('#message').val(),
-            ajaxUrl = form.data('url');
-        console.log(message);
-        if(name == '' || email == '' || message == '') {
-            console.log('required inputs are empty');
-            return;
-        }
+    let emailFormHandler = new EmailFormHandler($('#ftrContactForm'), "sendUserEmail","ftrContactFormSuccessInfo" );
+    emailFormHandler.submitEvent();
+});
 
+class EmailFormHandler {
+    constructor(form, phpHandlerFuncName, successInfoId) {
+        this.form = form;
+        this.phpHandlerFuncName = phpHandlerFuncName;
+        this.successInfoId = successInfoId;
+    }
+
+    submitEvent() {
+        let self = this;
+        self.form.on('submit', function (e) {
+            e.preventDefault();
+            let form = self.form,
+                name = form.find('#ftrContactFormName').val(),
+                email = form.find('#ftrContactFormEmail').val(),
+                message = form.find('#ftrContactFormMessage').val(),
+                ajaxUrl = form.data('url');
+            self.sendEmail(name, email, message, ajaxUrl);
+        });
+    }
+
+    sendEmail(name, email, message, ajaxUrl) {
+        let self = this;
+        self.form.find("#ftrContactFormSubmit").prop("disabled", true);
         $.ajax({
             url: ajaxUrl,
             type: 'post',
@@ -27,24 +37,29 @@ $( document ).ready( function() {
                 name: name,
                 email: email,
                 message: message,
-                action: 'sendUserEmail'
+                action: self.phpHandlerFuncName
             },
             error: function (response) {
                 console.log(response);
+                self.form.find("#ftrContactFormSubmit").prop("disabled", false)
             },
             success: function (response) {
                 console.log(response);
-
+                console.log(message);
+                self.displaySuccessMessage();
+                self.form.find("#ftrContactFormSubmit").prop("disabled", false)
             }
         });
+    }
 
-        form.find(".contactFormSuccessInfo").addClass("contactFormSuccessInfoDisplay");
+    displaySuccessMessage() {
+        let successInfoElement = this.form.find("#" + this.successInfoId);
+        successInfoElement.css("display", "flex");
         setTimeout(function() {
-            form.find(".contactFormSuccessInfo").removeClass("contactFormSuccessInfoDisplay");
+            successInfoElement.css("display", "none");
         }, 2000);
-    });
-    
-});
+    }
+}
 
 class ParallaxBgPicture {
     constructor(parallaxBgDOM) {

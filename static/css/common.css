@@ -8,49 +8,60 @@
     --customGoldBottomBorder: linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(155, 117, 0, 0.2) 30%, rgba(184, 143, 0, 1) 50%,
         rgba(155, 115, 0, 0.2) 70%, rgba(0,0,0,0) 80%) no-repeat center bottom / 100% 2px;
     --gradientButtonWithoutBorders:
-            linear-gradient(135deg, rgba(6, 6, 6, 0.7) 12.5%,
-            rgba(12, 12, 12, 0.7) 12.5%, rgba(12, 12, 12, 0.7) 25%,
-            rgba(18, 18, 18, 0.7) 25%, rgba(18, 18, 18, 0.7) 37.5%,
-            rgba(24, 24, 24, 0.7) 37.5%, rgba(24, 24, 24, 0.7) 50%,
-            rgba(30, 30, 30, 0.7) 50%, rgba(30, 30, 30, 0.7) 62.5%,
-            rgba(36, 36, 36, 0.7) 62.5%, rgba(36, 36, 36, 0.7) 75%,
-            rgba(42, 42, 42, 0.7) 75%, rgba(42, 42, 42, 0.7) 87.5%,
-            rgba(48, 48, 48, 0.7) 87.5%),
-            linear-gradient(45deg, rgb(60, 60, 60) 12.5%,
-            rgb(54, 54, 54) 12.5%, rgb(54, 54, 54) 25%,
-            rgb(48, 48, 48) 25%, rgb(48, 48, 48) 37.5%,
-            rgb(42, 42, 42) 37.5%, rgb(42, 42, 42) 50%,
-            rgb(36, 36, 36) 50%, rgb(36, 36, 36) 62.5%,
-            rgb(30, 30, 30) 62.5%, rgb(30, 30, 30) 75%,
-            rgb(24, 24, 24) 75%, rgb(24, 24, 24) 87.5%,
-            rgb(18, 18, 18) 87.5%);
+        linear-gradient(135deg, rgba(6, 6, 6, 0.7) 12.5%,
+        rgba(12, 12, 12, 0.7) 12.5%, rgba(12, 12, 12, 0.7) 25%,
+        rgba(18, 18, 18, 0.7) 25%, rgba(18, 18, 18, 0.7) 37.5%,
+        rgba(24, 24, 24, 0.7) 37.5%, rgba(24, 24, 24, 0.7) 50%,
+        rgba(30, 30, 30, 0.7) 50%, rgba(30, 30, 30, 0.7) 62.5%,
+        rgba(36, 36, 36, 0.7) 62.5%, rgba(36, 36, 36, 0.7) 75%,
+        rgba(42, 42, 42, 0.7) 75%, rgba(42, 42, 42, 0.7) 87.5%,
+        rgba(48, 48, 48, 0.7) 87.5%),
+        linear-gradient(45deg, rgb(60, 60, 60) 12.5%,
+        rgb(54, 54, 54) 12.5%, rgb(54, 54, 54) 25%,
+        rgb(48, 48, 48) 25%, rgb(48, 48, 48) 37.5%,
+        rgb(42, 42, 42) 37.5%, rgb(42, 42, 42) 50%,
+        rgb(36, 36, 36) 50%, rgb(36, 36, 36) 62.5%,
+        rgb(30, 30, 30) 62.5%, rgb(30, 30, 30) 75%,
+        rgb(24, 24, 24) 75%, rgb(24, 24, 24) 87.5%,
+        rgb(18, 18, 18) 87.5%);
+    --hashGradient:
+        linear-gradient(45deg, transparent 46%,rgba(114, 114, 114,0.06) 46%,rgba(94, 94, 94,0.06) 70%,transparent 70%),
+        linear-gradient(135deg, transparent 59%,rgba(114, 114, 114,0.06) 59%,rgba(124, 124, 124,0.06) 91%,transparent 91%),
+        linear-gradient(135deg, transparent 13%, rgba(124, 124, 124, 0.06) 13%, rgba(114, 114, 114, 0.06) 45%, transparent 45%),
+        linear-gradient(45deg, rgba(131, 131, 131, 0.1), rgba(121, 121, 121, 0.1) 32%, transparent 32%),
+        linear-gradient(90deg, #191919, #191919);
     --gradientButton: var(--customGoldLeftBorder), var(--customGoldRightBorder), var(--gradientButtonWithoutBorders);
     --gradientButtonBorder: 5px groove #282828;
-
 }
 
-/** NEWSLETTER **/
+.hashGradient {
+    background:
+        linear-gradient(45deg, transparent 46%,rgba(114, 114, 114,0.06) 46%,rgba(94, 94, 94,0.06) 70%,transparent 70%),
+        linear-gradient(135deg, transparent 59%,rgba(114, 114, 114,0.06) 59%,rgba(124, 124, 124,0.06) 91%,transparent 91%),
+        linear-gradient(135deg, transparent 13%, rgba(124, 124, 124, 0.06) 13%, rgba(114, 114, 114, 0.06) 45%, transparent 45%),
+        linear-gradient(45deg, rgba(131, 131, 131, 0.1), rgba(121, 121, 121, 0.1) 32%, transparent 32%),
+        linear-gradient(90deg, #191919, #191919);
+}
+
+/*
+=====================================================
+    NEWSLETTER
+=====================================================
+*/
 .newsletterForm {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
     width: 100%;
     height: 100%;
 }
 
 .newsletterForm input:not([type="submit"]) {
     background-color: transparent;
-    margin-right: 1%;
     background-image: linear-gradient(to top, #000000, rgba(0,0,0,0) 50%);
     border-bottom: 1px solid silver;
-    box-sizing: border-box;
 }
 
 .newsletterForm input {
     border: 0;
     outline: none;
-    text-align: center;
-    color: silver;
 }
 
 .newsletterForm input::placeholder {
@@ -66,58 +77,20 @@
 
 .newsletterSubmitButton:hover {
     background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
-    background-size: 1% 70%;
-    background-position-y: 550%;
 }
 
-
-
-
-
-
-
-/** SITE BUTTONS**/
-.gradientButtonAnchor::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    content: '';
-    background: linear-gradient(to top, #282828 , #191919 50%, #282828);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.gradientButtonAnchor:hover::before {
-    opacity: 1;
-}
-
-
-.gradientButton {
-    color: silver;
-    background: linear-gradient(to top, #191919, #191919 20% , #282828 50%, #191919 80%, #191919 100%);
-    box-shadow: 0 0 10px 1px silver;
-    z-index: 2;
-}
-
-.gradientButtonAnchor {
-    color: silver;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.5s ease;
-    background: transparent;
-    position: relative;
-    z-index: 4;
-}
-
+/*
+=====================================================
+    GRADIENT BUTTONS
+=====================================================
+*/
 
 .buttonGradient {
     background: var(--gradientButton);
     border: var(--gradientButtonBorder);
     border-radius: 10px;
     box-shadow: 0 3px 2px 1px #191919;
+    transition: all 0.3s ease;
 }
 
 .buttonGradient a {
@@ -126,15 +99,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: silver;
+    text-align: center;
     font-weight: bold;
     position: relative;
-    transition: all 0.5s ease;
+    box-shadow: 0 3px 2px 1px #191919;
+    color: silver;
 }
 
 @media only screen and (min-width: 1024px) {
     .buttonGradient a:hover {
         letter-spacing: 2px;
+    }
+}
+
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.colorSilver {
+    color: silver;
+}
+
+.flexCenterCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+=====================================================
+    SHOP BUTTON ANIMATIONS
+=====================================================
+*/
+.pulseAnimationButton {
+    animation: pulse 3s infinite;
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    20% {
+        box-shadow: 0 0 20px 20px rgba(204,169,44, 0);
+    }
+    30%, 100% {
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
     }
 }
 
@@ -199,39 +208,4 @@
     100% {
         transform: translateX(-100%);
     }
-}
-
-
-table {
-    text-align: center;
-    width: 60%;
-    margin: 2rem auto 2rem auto;
-    border-radius: 5px;
-    border: var(--gradientButtonBorder);
-    border-collapse: collapse;
-    border-width: 8px;
-}
-
-table th, table td {
-    border: var(--gradientButtonBorder);
-    padding: 1em 0 1em 0;
-    box-sizing: border-box;
-}
-
-table th {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-table td {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-a {
-    color: #9b9b9b;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-a:hover {
-    color: #7d7d7d;
 }

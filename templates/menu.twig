@@ -1,8 +1,9 @@
 {% if menu %}
 	<ul {% if menuLocation %} id="{{ menuLocation }}NavbarList" {% endif %}>
 		{% for item in items %}
-			<li class="{{ item.classes | join(' ') }} {% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %}{% if item.title == 'Sklep' and navShopItemAnimation != 'disabled' %} hdrNavbarShopItem {{ navShopItemAnimation }}{% endif %}">
-				<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+{#			{{ item.classes | join(' ') }}#}
+			<li class="{% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %} {% if item.title == 'Sklep' %}hdrNavbarShopItem {% if navShopItemAnimation != 'disabled' %}{{ navShopItemAnimation }}{% endif %}{% endif %}">
+				<a id="hdrNavbarListItemAnchor" class="textAlignCenter colorSilver flexCenterCenter" href="{{ item.link }}">{{ item.title }}</a>
 				{% if item.title == 'Sklep' %}
 					<div id="shopPreview">
 						{% for post in fn('getWCProducts') %}

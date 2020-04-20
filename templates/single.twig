@@ -2,7 +2,9 @@
 
 {% block content %}
 	<article id="postArticle">
-		<header id="postHeader"{% if post.thumbnail %} class="parallaxBg" style="background-image: url({{ post.thumbnail.src }}); padding-bottom: {{ ((post.thumbnail.height / post.thumbnail.width) * 100)|number_format(1) }}%;" {% endif %}>
+		<header id="postHeader"{% if post.thumbnail %} class="parallaxBg" style="background-image: url({{ post.thumbnail.src }});" {% endif %}>
+{#			padding-top: calc({{ ((post.thumbnail.height / post.thumbnail.width) * 100)|number_format(1) }}% - 4rem - 3%); padding-bottom: 1%;#}
+			<style> :root {--parallaxBgHeight: {{ ((post.thumbnail.height / post.thumbnail.width) * 100)|number_format(1) }}%}</style>
 			<h1 id="postTitle" class="textAlignCenter flexCenterCenter">{{ post.title }}</h1>
 		</header>
 		<section id="postContent">

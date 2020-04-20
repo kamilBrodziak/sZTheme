@@ -3,14 +3,12 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
-    /*padding: 0 10% 0 10%;*/
     margin: 30px 0 30px 0;
     padding: 0 10% 0 10%;
-    /*padding: 0;*/
 }
 
 .postListItem:not(:first-child):not(:last-child) {
-    margin: 20px 0 20px 0;
+    margin: 2% 0 2% 0;
 }
 
 #postListItemAnchorSimpleLayout {
@@ -18,7 +16,9 @@
     height: 100%;
 }
 
-
+#postListItemAnchorSimpleLayout #postListItemTitle {
+    grid-area: unset;
+}
 
 #postListItemAnchor {
     width: 100%;
@@ -32,34 +32,25 @@
 }
 
 #postListItemPicture {
-    /*display: none;*/
     display: block;
     grid-area: postListItemPicture;
-    /*height: 200px;*/
     width: 100%;
     height: 200px;
     background-size: cover;
     background-position: 50% 50%;
 }
 
-/*@media only screen and (min-width: 1024px) {*/
-/*    .postListItemPicture {*/
-
-/*    }*/
-/*}*/
-
 #postListItemTitle {
     grid-area: postListItemTitle;
     background: linear-gradient(45deg, rgba(75, 75, 75, 0.8),
-    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
-    padding: 0 4% 0 4%;
-    font-size: 350%;
-    min-height: 1.5em;
+        rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+    padding: 1% 4% 1% 4%;
+    font-size: 2.875rem;
     width: 100%;
 }
 
 #postListItemDesc {
     grid-area: postListItemDesc;
     padding: 1% 10% 1% 10%;
-    font-size: 250%;
+    font-size: 2.25rem;
 }

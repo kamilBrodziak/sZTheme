@@ -4,11 +4,19 @@
 }
 
 #postHeader {
-    position: relative;
-    overflow: hidden;
     font-size: 4rem;
     width: 100%;
-    padding-bottom: 5%;
+    height: auto;
+    padding-top: var(--parallaxBgHeight);
+    margin-bottom: 1%;
+}
+
+@media only screen and (min-width: 600px) {
+    #postHeader {
+        /* - 3rem postTitle padding (top + bottom) - 4rem postTitle font size - 1% postHeader padding bottom*/
+        padding-top: calc(var(--parallaxBgHeight) - 1% - 7rem);
+        padding-bottom: 1%;
+    }
 }
 
 .parallaxBg {
@@ -19,13 +27,11 @@
 }
 
 #postTitle {
-    min-height: 1.5em;
-    font-size: 100%;
-    position: absolute;
-    left: 0;
+    padding: 1.5rem 5% 1.5rem 5%;
+    font-size: 4rem;
     width: 100%;
-    bottom: 2%;
-    box-shadow: 0 0 10px 1px silver, inset 0 0 50px 10px black;
+    line-height: 1em;
+    box-shadow: 0 0 10px 1px silver, inset 0 0 50px 20px black;
     text-shadow: 1px 1px 3px silver;
 }
 
@@ -35,14 +41,29 @@
 
 /** POST PAGINATION **/
 #postPagination {
-    padding: 0.5% 1% 20px 1%;
+    padding: 1% 1% 2% 1%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-#postPaginationPrev, #articlePaginationNext {
-    width: 46%;
+@media only screen and (min-width: 600px) {
+    #postPagination {
+        flex-direction: row;
+    }
+}
+
+#postPaginationPrev, #postPaginationNext {
+    width: 100%;
+    padding: 0;
+    margin: 1% 0 1% 0;
+}
+
+@media only screen and (min-width: 600px) {
+    #postPaginationPrev, #postPaginationNext {
+        width: 46%;
+        margin: 0;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -51,13 +72,8 @@
     }
 }
 
-#postPaginationNext, #postPaginationPrev {
-    padding: 0;
-    margin: 1% 0 1% 0;
-}
-
 #postPaginationPrevLink, #postPaginationNextLink  {
-    font-size: 250%;
+    font-size: 2.5rem;
     flex-direction: column;
     padding: 2% 0 2% 0;
 }

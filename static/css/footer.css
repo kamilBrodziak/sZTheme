@@ -105,7 +105,7 @@
 
 #ftrContactList li {
     padding: 1% 0 0 0;
-    font-size: 2.2rem;
+    font-size: 2.25rem;
 }
 
 #ftrContact a:not([class="ftrContactLinks"]) {
@@ -176,7 +176,7 @@
 
 @media only screen and (min-width: 1200px) {
     #ftrLinksList {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 }
 
@@ -190,7 +190,7 @@
 #ftrCopyright {
     grid-area: ftrCopyright;
     background-image: linear-gradient(to top, #9b9b9b, #b9b9b9 50%, #9b9b9b 100%);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
 }
 
 #ftrCopyright p, #ftrCopyright p a {

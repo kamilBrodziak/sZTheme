@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1.8rem;
+    font-size: 1.875rem;
 }
 
 #singleProductSummary .cart, #singleProductSummary .cart > *:not(button) {
@@ -44,18 +44,28 @@
     height: auto;
 }
 
-#singleProductSummary .cart .variations tbody tr .value select {
-    font-size: 1.8rem;
+.variations {
+    margin: 0 0 1% 0;
+    padding: 0;
+    border: 0;
+}
+
+.variations td {
+    border: 0;
+    padding: 0;
+    background: none;
+}
+
+.variations tr .value select {
+    font-size: 1.875rem;
     background: transparent;
     border: 5px solid silver;
     border-radius: 5px;
     height: 5rem;
     width: 100%;
 }
-#singleProductSummary .cart .variations tbody tr .value select option {
+.variations tr .value select option {
     background: rgba(0, 0, 0, 0.9);
-    border: 5px solid silver;
-    border-radius: 5px;
     font-size: 3rem;
 }
 
@@ -68,6 +78,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: 10px;
 }
 
 @media only screen and (min-width: 1024px) {

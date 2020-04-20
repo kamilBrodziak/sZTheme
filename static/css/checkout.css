@@ -57,7 +57,7 @@
     border: var(--gradientButtonBorder);
     width: 80%;
     font-size: 3rem;
-    font-weight: bolder;
+    font-weight: bold;
     height: 3em;
     cursor: pointer;
     position: relative;

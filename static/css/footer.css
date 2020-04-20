@@ -105,7 +105,6 @@
 
 #ftrContactList li {
     padding: 1% 0 0 0;
-    font-weight: bold;
     font-size: 2.2rem;
 }
 
@@ -131,7 +130,6 @@
 #ftrContactForm input, #ftrContactFormMessage {
     display: block;
     border: 0;
-    outline: none;
     width: 100%;
     margin: 2% 0 0 0;
     font-size: 2rem;
@@ -146,17 +144,6 @@
 #ftrContactFormSubmit {
     font-size: 2rem;
     padding: 5% 0 5% 0;
-    background: linear-gradient(to top, #0f0f0f 20% , #191919 50%, #0f0f0f 80%);
-    box-shadow: 1px 1px 2px 0 silver;
-    font-weight: bold;
-}
-
-#ftrContactFormSubmit:hover {
-    background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
-}
-
-.hidden {
-    display: none;
 }
 
 #ftrContactFormSuccessInfo {
@@ -167,7 +154,7 @@
     border: 5px groove #282828;
     background: rgba(0, 0, 0, 0.9);
     border-radius: 10px;
-    font-size: 250%;
+    font-size: 2.5rem;
 }
 
 
@@ -180,11 +167,7 @@
 
 #ftrLinks {
     grid-area: ftrLinks;
-    padding: 5px 0 5px 0;
-}
-
-#ftrLinksList {
-    font-weight: bold;
+    padding: 1% 0 1% 0;
 }
 
 #ftrLinksList li {
@@ -193,7 +176,7 @@
 
 @media only screen and (min-width: 1200px) {
     #ftrLinksList {
-        font-size: 150%;
+        font-size: 1.5rem;
     }
 }
 
@@ -210,12 +193,7 @@
     font-size: 1.5rem;
 }
 
-#ftrCopyright p {
-    color: black;
-}
-
-#ftrCopyright p a {
-    font-weight: bold;
+#ftrCopyright p, #ftrCopyright p a {
     color: black;
 }
 

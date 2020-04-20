@@ -1,29 +1,22 @@
 /** FRONT PAGE **/
 #frontPageArticle {
-    display: grid;
-    grid-template-areas: "frontPageContentContainer" "frontPagePictureContainer";
-    grid-template-rows: auto auto;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding: 5% 5% 0 5%;
 }
 
 @media only screen and (min-width: 1024px) {
     #frontPageArticle {
-        grid-template-areas: "frontPagePictureContainer frontPageContentContainer";
-        grid-template-rows: auto;
-        grid-template-columns: 1fr 1fr;
+        padding: 0 5% 0 5%;
+        flex-direction: row;
     }
-}
-
-#frontPagePictureContainer {
-    grid-area: frontPagePictureContainer;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 0 5% 0 5%;
 }
 
 @media only screen and (min-width: 1024px) {
     #frontPagePictureContainer {
-        padding: 0;
+        justify-content: flex-start;
+        width: 45%;
     }
 }
 
@@ -39,24 +32,17 @@
     }
 }
 
-#frontPageContentContainer {
-    grid-area: frontPageContentContainer;
-    padding: 5% 5% 5% 5%;
-}
-
 @media only screen and (min-width: 1024px) {
     #frontPageContentContainer {
-        padding: 5% 15% 5% 0;
+        width: 50%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
     }
 }
 
 #frontPageHeader {
-    font-size: 3.5rem;
-    width: 100%;
     padding: 0 0 5% 0;
 }
 
@@ -67,21 +53,12 @@
 }
 
 #frontPageTitle {
-    font-size: inherit;
+    font-size: 3.5rem;
 }
-
-
 
 #frontPageContent {
     font-size: 2rem;
     height: auto;
-    padding: 0 0 5% 0;
-}
-
-@media only screen and (min-width: 1024px) {
-    #frontPageContent {
-        padding: 0;
-    }
 }
 
 #frontPageFooter {

@@ -68,22 +68,22 @@
     color: #7f7f7f;
 }
 
-.newsletterSubmitButton {
+/*
+=====================================================
+    GRADIENT BUTTONS
+=====================================================
+*/
+
+.blackGradientSubmit {
     background: linear-gradient(to top, #0f0f0f 20% , #191919 50%, #0f0f0f 80%);
     box-shadow: 1px 1px 2px 0 silver;
     font-weight: bold;
     cursor: pointer;
 }
 
-.newsletterSubmitButton:hover {
+.blackGradientSubmit:hover {
     background: linear-gradient(to top, rgb(35, 35, 35) 20% , rgb(50, 50, 50) 50%, rgb(35, 35, 35) 80%);
 }
-
-/*
-=====================================================
-    GRADIENT BUTTONS
-=====================================================
-*/
 
 .buttonGradient {
     background: var(--gradientButton);
@@ -112,6 +112,9 @@
     }
 }
 
+.fontBold {
+    font-weight: bold;
+}
 
 .textAlignCenter {
     text-align: center;

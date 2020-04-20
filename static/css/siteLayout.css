@@ -18,7 +18,7 @@
 #siteContainer, #siteContainerFrontPage {
     display: grid;
     grid-template-areas: "header" "main" "footer";
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: var(--headerHeight) auto auto;
 }
 

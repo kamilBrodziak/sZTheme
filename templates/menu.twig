@@ -3,7 +3,7 @@
 		{% for item in items %}
 {#			{{ item.classes | join(' ') }}#}
 			<li class="{% if menuLocation %}{{ menuLocation }}NavbarListItem{% endif %} {% if item.title == 'Sklep' %}hdrNavbarShopItem {% if navShopItemAnimation != 'disabled' %}{{ navShopItemAnimation }}{% endif %}{% endif %}">
-				<a id="hdrNavbarListItemAnchor" class="textAlignCenter colorSilver flexCenterCenter" href="{{ item.link }}">{{ item.title }}</a>
+				<a id="hdrNavbarListItemAnchor" class="textAlignCenter colorSilver flexCenterCenter fontBold" href="{{ item.link }}">{{ item.title }}</a>
 				{% if item.title == 'Sklep' %}
 					<div id="shopPreview">
 						{% for post in fn('getWCProducts') %}

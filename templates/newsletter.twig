@@ -17,5 +17,5 @@
            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" placeholder="Twój email*"
            oninvalid="this.setCustomValidity('Proszę wprowadź poprawny email. Przykład: nazwa@gmail.com')"
            oninput="setCustomValidity('')">
-    <input {% if location %}id="{{ location }}NewsletterSubmitButton" {% endif %}class="newsletterSubmitButton" type="submit" value="Zapisz się">
+    <input {% if location %}id="{{ location }}NewsletterSubmitButton" {% endif %}class="newsletterSubmitButton blackGradientSubmit" type="submit" value="Zapisz się">
 </form>

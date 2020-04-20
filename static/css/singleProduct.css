@@ -1,17 +1,12 @@
-.singleProduct {
-    height: 100%;
-    width: 100%;
-}
-
 #singleProductContainer {
-    width: 90%;
+    width: 100%;
+    padding: 0 5% 5% 5%;
     height: auto;
-    margin: 2rem auto 2rem auto;
     display: grid;
     grid-template-areas: "singleProductPictureContainer"
         "singleProductSummary"
         "singleProductDescription";
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
     grid-template-columns: 1fr;
 }
 
@@ -20,7 +15,7 @@
         grid-template-areas:
             "singleProductPictureContainer singleProductSummary"
             "singleProductDescription singleProductDescription";
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto auto;
         grid-template-columns: 1fr 2fr;
     }
 }
@@ -37,7 +32,7 @@
 
 #singleProductSummary {
     grid-area: singleProductSummary;
-    padding: 1rem 0 1rem 1rem;
+    padding: 0 0 0 1%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,7 +49,7 @@
     background: transparent;
     border: 5px solid silver;
     border-radius: 5px;
-=    height: 5rem;
+    height: 5rem;
     width: 100%;
 }
 #singleProductSummary .cart .variations tbody tr .value select option {
@@ -64,7 +59,6 @@
     font-size: 3rem;
 }
 
-
 .single_add_to_cart_button {
     height: 8rem;
     width: 100%;
@@ -73,6 +67,13 @@
     background: var(--gradientButton);
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@media only screen and (min-width: 1024px) {
+    .single_add_to_cart_button:hover {
+        letter-spacing: 2px;
+    }
 }
 
 #singleProductSummary .price {
@@ -84,30 +85,27 @@
     height: auto;
 }
 
-
 #singleProductDescription {
     grid-area: singleProductDescription;
+    padding: 2% 0 0 0;
 }
 
 #singleProductDescriptionHeader  {
     background: linear-gradient(45deg, rgba(75, 75, 75, 0.8),
     rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
-    padding: 1rem 0 1rem 0;
+    padding: 1% 0 1% 0;
     font-size: 2.5rem;
     box-shadow: 8px 8px 4px 0 #2d2d2d;
-    margin: 2rem 0 0 0;
 }
 
 #singleProductDescriptionContent {
     font-size: 2rem;
     text-align: left;
-    margin: 1% 0 1% 0;
-    padding: 0 2% 0 2%;
+    padding: 2%;
     height: auto;
 }
 
 #singleProductRedirectToBuyAnchorContainer {
-    margin: 1% 0 1% 0;
     height: 8rem;
     font-size: 3rem;
 }

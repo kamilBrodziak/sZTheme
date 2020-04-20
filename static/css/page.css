@@ -56,7 +56,7 @@
     font-size: 2.1rem;
 }
 
-#pageContent ol, #pageContent ul {
+#pageContent ol, #pageContent ul, #pageContent p, #postContent p {
     padding: 0 5% 0 5%;
 }
 
@@ -66,8 +66,4 @@
 
 #pageContent ol ol, #pageContent ol ul, #postContent ol, #postContent ul, .wp-block-table {
     padding: 0 10% 0 10%;
-}
-
-#pageContent p, #postContent p {
-    padding: 0 5% 0 5%;
 }

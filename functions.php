@@ -249,6 +249,9 @@ class StarterSite extends Timber\Site {
 	    if(!is_product() && !is_checkout()) {
 	    	wp_deregister_script('woocommerce');
 	    	wp_deregister_script('wc-cart-fragments');
+		    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js' . "#asyncload");
+	    } else {
+		    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js');
 	    }
 //		wp_deregister_script('wc-single-product');
 //	    if(is_product()) {
@@ -256,7 +259,6 @@ class StarterSite extends Timber\Site {
 ////			wp_deregister_script('jquery-blockui');
 //			wp_dequeue_script('jquery-blockui');
 //	    }
-	    wp_enqueue_script('jquery', '/wp-includes/js/jquery/jquery.min.js' . "#asyncload");
         $styleVer = time();
         wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer . "#asyncload", array('jquery'), null, true );
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);

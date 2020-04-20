@@ -269,6 +269,17 @@
     transform: rotate(45deg) translate(-50%, -50%);
 }
 
+.changeMobileNavButtonState:after {
+    z-index: -15;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 100vh;
+    cursor: auto;
+}
+
 
 
 /*

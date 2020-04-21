@@ -70,11 +70,17 @@
     display: block;
     width: 100%;
     font-size: 2rem;
-    padding: 1% 0 1% 0;
+    padding: 5% 0 5% 0;
 }
 
-#ftrNewsletterForm #ftrNewsletterSubmitButton {
-    padding: 5% 0 5% 0;
+@media only screen and (min-width: 1024px) {
+    #ftrNewsletterForm input {
+        padding: 1% 0 1% 0;
+    }
+
+    #ftrNewsletterForm #ftrNewsletterSubmitButton {
+        padding: 5% 0 5% 0;
+    }
 }
 
 
@@ -125,6 +131,13 @@
 #ftrContactForm input:not([type="submit"]) {
     background: linear-gradient(to top, #000000, rgba(0,0,0,0) 50%);
     border-bottom: 1px solid silver;
+    padding: 5% 0 5% 0;
+}
+
+@media only screen and (min-width: 1024px) {
+    #ftrContactForm input:not([type="submit"]) {
+        padding: 0;
+    }
 }
 
 #ftrContactForm input, #ftrContactFormMessage {
@@ -167,16 +180,26 @@
 
 #ftrLinks {
     grid-area: ftrLinks;
-    padding: 1% 0 1% 0;
+    padding: 2% 0 2% 0;
+}
+
+#ftrLinksList {
+    height: auto;
 }
 
 #ftrLinksList li {
     padding: 0 5px 0 5px;
 }
 
+#ftrLinksList li a {
+    font-size: 1.375rem;
+    padding: 20px 0 20px 0;
+}
+
 @media only screen and (min-width: 1200px) {
-    #ftrLinksList {
+    #ftrLinksList li a {
         font-size: 1.75rem;
+        padding: 0;
     }
 }
 

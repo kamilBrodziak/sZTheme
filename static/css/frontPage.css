@@ -1,4 +1,8 @@
-/** FRONT PAGE **/
+/*
+=====================================================
+    FRONT PAGE
+=====================================================
+*/
 #frontPageArticle {
     display: flex;
     flex-direction: column-reverse;

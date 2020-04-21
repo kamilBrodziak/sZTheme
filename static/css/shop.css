@@ -1,3 +1,8 @@
+/*
+=====================================================
+    SHOP
+=====================================================
+*/
 #productList {
     display: flex;
     flex-direction: row;
@@ -12,34 +17,34 @@
     height: auto;
 }
 
-#teaseProductAnchor {
+.teaseProductAnchor {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: auto;
 }
 
-#teaseProductPictureContainer {
+.teaseProductPictureContainer {
     height: auto;
 }
 
-#teaseProductPicture {
+.teaseProductPicture {
     border-radius: 10px;
     transition: all 0.3s ease;
     width: 100%;
     height: auto;
 }
 
-#teaseProductTitle {
+.teaseProductTitle {
     font-size: 3rem;
     transition: all 0.3s ease;
 }
 
-#teaseProductAnchor:hover #teaseProductPicture {
+.teaseProductAnchor:hover .teaseProductPicture {
     border-radius: 20%;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
     .teaseProduct {
         width: 50%;
     }
@@ -51,19 +56,19 @@
     }
 }
 
-#teaseProductPrice {
+.teaseProductPrice {
     font-size: 2rem;
     height: auto;
 }
 
-#teaseProductPrice > *:only-child > *:last-child{
+.teaseProductPrice > *:only-child > *:last-child{
     text-decoration: none;
 }
 
-#teaseProductMoreAnchorContainer {
+.teaseProductMoreAnchorContainer {
     height: 6rem;
 }
 
-#teaseProductMoreAnchor {
+.teaseProductMoreAnchor {
     font-size: 1.5rem;
 }

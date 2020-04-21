@@ -1,10 +1,4 @@
 /*
- * Theme Name: szczesliwyZwiazek
- * Description: Private theme for domain szczesliwyzwiazek.pl
- * Author: Kamil Brodziak
-*/
-
-/*
 =====================================================
     NORMALIZATION
 =====================================================
@@ -349,24 +343,24 @@ main {
     width: 100%;
     height: auto;
     background:
-            linear-gradient(35deg,
+        linear-gradient(35deg,
             rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 53%,
             rgba(109, 109, 109, 0.03) 53%, rgba(109, 109, 109, 0.03) 59%,
             rgba(228, 228, 228, 0.03) 59%, rgba(228, 228, 228, 0.03) 66%,
             rgba(42, 42, 42, 0.03) 66%, rgba(42, 42, 42, 0.03) 100%),
-            linear-gradient(205deg,
+        linear-gradient(205deg,
             rgba(62, 62, 62, 0.03) 0%, rgba(62, 62, 62, 0.03) 31%,
             rgba(200, 200, 200, 0.03) 31%, rgba(200, 200, 200, 0.03) 41%,
             rgba(30, 30, 30, 0.03) 41%, rgba(30, 30, 30, 0.03) 47%,
             rgba(151, 151, 151, 0.03) 47%, rgba(151, 151, 151, 0.03) 60%,
             rgba(95, 95, 95, 0.03) 60%, rgba(95, 95, 95, 0.03) 100%),
-            linear-gradient(30deg,
+        linear-gradient(30deg,
             rgba(7, 7, 7, 0.03) 0%, rgba(7, 7, 7, 0.03) 19%,
             rgba(63, 63, 63, 0.03) 19%, rgba(63, 63, 63, 0.03) 33%,
             rgba(175, 175, 175, 0.03) 33%, rgba(175, 175, 175, 0.03) 37%,
             rgba(244, 244, 244, 0.03) 37%, rgba(244, 244, 244, 0.03) 60%,
             rgba(177, 177, 177, 0.03) 60%, rgba(177, 177, 177, 0.03) 100%),
-            linear-gradient(90deg, rgb(20, 20, 20), rgb(35, 35, 35));
+         linear-gradient(90deg, rgb(20, 20, 20), rgb(35, 35, 35));
 }
 
 
@@ -564,7 +558,7 @@ main {
         border: var(--gradientButtonBorder);
         background: var(--gradientButton);
     }
-
+    
     .hdrNavbarListItem::before {
         background: rgba(50, 50, 50, 0.5);
         position: absolute;
@@ -1050,7 +1044,7 @@ main {
 #postContent > h1, #postContent > h2, #postContent > h3, #postContent > h4, #postContent > h5, #postContent > h6,
 .woocommerce-billing-fields h3, .woocommerce-additional-fields h3 {
     background: linear-gradient(30deg, rgba(75, 75, 75, 0.8),
-    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+        rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1270,8 +1264,8 @@ main {
     height: auto;
     display: grid;
     grid-template-areas: "singleProductPictureContainer"
-    "singleProductSummary"
-    "singleProductDescription";
+        "singleProductSummary"
+        "singleProductDescription";
     grid-template-rows: auto auto auto;
     grid-template-columns: 1fr;
 }
@@ -1279,8 +1273,8 @@ main {
 @media only screen and (min-width: 600px) {
     #singleProductContainer {
         grid-template-areas:
-                "singleProductPictureContainer singleProductSummary"
-                "singleProductDescription singleProductDescription";
+            "singleProductPictureContainer singleProductSummary"
+            "singleProductDescription singleProductDescription";
         grid-template-rows: auto auto;
         grid-template-columns: 1fr 2fr;
     }
@@ -1536,7 +1530,7 @@ main {
 #postListItemTitle {
     grid-area: postListItemTitle;
     background: linear-gradient(45deg, rgba(75, 75, 75, 0.8),
-    rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
+        rgba(105, 105, 105, 0.8) 50%, rgba(75, 75, 75, 0.8)), #191919;
     padding: 1% 4% 1% 4%;
     font-size: 2.875rem;
     width: 100%;

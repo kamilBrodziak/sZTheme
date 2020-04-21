@@ -8,11 +8,11 @@
     <div {% if location %}id="{{ location }}NewsletterDescription" {% endif %}class="newsletterDescription">{{ newsletterDescription }}</div>
 {% endif %}
 <form method="post" action="" {% if location %}id="{{ location }}NewsletterForm"{% endif %}class="newsletterForm">
-    <label for="fname"></label>
+    <label for="{% if location %}{{ location }}NewsletterNameInput{% endif %}">Wpisz swoje imię</label>
     <input {% if location %}id="{{ location }}NewsletterNameInput" {% endif %}class="newsletterNameInput" name="fname" type="text" required pattern="[a-zA-Z0-9 ]+" placeholder="Twoje imię*"
            oninvalid="this.setCustomValidity('Proszę wprowadź swoje imię używając tylko liter.')"
            oninput="setCustomValidity('')">
-    <label for="email"></label>
+    <label for="{% if location %}{{ location }}NewsletterEmailInput{% endif %}">Wpisz swój adres email</label>
     <input {% if location %}id="{{ location }}NewsletterEmailInput" {% endif %}class="newsletterEmailInput" name="email" type="email" required
            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" placeholder="Twój email*"
            oninvalid="this.setCustomValidity('Proszę wprowadź poprawny email. Przykład: nazwa@gmail.com')"

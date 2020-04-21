@@ -13,7 +13,7 @@
 		<footer id="postPagination">
 			<div id="postPaginationPrev" class="{% if post.prev != null %}buttonGradient{% endif %}">
 				{% if post.prev != null %}
-					<a id="postPaginationPrevLink" href="{{ post.prev.link }}" class="textAlignCenter">
+					<a id="postPaginationPrevLink" href="{{ post.prev.link }}" class="textAlignCenter flexCenterCenter colorSilver">
 						<span>Poprzedni post:</span>
 						<span>{{post.prev.title}}</span>
 					</a>
@@ -21,7 +21,7 @@
 			</div>
 			<div id="postPaginationNext" class="{% if post.next != null %}buttonGradient{% endif %}">
 				{% if post.next != null %}
-					<a id="postPaginationNextLink" href="{{ post.next.link }}" class="textAlignCenter">
+					<a id="postPaginationNextLink" href="{{ post.next.link }}" class="textAlignCenter flexCenterCenter colorSilver">
 						<span>Następny post:</span>
 						<span>{{post.next.title}}</span>
 					</a>

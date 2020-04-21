@@ -1,3 +1,8 @@
+/*
+=====================================================
+    NORMALIZATION
+=====================================================
+*/
 html {
     font-size: 8px;
 }
@@ -104,19 +109,8 @@ table td {
     border-radius: 8px;
 }
 
-::-webkit-scrollbar-button {
-    background-image: linear-gradient(to top, #b88f00 0%, #b88f00 19%, #191919 20%, #191919 40% ,
-    #282828 50%, #191919 60%, #191919 80%, #b88f00 81%, #b88f00 100%);
-    display: none;
-}
-
 ::-webkit-scrollbar-thumb {
     background-image: linear-gradient(to left, #b88f00 0%, #b88f00 10%, #191919 11%, #191919 25% ,
     #282828 50%, #191919 75%, #191919 89%, #b88f00 90%, #b88f00 100%);
     border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to left, #b88f00 0%, #b88f00 10%, #191919 11%, #191919 45% ,
-    #282828 50%, #191919 55%, #191919 89%, #b88f00 90%, #b88f00 100%);
 }

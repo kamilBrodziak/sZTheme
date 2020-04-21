@@ -79,10 +79,7 @@
 @media only screen and (min-width: 1024px) {
     #hdrNewsletter {
         grid-area: hdrNewsletter;
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         overflow: hidden;
     }
 

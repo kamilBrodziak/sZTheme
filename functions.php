@@ -264,7 +264,7 @@ class StarterSite extends Timber\Site {
 //			wp_dequeue_script('jquery-blockui');
 //	    }
         $styleVer = time();
-        wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js?' . $styleVer . "#asyncload", array('jquery'), null, true );
+        wp_enqueue_script( 'script-name', get_template_directory_uri() . '/static/site.min.js#asyncload', array('jquery'), null, true );
 //        wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css?' . $styleVer);
 //        wp_enqueue_style('casino-style1', get_stylesheet_directory_uri() . '/static/css/siteLayout.css?' . $styleVer);
 //        wp_enqueue_style('casino-style2', get_stylesheet_directory_uri() . '/static/css/normalization.css?' . $styleVer);
@@ -283,7 +283,7 @@ class StarterSite extends Timber\Site {
 //	    if(is_front_page()) {
 //		    wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/productionFrontPage.min.css?', $styleVer);
 //	    } else {
-	    wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/production.min.css?', null, null, null,);
+	    wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css', null, null, null,);
 //	    }
 	    wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );

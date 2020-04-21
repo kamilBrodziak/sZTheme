@@ -453,6 +453,7 @@ main {
         grid-area: hdrNewsletter;
         flex-direction: column;
         overflow: hidden;
+        display: flex;
     }
 
     #hdrNewsletterTitle {

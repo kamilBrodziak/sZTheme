@@ -586,7 +586,7 @@ main {
     }
 }
 
-#hdrNavbarListItemAnchor {
+.hdrNavbarListItemAnchor {
     font-size: 2.5rem;
 }
 
@@ -953,13 +953,13 @@ main {
     }
 }
 
-#frontPagePicture {
+.frontPagePicture {
     height: auto;
     width: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
-    #frontPagePicture {
+    .frontPagePicture {
         width: auto;
         height: 100%;
     }

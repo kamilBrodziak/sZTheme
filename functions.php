@@ -283,7 +283,7 @@ class StarterSite extends Timber\Site {
 //	    if(is_front_page()) {
 //		    wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/static/css/productionFrontPage.min.css?', $styleVer);
 //	    } else {
-	    wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css', null, null, null,);
+	    wp_enqueue_style('casino-style', get_stylesheet_directory_uri() . '/style.min.css', null, null, null);
 //	    }
 	    wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );

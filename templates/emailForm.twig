@@ -13,5 +13,5 @@
            oninput="this.setCustomValidity('')">
     <label for="{% if location %}{{ location }}ContactFormMessage{% endif %}">Wpisz swoją wiadomość</label>
     <textarea {% if location %}id="{{ location }}ContactFormMessage" {% endif %}class="message" name="message" maxlength="1000" placeholder="Wiadomość*" rows=7 required></textarea>
-    <input {% if location %}id="{{ location }}ContactFormSubmit" {% endif %}class="submit blackGradientSubmit" name="submit" type="submit" value="Wyślij" required>
+    <input {% if location %}id="{{ location }}ContactFormSubmit" {% endif %}class="submit blackGradientSubmit" name="submit" type="submit" value="Wyślij">
 </form>
